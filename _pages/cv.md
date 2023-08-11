@@ -67,18 +67,6 @@ Collaborations
 * Member of the CHEX-MATE collaboration since 2019
 * Member of the NIKA2 collaboration since 2018 (Core team member since 2019)
 
-Publications
-======
-  <ul>{% for post in site.publications %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Talks
-======
-  <ul>{% for post in site.talks %}
-    {% include archive-single-talk-cv.html %}
-  {% endfor %}</ul>
-  
 Teaching
 ======
 2018-2021: 98 hours of teaching at Université Grenoble Alpes
@@ -100,3 +88,16 @@ Service
 * Developper and maintainer of `panco2`, a Python library to extract pressure measurements from millimeter-wave maps of galaxy clusters [https://github.com/fkeruzore/panco2](fkeruzore/panco2)
 * Responsible of the NIKA2 collaboration SZ pipeline from 2019 to 2021
 * Responsible of the NIKA2 collaboration SZ database from 2019 to 2021
+
+Talks
+======
+  <ul>{% for post in site.talks %}
+    {% include archive-single-talk-cv.html %}
+  {% endfor %}</ul>
+  
+Publications
+======
+  <ul>{% for post in site.publications %}
+    {% include archive-single-cv.html %}
+  {% endfor %}</ul>
+  
