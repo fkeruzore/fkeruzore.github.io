@@ -21,6 +21,7 @@
 
 from pybtex.database.input import bibtex
 import pybtex.database.input.bibtex
+from pylatexenc.latex2text import LatexNodes2Text
 from time import strptime
 import string
 import html
@@ -118,27 +119,13 @@ for pubsource in publist:
             if crop:
                 authors = authors[:n_auth_max]
             for author in authors:
+                last_name = LatexNodes2Text().latex_to_text(author.last_names[0])
                 try:
-                    citation = (
-                        citation
-                        + " "
-                        + author.first_names[0]
-                        + " "
-                        + author.last_names[0]
-                        .replace("{", "")
-                        .replace("}", "")
-                        + ", "
-                    )
+                    first_name = LatexNodes2Text().latex_to_text(author.first_names[0])
+                    citation += " " + first_name + " " + last_name + ", "
                 except Exception as exc_cite:
                     print("Warning when building citation:", exc_cite)
-                    citation = (
-                        citation
-                        + " "
-                        + author.last_names[0]
-                        .replace("{", "")
-                        .replace("}", "")
-                        + ", "
-                    )
+                    citation += " " + last_name + ", "
             if crop:
                 citation = citation[:-2] + " et al., "
 
