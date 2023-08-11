@@ -1,0 +1,9 @@
+---
+title: "Confirmation of NIKA2 investigation of the Sunyaev-Zel&apos;dovich effect by using synthetic clusters of galaxies"
+collection: publications
+permalink: /publication/2020-06-01-Confirmation-of-NIKA2-investigation-of-the-Sunyaev-Zeldovich-effect-by-using-synthetic-clusters-of-galaxies
+date: 2020-06-01
+venue: 'In the proceedings of mm Universe @ NIKA2 - Observing the mm Universe with the NIKA2 Camera'
+citation: ' Marco {De Petris},  Florian {Ruppin},  Federico {Sembolini},  Rem{\&apos;\i} {Adam},  Anna {Baldi},  Giammarco {Cialone},  Barbara {Comis},  Federico {De Luca},  Giulia {Gianfagna},  Florian {K{\&apos;e}ruzor{\&apos;e}},  Juan {Mac{\&apos;\i}as-P{\&apos;e}rez},  Fr{\&apos;e}d{\&apos;e}ric {Mayet},  Laurence {Perotto},  Gustavo {Yepes}, &quot;Confirmation of NIKA2 investigation of the Sunyaev-Zel&amp;apos;dovich effect by using synthetic clusters of galaxies.&quot; In the proceedings of mm Universe @ NIKA2 - Observing the mm Universe with the NIKA2 Camera, 2020.'
+---
+Use [Google Scholar](https://scholar.google.com/scholar?q=Confirmation+of+NIKA2+investigation+of+the+Sunyaev+Zel&#x27;dovich+effect+by+using+synthetic+clusters+of+galaxies){:target="_blank"} for full citation

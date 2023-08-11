@@ -1,0 +1,9 @@
+---
+title: "Probing the role of magnetic fields in star-forming filaments: NIKA2-Pol commissioning results toward OMC-1"
+collection: publications
+permalink: /publication/2022-07-01-Probing-the-role-of-magnetic-fields-in-star-forming-filaments-NIKA2-Pol-commissioning-results-toward-OMC-1
+date: 2022-07-01
+venue: 'In the proceedings of mm Universe @ NIKA2 - Observing the mm Universe with the NIKA2 Camera'
+citation: ' H. {Ajeddig},  R. {Adam},  P. {Ade},  P. {Andr{\&apos;e}},  E. {Artis},  H. {Aussel},  A. {Beelen},  A. {Beno{\^\i}t},  S. {Berta},  L. {Bing},  O. {Bourrion},  M. {Calvo},  A. {Catalano},  M. {De Petris},  F. {D{\&apos;e}sert},  S. {Doyle},  E. {Driessen},  A. {Gomez},  J. {Goupy},  F. {K{\&apos;e}ruzor{\&apos;e}},  C. {Kramer},  B. {Ladjelate},  G. {Lagache},  S. {Leclercq},  J. {Lestrade},  J. {Mac{\&apos;\i}as-P{\&apos;e}rez},  A. {Maury},  P. {Mauskopf},  F. {Mayet},  A. {Monfardini},  M. {Mu{\~n}oz-Echeverr{\&apos;\i}a},  L. {Perotto},  G. {Pisano},  N. {Ponthieu},  V. {Rev{\&apos;e}ret},  A. {Rigby},  A. {Ritacco},  C. {Romero},  H. {Roussel},  F. {Ruppin},  K. {Schuster},  S. {Shu},  A. {Sievers},  C. {Tucker},  R. {Zylka},  Y. {Shimajiri}, &quot;Probing the role of magnetic fields in star-forming filaments: NIKA2-Pol commissioning results toward OMC-1.&quot; In the proceedings of mm Universe @ NIKA2 - Observing the mm Universe with the NIKA2 Camera, 2022.'
+---
+Use [Google Scholar](https://scholar.google.com/scholar?q=Probing+the+role+of+magnetic+fields+in+star+forming+filaments:+NIKA2+Pol+commissioning+results+toward+OMC+1){:target="_blank"} for full citation

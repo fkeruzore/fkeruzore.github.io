@@ -1,0 +1,9 @@
+---
+title: "The Cluster HEritage project with XMM-Newton: Mass Assembly and Thermodynamics at the Endpoint of structure formation. I. Programme overview"
+collection: publications
+permalink: /publication/2021-06-01-The-Cluster-HEritage-project-with-XMM-Newton-Mass-Assembly-and-Thermodynamics-at-the-Endpoint-of-structure-formation-I-Programme-overview
+date: 2021-06-01
+venue: 'aap'
+citation: ' {CHEX-MATE Collaboration},  M. {Arnaud},  S. {Ettori},  G. {Pratt},  M. {Rossetti},  D. {Eckert},  F. {Gastaldello},  R. {Gavazzi},  S. {Kay},  L. {Lovisari},  B. {Maughan},  E. {Pointecouteau},  M. {Sereno},  I. {Bartalucci},  A. {Bonafede},  H. {Bourdin},  R. {Cassano},  R. {Duffy},  A. {Iqbal},  S. {Maurogordato},  E. {Rasia},  J. {Sayers},  F. {Andrade-Santos},  H. {Aussel},  D. {Barnes},  R. {Barrena},  S. {Borgani},  S. {Burkutean},  N. {Clerc},  P. {Corasaniti},  J. {Cuillandre},  S. {De Grandi},  M. {De Petris},  K. {Dolag},  M. {Donahue},  A. {Ferragamo},  M. {Gaspari},  S. {Ghizzardi},  M. {Gitti},  C. {Haines},  M. {Jauzac},  M. {Johnston-Hollitt},  C. {Jones},  F. {K{\&apos;e}ruzor{\&apos;e}},  A. {Le Brun},  F. {Mayet},  P. {Mazzotta},  J. {Melin},  S. {Molendi},  M. {Nonino},  N. {Okabe},  S. {Paltani},  L. {Perotto},  S. {Pires},  M. {Radovich},  J. {Rubino-Martin},  L. {Salvati},  A. {Saro},  B. {Sartoris},  G. {Schellenberger},  A. {Streblyanska},  P. {Tarr{\&apos;\i}o},  P. {Tozzi},  K. {Umetsu},  R. {van der Burg},  F. {Vazza},  T. {Venturi},  G. {Yepes},  S. {Zarattini}, &quot;The Cluster HEritage project with XMM-Newton: Mass Assembly and Thermodynamics at the Endpoint of structure formation. I. Programme overview.&quot; aap, 2021.'
+---
+Use [Google Scholar](https://scholar.google.com/scholar?q=The+Cluster+HEritage+project+with+XMM+Newton:+Mass+Assembly+and+Thermodynamics+at+the+Endpoint+of+structure+formation.+I.+Programme+overview){:target="_blank"} for full citation

@@ -1,0 +1,9 @@
+---
+title: "Galactic Star Formation with NIKA2 (GASTON): Evidence of mass accretion onto dense clumps"
+collection: publications
+permalink: /publication/2022-07-01-Galactic-Star-Formation-with-NIKA2-GASTON-Evidence-of-mass-accretion-onto-dense-clumps
+date: 2022-07-01
+venue: 'In the proceedings of mm Universe @ NIKA2 - Observing the mm Universe with the NIKA2 Camera'
+citation: ' A. {Rigby},  R. {Adam},  P. {Ade},  H. {Ajeddig},  M. {Anderson},  P. {Andr{\&apos;e}},  E. {Artis},  H. {Aussel},  A. {Bacmann},  A. {Beelen},  A. {Beno{\^\i}t},  S. {Berta},  L. {Bing},  O. {Bourrion},  A. {Bracco},  M. {Calvo},  A. {Catalano},  M. {De Petris},  F. {D{\&apos;e}sert},  S. {Doyle},  E. {Driessen},  P. {Garc{\&apos;\i}a},  A. {Gomez},  J. {Goupy},  F. {K{\&apos;e}ruzor{\&apos;e}},  C. {Kramer},  B. {Ladjelate},  G. {Lagache},  S. {Leclercq},  J. {Lestrade},  J. {Mac{\&apos;\i}as-P{\&apos;e}rez},  A. {Maury},  P. {Mauskopf},  F. {Mayet},  A. {Monfardini},  M. {Mu{\~n}oz-Echeverr{\&apos;\i}a},  N. {Peretto},  L. {Perotto},  G. {Pisano},  N. {Ponthieu},  V. {Rev{\&apos;e}ret},  I. {Ristorcelli},  A. {Ritacco},  C. {Romero},  H. {Roussel},  F. {Ruppin},  K. {Schuster},  S. {Shu},  A. {Sievers},  C. {Tucker},  E. {Watkins},  R. {Zylka}, &quot;Galactic Star Formation with NIKA2 (GASTON): Evidence of mass accretion onto dense clumps.&quot; In the proceedings of mm Universe @ NIKA2 - Observing the mm Universe with the NIKA2 Camera, 2022.'
+---
+Use [Google Scholar](https://scholar.google.com/scholar?q=Galactic+Star+Formation+with+NIKA2+(GASTON):+Evidence+of+mass+accretion+onto+dense+clumps){:target="_blank"} for full citation

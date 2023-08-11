@@ -1,0 +1,9 @@
+---
+title: "Mapping the intracluster medium temperature in the era of NIKA2 and MUSTANG-2"
+collection: publications
+permalink: /publication/2022-07-01-Mapping-the-intracluster-medium-temperature-in-the-era-of-NIKA2-and-MUSTANG-2
+date: 2022-07-01
+venue: 'In the proceedings of mm Universe @ NIKA2 - Observing the mm Universe with the NIKA2 Camera'
+citation: ' F. {Ruppin},  R. {Adam},  P. {Ade},  H. {Ajeddig},  P. {Andr{\&apos;e}},  E. {Artis},  H. {Aussel},  A. {Beelen},  A. {Beno{\^\i}t},  S. {Berta},  L. {Bing},  O. {Bourrion},  M. {Brodwin},  M. {Calvo},  A. {Catalano},  B. {Decker},  M. {De Petris},  F. {D{\&apos;e}sert},  S. {Doyle},  E. {Driessen},  P. {Eisenhardt},  A. {Gomez},  A. {Gonzalez},  J. {Goupy},  F. {K{\&apos;e}ruzor{\&apos;e}},  C. {Kramer},  B. {Ladjelate},  G. {Lagache},  S. {Leclercq},  J. {Lestrade},  J. {Mac{\&apos;\i}as-P{\&apos;e}rez},  A. {Maury},  P. {Mauskopf},  F. {Mayet},  M. {McDonald},  A. {Monfardini},  E. {Moravec},  M. {Mu{\~n}oz-Echeverr{\&apos;\i}a},  L. {Perotto},  G. {Pisano},  N. {Ponthieu},  V. {Rev{\&apos;e}ret},  A. {Rigby},  A. {Ritacco},  C. {Romero},  H. {Roussel},  K. {Schuster},  S. {Shu},  A. {Sievers},  S. {Stanford},  D. {Stern},  C. {Tucker},  R. {Zylka}, &quot;Mapping the intracluster medium temperature in the era of NIKA2 and MUSTANG-2.&quot; In the proceedings of mm Universe @ NIKA2 - Observing the mm Universe with the NIKA2 Camera, 2022.'
+---
+Use [Google Scholar](https://scholar.google.com/scholar?q=Mapping+the+intracluster+medium+temperature+in+the+era+of+NIKA2+and+MUSTANG+2){:target="_blank"} for full citation
