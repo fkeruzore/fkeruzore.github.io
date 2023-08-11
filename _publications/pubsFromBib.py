@@ -42,6 +42,7 @@ publist = {
                         "permalink":"/publication/"}
     } 
 }
+add_scholar_links = False
 
 html_escape_table = {
     "&": "&amp;",
@@ -151,7 +152,7 @@ for pubsource in publist:
 
             if url:
                 md += "\n[Access paper here](" + b["url"] + "){:target=\"_blank\"}\n" 
-            else:
+            elif add_scholar_links:
                 md += "\nUse [Google Scholar](https://scholar.google.com/scholar?q="+html.escape(clean_title.replace("-","+"))+"){:target=\"_blank\"} for full citation"
 
             md_filename = os.path.basename(md_filename)
