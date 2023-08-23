@@ -17,7 +17,7 @@ for pub_type in ["fa_papers", "co_papers", "fa_procs", "co_procs"]:
         md = f"""---
 title: "{title}"
 collection: "{pub_type}"
-permalink: https://ui.adsabs.harvard.edu/abs/{bibcode}/abstract
+permalink: /publications/{bibcode}
 date: {date}
 venue: "{journal}"
 citation: "{cite}"
