@@ -97,7 +97,24 @@ Talks
   
 Publications
 ======
-  <ul>{% for post in site.publications reversed %}
+Journal Articles
+------
+
+  <ul>{% for post in site.fa_papers reversed %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
-  
+
+  <ul>{% for post in site.co_papers reversed %}
+    {% include archive-single-cv.html %}
+  {% endfor %}</ul>
+
+Conference Proceedings
+------
+
+  <ul>{% for post in site.fa_procs reversed %}
+    {% include archive-single-cv.html %}
+  {% endfor %}</ul>
+
+  <ul>{% for post in site.co_procs reversed %}
+    {% include archive-single-cv.html %}
+  {% endfor %}</ul>

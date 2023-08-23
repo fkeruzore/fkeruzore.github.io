@@ -1,0 +1,8 @@
+---
+title: "Probing the role of magnetic fields in star-forming filaments: NIKA2-Pol commissioning results toward OMC-1"
+collection: "co_procs"
+permalink: https://ui.adsabs.harvard.edu/abs/2022EPJWC.25700002A/abstract
+date: 2022-07
+venue: "mm Universe @ NIKA2 - Observing the mm Universe with the NIKA2 Camera"
+citation: "Ajeddig, H., Adam, R., Ade, P., et al. (2022), mm Universe @ NIKA2 - Observing the mm Universe with the NIKA2 Camera, 257, 00002."
+---

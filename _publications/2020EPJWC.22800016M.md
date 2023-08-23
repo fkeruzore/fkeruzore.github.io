@@ -1,0 +1,8 @@
+---
+title: "NIKA: a mm camera for Sunyaev-Zel'dovich science in clusters of galaxies"
+collection: "co_procs"
+permalink: https://ui.adsabs.harvard.edu/abs/2020EPJWC.22800016M/abstract
+date: 2020-06
+venue: "mm Universe @ NIKA2 - Observing the mm Universe with the NIKA2 Camera"
+citation: "Macías-Pérez, J. F., Adam, R., Ade, P., et al. (2020), mm Universe @ NIKA2 - Observing the mm Universe with the NIKA2 Camera, 228, 00016."
+---
