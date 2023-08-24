@@ -1,8 +1,0 @@
----
-title: "PSZ2 G091: A massive double cluster at z   0.822 observed by the NIKA2 camera"
-collection: "co_procs"
-permalink: /publications/2022EPJWC.25700003A
-date: 2022-07-01
-venue: "mm Universe @ NIKA2 - Observing the mm Universe with the NIKA2 Camera"
-citation: "Artis, E., Adam, R., Ade, P., et al. (2022), mm Universe @ NIKA2 - Observing the mm Universe with the NIKA2 Camera, 257, 00003."
----

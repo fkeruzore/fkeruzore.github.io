@@ -14,13 +14,15 @@ for pub_type in ["fa_papers", "co_papers", "fa_procs", "co_procs"]:
     for bibcode, title, date, journal, cite in zip(
         bibcodes, titles, dates, journals, cites
     ):
+        bibcode_nodot = bibcode.replace(".", "")
         md = f"""---
 title: "{title}"
-collection: "{pub_type}"
-permalink: /publications/{bibcode}
+collection: "publications"
+category: "{pub_type}"
+permalink: /publications/{bibcode_nodot}
 date: {date}
 venue: "{journal}"
 citation: "{cite}"
 ---"""
-        with open(f"./{bibcode}.md", "w") as f:
+        with open(f"./{bibcode_nodot}.md", "w") as f:
             f.write(md)

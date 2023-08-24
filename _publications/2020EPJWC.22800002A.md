@@ -1,8 +1,0 @@
----
-title: "Preliminary results on the instrumental polarization of NIKA2-Pol at the IRAM 30m telescope"
-collection: "co_procs"
-permalink: /publications/2020EPJWC.22800002A
-date: 2020-06-01
-venue: "European Physical Journal Web of Conferences"
-citation: "Ajeddig, H., Adam, R., Ade, P., et al. (2020), European Physical Journal Web of Conferences, 228, 00002."
----

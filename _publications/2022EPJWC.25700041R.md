@@ -1,8 +1,0 @@
----
-title: "Galactic Star Formation with NIKA2 (GASTON): Evidence of mass accretion onto dense clumps"
-collection: "co_procs"
-permalink: /publications/2022EPJWC.25700041R
-date: 2022-07-01
-venue: "mm Universe @ NIKA2 - Observing the mm Universe with the NIKA2 Camera"
-citation: "Rigby, A. J., Adam, R., Ade, P., et al. (2022), mm Universe @ NIKA2 - Observing the mm Universe with the NIKA2 Camera, 257, 00041."
----

@@ -11,13 +11,13 @@ Journal Articles
 ======
 
 {% for post in site.publications reversed %}
-  {% if post.collection == "fa_papers" %}
+  {% if post.category == "fa_papers" %}
     {% include archive-single.html %}
   {% endif %}
 {% endfor %}
 
 {% for post in site.publications reversed %}
-  {% if post.collection == "co_papers" %}
+  {% if post.category == "co_papers" %}
     {% include archive-single.html %}
   {% endif %}
 {% endfor %}
@@ -26,13 +26,13 @@ Conference Proceedings
 ======
 
 {% for post in site.publications reversed %}
-  {% if post.collection == "fa_procs" %}
+  {% if post.category == "fa_procs" %}
     {% include archive-single.html %}
   {% endif %}
 {% endfor %}
 
 {% for post in site.publications reversed %}
-  {% if post.collection == "co_procs" %}
+  {% if post.category == "co_procs" %}
     {% include archive-single.html %}
   {% endif %}
 {% endfor %}

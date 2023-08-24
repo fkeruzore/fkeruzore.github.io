@@ -1,8 +1,0 @@
----
-title: "Exploring the millimetre emission in nearby galaxies: Analysis of the edge-on galaxy NGC 891"
-collection: "co_procs"
-permalink: /publications/2022EPJWC.25700023K
-date: 2022-07-01
-venue: "mm Universe @ NIKA2 - Observing the mm Universe with the NIKA2 Camera"
-citation: "Katsioli, S., Adam, R., Ade, P., et al. (2022), mm Universe @ NIKA2 - Observing the mm Universe with the NIKA2 Camera, 257, 00023."
----

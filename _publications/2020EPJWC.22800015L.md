@@ -1,8 +1,0 @@
----
-title: "Debris disks around stars in the NIKA2 era"
-collection: "co_procs"
-permalink: /publications/2020EPJWC.22800015L
-date: 2020-06-01
-venue: "mm Universe @ NIKA2 - Observing the mm Universe with the NIKA2 Camera"
-citation: "Lestrade, J.-F., Augereau, J.-C., Booth, M., et al. (2020), mm Universe @ NIKA2 - Observing the mm Universe with the NIKA2 Camera, 228, 00015."
----

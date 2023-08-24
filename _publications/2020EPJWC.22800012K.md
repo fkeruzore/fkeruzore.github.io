@@ -1,8 +1,0 @@
----
-title: "A low-mass galaxy cluster as a test-case study for the NIKA2 SZ Large Program"
-collection: "fa_procs"
-permalink: /publications/2020EPJWC.22800012K
-date: 2020-06-01
-venue: "mm Universe @ NIKA2 - Observing the mm Universe with the NIKA2 Camera"
-citation: "Kéruzoré, F., Adam, R., Ade, P., et al. (2020), mm Universe @ NIKA2 - Observing the mm Universe with the NIKA2 Camera, 228, 00012."
----
