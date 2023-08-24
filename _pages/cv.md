@@ -9,8 +9,8 @@ redirect_from:
 
 {% include base_path %}
 
-Research positions
-======
+# Research positions
+
 * 2021 - present: Postdoctoral Scholar
   * Argonne National Laboratory, High Energy Physics division
   * Supervisor: Dr. Lindsey Bleem
@@ -30,14 +30,14 @@ Research positions
     * Analysis of the thermodynamic properties of the intracluster medium
     * Mass-observable scaling relations
 
-Education
-======
+# Education
+
 * Ph.D in Cosmology, Université Grenoble Alpes, 2021
 * Master's degree in Cosmology and Particle Physics, Université de Montpellier, 2018
 * Bachelor's degree in Physics and Chemistry, Université de Bordeaux, 2016
 
-Skills
-======
+# Skills
+
 * Galaxy cluster science
   * Cluster cosmology
   * Sunyaev-Zeldovich effect
@@ -58,8 +58,8 @@ Skills
   * Code Documentation (Sphinx),
   * Parallel computing (multithreading, MPI)
 
-Collaborations
-======
+# Collaborations
+
 * Member of the Dark Energy Science Collaboration (DESC) since 2022
 * Member of the CMB-S4 collaboration since 2022
 * Member of the South Pole Telescope (SPT) collaboration since 2022
@@ -67,8 +67,8 @@ Collaborations
 * Member of the CHEX-MATE collaboration since 2019
 * Member of the NIKA2 collaboration since 2018 (Core team member since 2019)
 
-Teaching
-======
+# Teaching
+
 2018-2021: 98 hours of teaching at Université Grenoble Alpes
 * Electromagnetism
   * 1st year biology & chemistry students
@@ -83,38 +83,40 @@ Teaching
   * Labs (in-person)
   * 12 hours
   
-Service
-======
+# Service
+
 * Developper and maintainer of `panco2`, a Python library to extract pressure measurements from millimeter-wave maps of galaxy clusters [https://github.com/fkeruzore/panco2](fkeruzore/panco2)
 * Responsible of the NIKA2 collaboration SZ pipeline from 2019 to 2021
 * Responsible of the NIKA2 collaboration SZ database from 2019 to 2021
 
-Talks
-======
+# Talks
+
   <ul>{% for post in site.talks reversed %}
     {% include archive-single-talk-cv.html %}
   {% endfor %}</ul>
   
-Publications
-======
-Journal Articles
-------
+# Publications
 
-  <ul>{% for post in site.fa_papers reversed %}
-    {% include archive-single-cv.html %}
+## Journal Articles
+
+  <ul>{% for post in site.publications reversed %}
+    {% if post.category == "fa_papers" %}
+      {% include archive-single-cv.html %}
+    {% endif %}
   {% endfor %}</ul>
 
-  <ul>{% for post in site.co_papers reversed %}
-    {% include archive-single-cv.html %}
+  <ul>{% for post in site.publications reversed %}
+    {% if post.category == "co_papers" %}
+      {% include archive-single-cv.html %}
+    {% endif %}
   {% endfor %}</ul>
 
-Conference Proceedings
-------
+## Conference Proceedings
 
-  <ul>{% for post in site.fa_procs reversed %}
-    {% include archive-single-cv.html %}
+  <ul>{% for post in site.publications reversed %}
+    {% if post.category == "fa_procs" %}
+      {% include archive-single-cv.html %}
+    {% endif %}
   {% endfor %}</ul>
 
-  <ul>{% for post in site.co_procs reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
+  Plus several conference proceedings as a co-author -- see the dedicated [Publications page](https://fkeruzore.github.io/publications/) for the complete list.
