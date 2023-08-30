@@ -23,8 +23,7 @@ jobs:
         ADS_DEV_KEY: ${{ secrets.ADS_DEV_KEY }}
     - name: commit changes
       run: |
-        if [[ -n $(git status -s) ]]
-        then
+        if [[ -n $(git status -s) ]]; then
           git config user.name fkeruzore
           git config user.email fkeruzore@anl.gov
           git add _publications/*.md
