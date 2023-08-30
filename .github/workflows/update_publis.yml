@@ -1,0 +1,33 @@
+name: Update publications
+
+on:
+  workflow_dispatch:
+  schedule:
+  - cron: '0 6 * * 1-5'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+    steps:
+    - name: Setup Python Environment
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+    - run: pip install requests
+    - uses: actions/checkout@v3
+    - name: Execute the script
+      env:
+        ADS_DEV_KEY: ${{ secrets.ADS_DEV_KEY }}
+    - name: commit changes
+      run: |
+        if [[ -n $(git status -s) ]]
+        then
+          git config user.name fkeruzore
+          git config user.email fkeruzore@anl.gov
+          git add _publications/*.md
+          git commit -m "Auto-update publication page"
+          git push origin master
+        fi
