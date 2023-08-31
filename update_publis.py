@@ -175,13 +175,13 @@ if __name__ == "__main__":
         ):
             bibcode_nodot = bibcode.replace(".", "")
             md = f"""---
-    title: "{title}"
-    collection: "publications"
-    category: "{pub_type}"
-    permalink: /publications/{bibcode_nodot}
-    date: {date}
-    venue: "{journal}"
-    citation: "{cite}"
-    ---"""
+title: "{title}"
+collection: "publications"
+category: "{pub_type}"
+permalink: /publications/{bibcode_nodot}
+date: {date}
+venue: "{journal}"
+citation: "{cite}"
+---"""
             with open(f"./_publications/{bibcode_nodot}.md", "w") as f:
                 f.write(md)
