@@ -21,6 +21,7 @@ jobs:
     - name: Execute the script
       env:
         ADS_DEV_KEY: ${{ secrets.ADS_DEV_KEY }}
+      run: python update_publis.py
     - name: commit changes
       run: |
         if [[ -n $(git status -s) ]]; then
