@@ -7,6 +7,8 @@ author_profile: true
 
 {% include base_path %}
 
+Total number of publications: <strong>{{ site.data.pub_stats.publications }}</strong> (<strong>{{ site.data.pub_stats.citecount }}</strong> citations, h-index: <strong>{{ site.data.pub_stats.hindex }}</strong>)
+
 # Journal Articles
 
 ## As primary author

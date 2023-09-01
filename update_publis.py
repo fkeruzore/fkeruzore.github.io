@@ -2,6 +2,7 @@ import os
 import requests
 from urllib.parse import urlencode
 import json
+import os
 
 token = os.environ["ADS_DEV_KEY"]
 secu_header = {"Authorization": f"Bearer {token}"}
@@ -160,8 +161,60 @@ def get_citation(bibcodes):
     return cites
 
 
+def get_citecount_hindex(bibcodes):
+    """Get citation counts and h-index from a list of ADS bibcodes.
+
+    Parameters
+    ----------
+    bibcodes : list
+        List of ADS bibcodes.
+
+    Returns
+    -------
+    citecount: int
+        Total number of citations for all bibcodes.
+    h: int
+        h-index for bibcodes.
+    """
+    payload = {"bibcodes": bibcodes, "types": ["citations", "indicators"]}
+    results = requests.post(
+        "https://api.adsabs.harvard.edu/v1/metrics",
+        headers={**secu_header, "Content-type": "application/json"},
+        data=json.dumps(payload),
+    )
+    stats = results.json()
+    citecount = stats["citation stats"]["total number of citations"]
+    h = stats["indicators"]["h"]
+    return citecount, h
+
+
 if __name__ == "__main__":
+
+    # Clean directory
+    files = os.listdir("./_publications")
+    for f in files:
+        if f.endswith(".md"):
+            os.remove(f"./_publications/{f}")
+
+    # Prepare file to store stats
+    file_pub_stats = open("./_data/pub_stats.yml", "w")
+
+    # Get bibcodes neatly organized
     all_bibcodes, all_titles, all_dates, all_journals = get_bibcodes(rows=100)
+
+    # Total publications
+    all_bibcodes["all_pubs"] = (
+        all_bibcodes["fa_papers"]
+        + all_bibcodes["co_papers"]
+        + all_bibcodes["fa_procs"]
+        + all_bibcodes["co_procs"]
+    )
+    file_pub_stats.write(f"publications: {len(all_bibcodes['all_pubs'])}\n")
+
+    # Citation stats
+    citecount, h = get_citecount_hindex(all_bibcodes["all_pubs"])
+    file_pub_stats.write(f"citecount: {citecount}\n")
+    file_pub_stats.write(f"hindex: {h}\n")
 
     for pub_type in ["fa_papers", "co_papers", "fa_procs", "co_procs"]:
         bibcodes = all_bibcodes[pub_type]
@@ -174,14 +227,18 @@ if __name__ == "__main__":
             bibcodes, titles, dates, journals, cites
         ):
             bibcode_nodot = bibcode.replace(".", "")
-            md = f"""---
-title: "{title}"
-collection: "publications"
-category: "{pub_type}"
-permalink: /publications/{bibcode_nodot}
-date: {date}
-venue: "{journal}"
-citation: "{cite}"
----"""
-            with open(f"./_publications/{bibcode_nodot}.md", "w") as f:
-                f.write(md)
+
+            # Write .md file for each publication
+            with open(f"./_publications/{bibcode_nodot}.md", "w") as file_pub:
+                file_pub.write("---\n")
+                file_pub.write(f'title: "{title}"\n')
+                file_pub.write('collection: "publications"\n')
+                file_pub.write(f'category: "{pub_type}"\n')
+                file_pub.write(f"permalink: /publications/{bibcode_nodot}\n")
+                file_pub.write(f"date: {date}\n")
+                file_pub.write(f'venue: "{journal}"\n')
+                file_pub.write(f'citation: "{cite}"\n')
+                file_pub.write("---")
+
+        # Append stats of publication type to stats file
+        file_pub_stats.write(f"{pub_type}: {len(bibcodes)}\n")

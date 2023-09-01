@@ -97,6 +97,8 @@ redirect_from:
   
 # Publications
 
+Total number of publications: <strong>{{ site.data.pub_stats.publications }}</strong> (<strong>{{ site.data.pub_stats.citecount }}</strong> citations, h-index: <strong>{{ site.data.pub_stats.hindex }}</strong>)
+
 ## Journal Articles
 
   <ul>{% for post in site.publications reversed %}
