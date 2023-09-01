@@ -235,6 +235,10 @@ if __name__ == "__main__":
                 file_pub.write('collection: "publications"\n')
                 file_pub.write(f'category: "{pub_type}"\n')
                 file_pub.write(f"permalink: /publications/{bibcode_nodot}\n")
+                file_pub.write(
+                    "link: https://ui.adsabs.harvard.edu/abs/"
+                    + f"{bibcode}/abstract\n"
+                )
                 file_pub.write(f"date: {date}\n")
                 file_pub.write(f'venue: "{journal}"\n')
                 file_pub.write(f'citation: "{cite}"\n')

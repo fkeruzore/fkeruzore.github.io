@@ -11,11 +11,11 @@ Total number of publications: <strong>{{ site.data.pub_stats.publications }}</st
 
 # Journal Articles
 
-## As primary author
+## As first author
 
 {% for post in site.publications reversed %}
   {% if post.category == "fa_papers" %}
-    {% include archive-single-cv.html %}
+    {% include publication-publication.html %}
   {% endif %}
 {% endfor %}
 
@@ -23,17 +23,17 @@ Total number of publications: <strong>{{ site.data.pub_stats.publications }}</st
 
 {% for post in site.publications reversed %}
   {% if post.category == "co_papers" %}
-    {% include archive-single-cv.html %}
+    {% include publication-publication.html %}
   {% endif %}
 {% endfor %}
 
 # Conference Proceedings
 
-## As primary author
+## As first author
 
 {% for post in site.publications reversed %}
   {% if post.category == "fa_procs" %}
-    {% include archive-single-cv.html %}
+    {% include publication-publication.html %}
   {% endif %}
 {% endfor %}
 
@@ -41,6 +41,6 @@ Total number of publications: <strong>{{ site.data.pub_stats.publications }}</st
 
 {% for post in site.publications reversed %}
   {% if post.category == "co_procs" %}
-    {% include archive-single-cv.html %}
+    {% include publication-publication.html %}
   {% endif %}
 {% endfor %}

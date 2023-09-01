@@ -97,19 +97,19 @@ redirect_from:
   
 # Publications
 
-Total number of publications: <strong>{{ site.data.pub_stats.publications }}</strong> (<strong>{{ site.data.pub_stats.citecount }}</strong> citations, h-index: <strong>{{ site.data.pub_stats.hindex }}</strong>)
+<strong>{{ site.data.pub_stats.publications }}</strong> publications (<strong>{{ site.data.pub_stats.citecount }}</strong> citations, h-index: <strong>{{ site.data.pub_stats.hindex }}</strong>)
 
 ## Journal Articles
 
   <ul>{% for post in site.publications reversed %}
     {% if post.category == "fa_papers" %}
-      {% include archive-single-cv.html %}
+      {% include publication-cv.html %}
     {% endif %}
   {% endfor %}</ul>
 
   <ul>{% for post in site.publications reversed %}
     {% if post.category == "co_papers" %}
-      {% include archive-single-cv.html %}
+      {% include publication-cv.html %}
     {% endif %}
   {% endfor %}</ul>
 
@@ -117,8 +117,8 @@ Total number of publications: <strong>{{ site.data.pub_stats.publications }}</st
 
   <ul>{% for post in site.publications reversed %}
     {% if post.category == "fa_procs" %}
-      {% include archive-single-cv.html %}
+      {% include publication-cv.html %}
     {% endif %}
   {% endfor %}</ul>
 
-  Plus several conference proceedings as a co-author -- see the dedicated [Publications page](https://fkeruzore.github.io/publications/) for the complete list.
+  Plus <strong>{{ site.data.pub_stats.co_procs }}</strong> conference proceedings as a co-author -- see the dedicated [Publications page](https://fkeruzore.github.io/publications/) for the complete list.
