@@ -200,7 +200,7 @@ if __name__ == "__main__":
     file_pub_stats = open("./_data/pub_stats.yml", "w")
 
     # Get bibcodes neatly organized
-    all_bibcodes, all_titles, all_dates, all_journals = get_bibcodes(rows=100)
+    all_bibcodes, all_titles, all_dates, all_journals = get_bibcodes(rows=999)
 
     # Total publications
     all_bibcodes["all_pubs"] = (
