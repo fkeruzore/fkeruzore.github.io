@@ -27,6 +27,7 @@ jobs:
         if [[ -n $(git status -s) ]]; then
           git config user.name fkeruzore
           git config user.email fkeruzore@anl.gov
+          git add _publications/*
           git commit -a -m "Auto-update publication page"
           git push origin master
         fi
