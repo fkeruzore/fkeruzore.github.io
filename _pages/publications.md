@@ -44,3 +44,11 @@ author_profile: true
     {% include publication-publication.html %}
   {% endif %}
 {% endfor %}
+
+# PhD Thesis
+
+{% for post in site.publications reversed %}
+  {% if post.category == "thesis" %}
+    {% include publication-publication.html %}
+  {% endif %}
+{% endfor %}

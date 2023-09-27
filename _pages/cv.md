@@ -122,3 +122,11 @@ redirect_from:
   {% endfor %}</ul>
 
   Plus <strong>{{ site.data.pub_stats.co_procs }}</strong> conference proceedings as a co-author -- see the dedicated [Publications page](https://fkeruzore.github.io/publications/) for the complete list.
+
+## PhD Thesis
+
+  <ul>{% for post in site.publications reversed %}
+    {% if post.category == "thesis" %}
+      {% include publication-cv.html %}
+    {% endif %}
+  {% endfor %}</ul>

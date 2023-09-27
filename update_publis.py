@@ -193,7 +193,7 @@ if __name__ == "__main__":
     # Clean directory
     files = os.listdir("./_publications")
     for f in files:
-        if f.endswith(".md"):
+        if f.endswith(".md") and (f != "phdthesis.md"):
             os.remove(f"./_publications/{f}")
 
     # Prepare file to store stats
