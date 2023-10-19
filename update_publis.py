@@ -2,7 +2,6 @@ import os
 import requests
 from urllib.parse import urlencode
 import json
-import os
 
 token = os.environ["ADS_DEV_KEY"]
 secu_header = {"Authorization": f"Bearer {token}"}
@@ -64,9 +63,9 @@ def get_bibcodes(rows=1000):
     journals = {k: [] for k in bibcodes.keys()}
 
     # Some entries are going to be misclassified, I'll deal with them manually
-    specials = {
-        "2022arXiv220414052A": "co_procs",
-    }
+    with open("./_publications/specials.json", "r") as f:
+        specials = json.load(f)
+
     for pub in pubs:
         bibcode = pub["bibcode"]
         title = pub["title"][0]
