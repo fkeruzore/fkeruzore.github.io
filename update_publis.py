@@ -226,11 +226,12 @@ if __name__ == "__main__":
             bibcodes, titles, dates, journals, cites
         ):
             bibcode_nodot = bibcode.replace(".", "")
+            title_formatted = title.replace("\\", "\\\\")
 
             # Write .md file for each publication
             with open(f"./_publications/{bibcode_nodot}.md", "w") as file_pub:
                 file_pub.write("---\n")
-                file_pub.write(f'title: "{title}"\n')
+                file_pub.write(f'title: "{title_formatted}"\n')
                 file_pub.write('collection: "publications"\n')
                 file_pub.write(f'category: "{pub_type}"\n')
                 file_pub.write(f"permalink: /publications/{bibcode_nodot}\n")
