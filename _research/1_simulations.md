@@ -33,6 +33,8 @@ This highlights the power of baryon painting methods as a viable, cheaper surrog
 
 # The `picasso` gas model
 
+![picasso banner](/images/picasso_header.png "picasso")
+
 Cool stuff incoming!
 
 [^1]: Habib, S. et al. (2016), New Astronomy, 42, 49; Frontiere, N. et al. (2022), ApJS 264(2), 34
