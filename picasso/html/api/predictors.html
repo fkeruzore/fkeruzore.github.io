@@ -1,0 +1,802 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>picasso.predictors: From halo properties to gas properties &#8212; picasso  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/katex-math.css?v=91adb8b6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/katex.min.js?v=be8ff15f"></script>
+    <script src="../_static/auto-render.min.js?v=ad136472"></script>
+    <script src="../_static/katex_autorenderer.js?v=bebc588a"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/predictors';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="picasso.polytrop: Polytropic gas model" href="polytrop.html" />
+    <link rel="prev" title="Using the picasso analytical gas model" href="../notebooks/demo_model.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo_circle.png" class="logo__image only-light" alt="picasso  documentation - Home"/>
+    <script>document.write(`<img src="../_static/logo_circle.png" class="logo__image only-dark" alt="picasso  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The picasso model</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../model/model.html">What is the picasso model?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model/trained_models.html">Available pre-trained predictors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/plot_model_params.html">Polytropic gas model and non-thermal pressure fraction with varying parameters</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Example gallery</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/make_predictions.html">Using the picasso trained predictors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/demo_model.html">Using the picasso analytical gas model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">picasso.predictors</span></code>: From halo properties to gas properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="polytrop.html"><code class="docutils literal notranslate"><span class="pre">picasso.polytrop</span></code>: Polytropic gas model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nonthermal.html"><code class="docutils literal notranslate"><span class="pre">picasso.nonthermal</span></code>: Non-thermal pressure support</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/fkeruzore/picasso" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/api/predictors.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>picasso.predictors: From halo properties to gas properties</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flaxregmlp">FlaxRegMLP</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.predictors.FlaxRegMLP"><code class="docutils literal notranslate"><span class="pre">FlaxRegMLP</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#picassopredictor">PicassoPredictor</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.predictors.PicassoPredictor"><code class="docutils literal notranslate"><span class="pre">PicassoPredictor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.predictors.PicassoPredictor.predict_model_parameters"><code class="docutils literal notranslate"><span class="pre">PicassoPredictor.predict_model_parameters()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.predictors.PicassoPredictor.predict_gas_model"><code class="docutils literal notranslate"><span class="pre">PicassoPredictor.predict_gas_model()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.predictors.PicassoPredictor.save"><code class="docutils literal notranslate"><span class="pre">PicassoPredictor.save()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.predictors.PicassoPredictor.load"><code class="docutils literal notranslate"><span class="pre">PicassoPredictor.load()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#picassotrainedpredictor">PicassoTrainedPredictor</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.predictors.PicassoTrainedPredictor"><code class="docutils literal notranslate"><span class="pre">PicassoTrainedPredictor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.predictors.PicassoTrainedPredictor.predict_gas_model"><code class="docutils literal notranslate"><span class="pre">PicassoTrainedPredictor.predict_gas_model()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.predictors.PicassoTrainedPredictor.predict_model_parameters"><code class="docutils literal notranslate"><span class="pre">PicassoTrainedPredictor.predict_model_parameters()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.predictors.PicassoTrainedPredictor.save"><code class="docutils literal notranslate"><span class="pre">PicassoTrainedPredictor.save()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.predictors.PicassoTrainedPredictor.load"><code class="docutils literal notranslate"><span class="pre">PicassoTrainedPredictor.load()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="picasso-predictors-from-halo-properties-to-gas-properties">
+<h1><code class="docutils literal notranslate"><span class="pre">picasso.predictors</span></code>: From halo properties to gas properties<a class="headerlink" href="#picasso-predictors-from-halo-properties-to-gas-properties" title="Link to this heading">#</a></h1>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#picasso.predictors.FlaxRegMLP" title="picasso.predictors.FlaxRegMLP"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FlaxRegMLP</span></code></a>(X_DIM, Y_DIM[, hidden_features, ...])</p></td>
+<td><p>A wrapper class around <cite>flax.linen.Module</cite> to generate fully connected multi-layer perceptrons, that can be instantiated easily with list of strings and integers for the layer sizes and activation functions.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#picasso.predictors.PicassoPredictor" title="picasso.predictors.PicassoPredictor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PicassoPredictor</span></code></a>(mlp[, transform_x, ...])</p></td>
+<td><p>A wrapper class to predict picasso model parameters and gas properties from an input halo properties vector and network parameters.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#picasso.predictors.PicassoTrainedPredictor" title="picasso.predictors.PicassoTrainedPredictor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">PicassoTrainedPredictor</span></code></a>(net_par, *args, **kwargs)</p></td>
+<td><p>A wrapper class to predict picasso model parameters and gas properties from an input halo properties vector, with a fixed set of network parameters.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="flaxregmlp">
+<h2>FlaxRegMLP<a class="headerlink" href="#flaxregmlp" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="picasso.predictors.FlaxRegMLP">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picasso.predictors.</span></span><span class="sig-name descname"><span class="pre">FlaxRegMLP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_DIM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y_DIM</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hidden_features=(16</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">16)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activations=('selu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'selu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'selu'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">'linear')</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra_args_output_activation=()</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parent=&lt;flax.linen.module._Sentinel</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name=None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picasso/predictors.html#FlaxRegMLP"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picasso.predictors.FlaxRegMLP" title="Link to this definition">#</a></dt>
+<dd><p>A wrapper class around <cite>flax.linen.Module</cite> to generate fully
+connected multi-layer perceptrons, that can be instantiated easily
+with list of strings and integers for the layer sizes and activation
+functions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X_DIM</strong> (<em>int</em>) – Number of features on the input layer.</p></li>
+<li><p><strong>Y_DIM</strong> (<em>int</em>) – Number of features on the output layer.</p></li>
+<li><p><strong>hidden_features</strong> (<em>Sequence</em><em>[</em><em>int</em><em>]</em>) – Number of features for each hidden layer, defaults to [16, 16].</p></li>
+<li><p><strong>activations</strong> (<em>Sequence</em><em>[</em><em>str</em><em>]</em>) – Name of the activation functions to be used for each layer,
+including input and output. Accepted names are [“selu”, “relu”,
+“tanh”, “sigmoid”, “clip”, “linear]. Defaults to [“selu”,
+“selu”, “selu”, “linear”].</p></li>
+<li><p><strong>extra_args_output_activation</strong> (<em>Iterable</em>) – Extra arguments to be passed to the output activation function,
+defaults to ().</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference external" href="https://flax.readthedocs.io/en/latest/api_reference/flax.linen/module.html" title="(in Flax)"><span class="xref std std-doc">flax.linen.Module</span></a></p>
+</div>
+</dd></dl>
+
+</section>
+<section id="picassopredictor">
+<h2>PicassoPredictor<a class="headerlink" href="#picassopredictor" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="picasso.predictors.PicassoPredictor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picasso.predictors.</span></span><span class="sig-name descname"><span class="pre">PicassoPredictor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">mlp,</span> <span class="pre">transform_x=&lt;function</span> <span class="pre">PicassoPredictor.&lt;lambda&gt;&gt;,</span> <span class="pre">transform_y=&lt;function</span> <span class="pre">PicassoPredictor.&lt;lambda&gt;&gt;,</span> <span class="pre">fix_params={},</span> <span class="pre">f_nt_model='broken_plaw',</span> <span class="pre">input_names=['log</span> <span class="pre">M200',</span> <span class="pre">'c200',</span> <span class="pre">'cacc/c200',</span> <span class="pre">'cpeak/c200',</span> <span class="pre">'log</span> <span class="pre">dx/R200c',</span> <span class="pre">'e',</span> <span class="pre">'p',</span> <span class="pre">'a25',</span> <span class="pre">'a50',</span> <span class="pre">'a75',</span> <span class="pre">'almm',</span> <span class="pre">'mdot'],</span> <span class="pre">name='model'</span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picasso/predictors.html#PicassoPredictor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picasso.predictors.PicassoPredictor" title="Link to this definition">#</a></dt>
+<dd><p>A wrapper class to predict picasso model parameters and gas
+properties from an input halo properties vector and network
+parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mlp</strong> (<a class="reference internal" href="#picasso.predictors.FlaxRegMLP" title="picasso.predictors.FlaxRegMLP"><em>FlaxRegMLP</em></a>) – Predictor for model parameters from halo properties.</p></li>
+<li><p><strong>transform_x</strong> (<em>Callable</em><em>, </em><em>optional</em>) – Transformation to be applied to input vector,
+by default lambda x: x</p></li>
+<li><p><strong>transform_y</strong> (<em>Callable</em><em>, </em><em>optional</em>) – Transformation to be applied to output vector,
+by default lambda y: y</p></li>
+<li><p><strong>fix_params</strong> (<em>dict</em><em>, </em><em>optional</em>) – List and values of parameters to be fixed, formatted as
+{parameter name: fixed value}, by default {}</p></li>
+<li><p><strong>f_nt_model</strong> (<em>str</em><em>, </em><em>optional</em>) – Non-thermal pressure fraction model to be used, one of
+[“broken_plaw”, “Nelson14”], by default “broken_plaw”</p></li>
+<li><p><strong>input_names</strong> (<em>list</em><em>[</em><em>str</em><em>]</em><em>, </em><em>optional</em>) – The names of input parameters. This is never used, only stored
+to be accessed by one to remind oneself of what the inputs are,
+bu default the inputs of the baseline model</p></li>
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – A name for the model, by default “model”</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="picasso.predictors.PicassoPredictor.predict_model_parameters">
+<span class="sig-name descname"><span class="pre">predict_model_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">net_par</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picasso/predictors.html#PicassoPredictor.predict_model_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picasso.predictors.PicassoPredictor.predict_model_parameters" title="Link to this definition">#</a></dt>
+<dd><p>Predicts the gas model parameters based on halo properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>Array</em>) – Halo properties.</p></li>
+<li><p><strong>net_par</strong> (<em>dict</em>) – Parameters of the MLP to be used for the prediction.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Gas model parameters.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picasso.predictors.PicassoPredictor.predict_gas_model">
+<span class="sig-name descname"><span class="pre">predict_gas_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_pol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_fnt</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">net_par</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picasso/predictors.html#PicassoPredictor.predict_gas_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picasso.predictors.PicassoPredictor.predict_gas_model" title="Link to this definition">#</a></dt>
+<dd><p>Predicts the gas properties from halo properties ant potential
+values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>Array</em>) – Halo properties.</p></li>
+<li><p><strong>phi</strong> (<em>Array</em>) – Potential values.</p></li>
+<li><p><strong>r_pol</strong> (<em>Array</em>) – Normalized radii to be used for the polytropic model.</p></li>
+<li><p><strong>r_fnt</strong> (<em>Array</em>) – Normalized radii to be used for the non-thermal pressure
+fraction model.</p></li>
+<li><p><strong>net_par</strong> (<em>dict</em>) – Parameters of the MLP to be used for the prediction.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>A sequence of arrays containing the predicted gas model
+parameters:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>rho_g<span class="classifier">Array</span></dt><dd><p>The predicted gas density.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>P_tot<span class="classifier">Array</span></dt><dd><p>The predicted total pressure.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>P_th<span class="classifier">Array</span></dt><dd><p>The predicted thermal pressure.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>f_nth<span class="classifier">Array</span></dt><dd><p>The predicted non-thermal pressure fraction.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sequence[Array]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picasso.predictors.PicassoPredictor.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picasso/predictors.html#PicassoPredictor.save"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picasso.predictors.PicassoPredictor.save" title="Link to this definition">#</a></dt>
+<dd><p>Serializes the object using <cite>dill</cite> and saves it to disk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – File to save the model to.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picasso.predictors.PicassoPredictor.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picasso/predictors.html#PicassoPredictor.load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picasso.predictors.PicassoPredictor.load" title="Link to this definition">#</a></dt>
+<dd><p>Reads a model object from disk using <cite>dill</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – File to read the saved model from.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The saved model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#picasso.predictors.PicassoPredictor" title="picasso.predictors.PicassoPredictor">PicassoPredictor</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="picassotrainedpredictor">
+<h2>PicassoTrainedPredictor<a class="headerlink" href="#picassotrainedpredictor" title="Link to this heading">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="picasso.predictors.PicassoTrainedPredictor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">picasso.predictors.</span></span><span class="sig-name descname"><span class="pre">PicassoTrainedPredictor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">net_par</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picasso/predictors.html#PicassoTrainedPredictor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picasso.predictors.PicassoTrainedPredictor" title="Link to this definition">#</a></dt>
+<dd><p>A wrapper class to predict picasso model parameters and gas
+properties from an input halo properties vector, with a fixed set
+of network parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>net_par</strong> (<em>dict</em>) – Parameters of the MLP to be used for the predictions.</p></li>
+<li><p><strong>mlp</strong> (<a class="reference internal" href="#picasso.predictors.FlaxRegMLP" title="picasso.predictors.FlaxRegMLP"><em>FlaxRegMLP</em></a>) – Predictor for model parameters from halo properties.</p></li>
+<li><p><strong>transform_x</strong> (<em>Callable</em><em>, </em><em>optional</em>) – Transformation to be applied to input vector,
+by default lambda x: x</p></li>
+<li><p><strong>transform_y</strong> (<em>Callable</em><em>, </em><em>optional</em>) – Transformation to be applied to output vector,
+by default lambda y: y</p></li>
+<li><p><strong>fix_params</strong> (<em>dict</em><em>, </em><em>optional</em>) – List and values of parameters to be fixed, formatted as
+{parameter name: fixed value}, by default {}</p></li>
+<li><p><strong>f_nt_model</strong> (<em>str</em><em>, </em><em>optional</em>) – Non-thermal pressure fraction model to be used, one of
+[“broken_plaw”, “Nelson14”], by default “broken_plaw”</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="picasso.predictors.PicassoTrainedPredictor.predict_gas_model">
+<span class="sig-name descname"><span class="pre">predict_gas_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_pol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_fnt</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picasso/predictors.html#PicassoTrainedPredictor.predict_gas_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picasso.predictors.PicassoTrainedPredictor.predict_gas_model" title="Link to this definition">#</a></dt>
+<dd><p>Predicts the gas properties from halo properties ant potential
+values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>Array</em>) – Halo properties.</p></li>
+<li><p><strong>phi</strong> (<em>Array</em>) – Potential values.</p></li>
+<li><p><strong>r_pol</strong> (<em>Array</em>) – Normalized radii to be used for the polytropic model.</p></li>
+<li><p><strong>r_fnt</strong> (<em>Array</em>) – Normalized radii to be used for the non-thermal pressure
+fraction model.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>A sequence of arrays containing the predicted gas model
+parameters:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>rho_g<span class="classifier">Array</span></dt><dd><p>The predicted gas density.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>P_tot<span class="classifier">Array</span></dt><dd><p>The predicted total pressure.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>P_th<span class="classifier">Array</span></dt><dd><p>The predicted thermal pressure.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>f_nth<span class="classifier">Array</span></dt><dd><p>The predicted non-thermal pressure fraction.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Sequence[Array]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picasso.predictors.PicassoTrainedPredictor.predict_model_parameters">
+<span class="sig-name descname"><span class="pre">predict_model_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picasso/predictors.html#PicassoTrainedPredictor.predict_model_parameters"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picasso.predictors.PicassoTrainedPredictor.predict_model_parameters" title="Link to this definition">#</a></dt>
+<dd><p>Predicts the gas model parameters based on halo properties.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>Array</em>) – Halo properties.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Gas model parameters.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picasso.predictors.PicassoTrainedPredictor.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#picasso.predictors.PicassoTrainedPredictor.save" title="Link to this definition">#</a></dt>
+<dd><p>Serializes the object using <cite>dill</cite> and saves it to disk.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – File to save the model to.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="picasso.predictors.PicassoTrainedPredictor.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#picasso.predictors.PicassoTrainedPredictor.load" title="Link to this definition">#</a></dt>
+<dd><p>Reads a model object from disk using <cite>dill</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – File to read the saved model from.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The saved model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#picasso.predictors.PicassoPredictor" title="picasso.predictors.PicassoPredictor">PicassoPredictor</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../notebooks/demo_model.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Using the picasso analytical gas model</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="polytrop.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><code class="docutils literal notranslate"><span class="pre">picasso.polytrop</span></code>: Polytropic gas model</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flaxregmlp">FlaxRegMLP</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.predictors.FlaxRegMLP"><code class="docutils literal notranslate"><span class="pre">FlaxRegMLP</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#picassopredictor">PicassoPredictor</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.predictors.PicassoPredictor"><code class="docutils literal notranslate"><span class="pre">PicassoPredictor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.predictors.PicassoPredictor.predict_model_parameters"><code class="docutils literal notranslate"><span class="pre">PicassoPredictor.predict_model_parameters()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.predictors.PicassoPredictor.predict_gas_model"><code class="docutils literal notranslate"><span class="pre">PicassoPredictor.predict_gas_model()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.predictors.PicassoPredictor.save"><code class="docutils literal notranslate"><span class="pre">PicassoPredictor.save()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.predictors.PicassoPredictor.load"><code class="docutils literal notranslate"><span class="pre">PicassoPredictor.load()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#picassotrainedpredictor">PicassoTrainedPredictor</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.predictors.PicassoTrainedPredictor"><code class="docutils literal notranslate"><span class="pre">PicassoTrainedPredictor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.predictors.PicassoTrainedPredictor.predict_gas_model"><code class="docutils literal notranslate"><span class="pre">PicassoTrainedPredictor.predict_gas_model()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.predictors.PicassoTrainedPredictor.predict_model_parameters"><code class="docutils literal notranslate"><span class="pre">PicassoTrainedPredictor.predict_model_parameters()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.predictors.PicassoTrainedPredictor.save"><code class="docutils literal notranslate"><span class="pre">PicassoTrainedPredictor.save()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.predictors.PicassoTrainedPredictor.load"><code class="docutils literal notranslate"><span class="pre">PicassoTrainedPredictor.load()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Florian Kéruzoré et al.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Florian Kéruzoré et al..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

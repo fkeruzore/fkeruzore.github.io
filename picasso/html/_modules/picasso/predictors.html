@@ -1,0 +1,849 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>picasso.predictors &#8212; picasso  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/katex-math.css?v=91adb8b6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../../_static/katex.min.js?v=be8ff15f"></script>
+    <script src="../../_static/auto-render.min.js?v=ad136472"></script>
+    <script src="../../_static/katex_autorenderer.js?v=bebc588a"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/picasso/predictors';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo_circle.png" class="logo__image only-light" alt="picasso  documentation - Home"/>
+    <script>document.write(`<img src="../../_static/logo_circle.png" class="logo__image only-dark" alt="picasso  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The picasso model</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../model/model.html">What is the picasso model?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../model/trained_models.html">Available pre-trained predictors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/plot_model_params.html">Polytropic gas model and non-thermal pressure fraction with varying parameters</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Example gallery</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/make_predictions.html">Using the picasso trained predictors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../notebooks/demo_model.html">Using the picasso analytical gas model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../api/predictors.html"><code class="docutils literal notranslate"><span class="pre">picasso.predictors</span></code>: From halo properties to gas properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/polytrop.html"><code class="docutils literal notranslate"><span class="pre">picasso.polytrop</span></code>: Polytropic gas model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/nonthermal.html"><code class="docutils literal notranslate"><span class="pre">picasso.nonthermal</span></code>: Non-thermal pressure support</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/fkeruzore/picasso" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for picasso.predictors</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">jax</span>
+<span class="kn">import</span> <span class="nn">jax.numpy</span> <span class="k">as</span> <span class="nn">jnp</span>
+<span class="kn">import</span> <span class="nn">flax.linen</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">dill</span>
+
+<span class="kn">from</span> <span class="nn">jax</span> <span class="kn">import</span> <span class="n">Array</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Iterable</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">polytrop</span><span class="p">,</span> <span class="n">nonthermal</span>
+
+
+<span class="n">possible_activations</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;selu&quot;</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">selu</span><span class="p">,</span>
+    <span class="s2">&quot;relu&quot;</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">,</span>
+    <span class="s2">&quot;tanh&quot;</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">tanh</span><span class="p">,</span>
+    <span class="s2">&quot;sigmoid&quot;</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">,</span>
+    <span class="s2">&quot;clip&quot;</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">clip</span><span class="p">,</span>
+    <span class="s2">&quot;linear&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="FlaxRegMLP">
+<a class="viewcode-back" href="../../api/predictors.html#picasso.predictors.FlaxRegMLP">[docs]</a>
+<span class="k">class</span> <span class="nc">FlaxRegMLP</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A wrapper class around `flax.linen.Module` to generate fully</span>
+<span class="sd">    connected multi-layer perceptrons, that can be instantiated easily</span>
+<span class="sd">    with list of strings and integers for the layer sizes and activation</span>
+<span class="sd">    functions.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    X_DIM : int</span>
+<span class="sd">        Number of features on the input layer.</span>
+<span class="sd">    Y_DIM : int</span>
+<span class="sd">        Number of features on the output layer.</span>
+<span class="sd">    hidden_features : Sequence[int]</span>
+<span class="sd">        Number of features for each hidden layer, defaults to [16, 16].</span>
+<span class="sd">    activations : Sequence[str]</span>
+<span class="sd">        Name of the activation functions to be used for each layer,</span>
+<span class="sd">        including input and output. Accepted names are [&quot;selu&quot;, &quot;relu&quot;,</span>
+<span class="sd">        &quot;tanh&quot;, &quot;sigmoid&quot;, &quot;clip&quot;, &quot;linear]. Defaults to [&quot;selu&quot;,</span>
+<span class="sd">        &quot;selu&quot;, &quot;selu&quot;, &quot;linear&quot;].</span>
+<span class="sd">    extra_args_output_activation : Iterable</span>
+<span class="sd">        Extra arguments to be passed to the output activation function,</span>
+<span class="sd">        defaults to ().</span>
+
+<span class="sd">    See also</span>
+<span class="sd">    --------</span>
+<span class="sd">    :external+flax:doc:`flax.linen.Module &lt;api_reference/flax.linen/module&gt;`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">X_DIM</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">Y_DIM</span><span class="p">:</span> <span class="nb">int</span>
+    <span class="n">hidden_features</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+    <span class="n">activations</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;selu&quot;</span><span class="p">,</span> <span class="s2">&quot;selu&quot;</span><span class="p">,</span> <span class="s2">&quot;selu&quot;</span><span class="p">,</span> <span class="s2">&quot;linear&quot;</span><span class="p">)</span>
+    <span class="n">extra_args_output_activation</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Array</span><span class="p">]</span> <span class="o">=</span> <span class="p">()</span>
+
+    <span class="nd">@nn</span><span class="o">.</span><span class="n">compact</span>
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">X_DIM</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;input&quot;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">possible_activations</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">activations</span><span class="p">[</span><span class="mi">0</span><span class="p">]](</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">_features</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_features</span><span class="p">):</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">_features</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;dense</span><span class="si">{</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">possible_activations</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">activations</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]](</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Y_DIM</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;output&quot;</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">possible_activations</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">activations</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]](</span>
+            <span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_args_output_activation</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span></div>
+
+
+
+<span class="k">def</span> <span class="nf">_gas_par2gas_props_broken_plaw</span><span class="p">(</span><span class="n">gas_par</span><span class="p">,</span> <span class="n">phi_tot</span><span class="p">,</span> <span class="n">r_pol</span><span class="p">,</span> <span class="n">r_fnt</span><span class="p">):</span>
+    <span class="n">rho_g</span><span class="p">,</span> <span class="n">P_tot</span> <span class="o">=</span> <span class="n">polytrop</span><span class="o">.</span><span class="n">rho_P_g</span><span class="p">(</span><span class="n">phi_tot</span><span class="p">,</span> <span class="n">r_pol</span><span class="p">,</span> <span class="o">*</span><span class="n">gas_par</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+    <span class="n">f_nth</span> <span class="o">=</span> <span class="n">nonthermal</span><span class="o">.</span><span class="n">f_nt_generic</span><span class="p">(</span><span class="n">r_fnt</span><span class="p">,</span> <span class="o">*</span><span class="n">gas_par</span><span class="p">[</span><span class="mi">5</span><span class="p">:])</span>
+    <span class="n">P_th</span> <span class="o">=</span> <span class="n">P_tot</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">f_nth</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">rho_g</span><span class="p">,</span> <span class="n">P_tot</span><span class="p">,</span> <span class="n">P_th</span><span class="p">,</span> <span class="n">f_nth</span><span class="p">])</span>
+
+
+<span class="k">def</span> <span class="nf">_gas_par2gas_props_nelson</span><span class="p">(</span><span class="n">gas_par</span><span class="p">,</span> <span class="n">phi_tot</span><span class="p">,</span> <span class="n">r_pol</span><span class="p">,</span> <span class="n">r_fnt</span><span class="p">):</span>
+    <span class="n">rho_g</span><span class="p">,</span> <span class="n">P_tot</span> <span class="o">=</span> <span class="n">polytrop</span><span class="o">.</span><span class="n">rho_P_g</span><span class="p">(</span><span class="n">phi_tot</span><span class="p">,</span> <span class="n">r_pol</span><span class="p">,</span> <span class="o">*</span><span class="n">gas_par</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+    <span class="n">f_nth</span> <span class="o">=</span> <span class="n">nonthermal</span><span class="o">.</span><span class="n">f_nt_nelson14</span><span class="p">(</span><span class="n">r_fnt</span><span class="p">,</span> <span class="o">*</span><span class="n">gas_par</span><span class="p">[</span><span class="mi">5</span><span class="p">:])</span>
+    <span class="n">P_th</span> <span class="o">=</span> <span class="n">P_tot</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">f_nth</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">rho_g</span><span class="p">,</span> <span class="n">P_tot</span><span class="p">,</span> <span class="n">P_th</span><span class="p">,</span> <span class="n">f_nth</span><span class="p">])</span>
+
+
+<span class="n">_gas_par2gas_props</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;broken_plaw&quot;</span><span class="p">:</span> <span class="n">_gas_par2gas_props_broken_plaw</span><span class="p">,</span>
+    <span class="s2">&quot;nelson14&quot;</span><span class="p">:</span> <span class="n">_gas_par2gas_props_nelson</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">_gas_par2gas_props_v</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">k</span><span class="p">:</span> <span class="n">jax</span><span class="o">.</span><span class="n">vmap</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">out_axes</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">_gas_par2gas_props</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="PicassoPredictor">
+<a class="viewcode-back" href="../../api/predictors.html#picasso.predictors.PicassoPredictor">[docs]</a>
+<span class="k">class</span> <span class="nc">PicassoPredictor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A wrapper class to predict picasso model parameters and gas</span>
+<span class="sd">    properties from an input halo properties vector and network</span>
+<span class="sd">    parameters.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mlp : FlaxRegMLP</span>
+<span class="sd">        Predictor for model parameters from halo properties.</span>
+<span class="sd">    transform_x : Callable, optional</span>
+<span class="sd">        Transformation to be applied to input vector,</span>
+<span class="sd">        by default lambda x: x</span>
+<span class="sd">    transform_y : Callable, optional</span>
+<span class="sd">        Transformation to be applied to output vector,</span>
+<span class="sd">        by default lambda y: y</span>
+<span class="sd">    fix_params : dict, optional</span>
+<span class="sd">        List and values of parameters to be fixed, formatted as</span>
+<span class="sd">        {parameter name: fixed value}, by default {}</span>
+<span class="sd">    f_nt_model : str, optional</span>
+<span class="sd">        Non-thermal pressure fraction model to be used, one of</span>
+<span class="sd">        [&quot;broken_plaw&quot;, &quot;Nelson14&quot;], by default &quot;broken_plaw&quot;</span>
+<span class="sd">    input_names : list[str], optional</span>
+<span class="sd">        The names of input parameters. This is never used, only stored</span>
+<span class="sd">        to be accessed by one to remind oneself of what the inputs are,</span>
+<span class="sd">        bu default the inputs of the baseline model</span>
+<span class="sd">    name : str, optional</span>
+<span class="sd">        A name for the model, by default &quot;model&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">mlp</span><span class="p">:</span> <span class="n">FlaxRegMLP</span><span class="p">,</span>
+        <span class="n">transform_x</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span>
+        <span class="n">transform_y</span><span class="p">:</span> <span class="n">Callable</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="n">y</span><span class="p">,</span>
+        <span class="n">fix_params</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{},</span>
+        <span class="n">f_nt_model</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;broken_plaw&quot;</span><span class="p">,</span>
+        <span class="n">input_names</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;log M200&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;c200&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;cacc/c200&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;cpeak/c200&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;log dx/R200c&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;e&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;p&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;a25&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;a50&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;a75&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;almm&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;mdot&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;model&quot;</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mlp</span> <span class="o">=</span> <span class="n">mlp</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_transform_x</span> <span class="o">=</span> <span class="n">transform_x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_transform_y</span> <span class="o">=</span> <span class="n">transform_y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_names</span> <span class="o">=</span> <span class="n">input_names</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">param_indices</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;rho_0&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;P_0&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;Gamma_0&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;c_Gamma&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s2">&quot;theta_0&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+            <span class="s2">&quot;A_nt&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="s2">&quot;B_nt&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+            <span class="s2">&quot;C_nt&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fix_params</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">fix_params</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">fix_params</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">param_indices</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gas_par2gas_props</span> <span class="o">=</span> <span class="n">_gas_par2gas_props</span><span class="p">[</span><span class="n">f_nt_model</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_gas_par2gas_props_v</span> <span class="o">=</span> <span class="n">_gas_par2gas_props_v</span><span class="p">[</span><span class="n">f_nt_model</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">transform_x</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Array</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Array</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transform_x</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">transform_y</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Array</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Array</span><span class="p">:</span>
+        <span class="c1"># First make the output the right shape to be able to apply the</span>
+        <span class="c1"># y scaling regardless of fixed parameters</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fix_params</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># Apply the y scaling</span>
+        <span class="n">y_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transform_y</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        <span class="c1"># Fix parameters that need to be fixed</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">fix_params</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">y_out</span> <span class="o">=</span> <span class="n">y_out</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="o">...</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">y_out</span>
+
+<div class="viewcode-block" id="PicassoPredictor.predict_model_parameters">
+<a class="viewcode-back" href="../../api/predictors.html#picasso.predictors.PicassoPredictor.predict_model_parameters">[docs]</a>
+    <span class="k">def</span> <span class="nf">predict_model_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span> <span class="n">net_par</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Array</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Predicts the gas model parameters based on halo properties.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x : Array</span>
+<span class="sd">            Halo properties.</span>
+<span class="sd">        net_par: dict</span>
+<span class="sd">            Parameters of the MLP to be used for the prediction.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Array</span>
+<span class="sd">            Gas model parameters.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">x_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_x</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">y_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">net_par</span><span class="p">,</span> <span class="n">x_</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">transform_y</span><span class="p">(</span><span class="n">y_</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PicassoPredictor.predict_gas_model">
+<a class="viewcode-back" href="../../api/predictors.html#picasso.predictors.PicassoPredictor.predict_gas_model">[docs]</a>
+    <span class="k">def</span> <span class="nf">predict_gas_model</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span> <span class="n">phi</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span> <span class="n">r_pol</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span> <span class="n">r_fnt</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span> <span class="n">net_par</span><span class="p">:</span> <span class="nb">dict</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Array</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Predicts the gas properties from halo properties ant potential</span>
+<span class="sd">        values.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x : Array</span>
+<span class="sd">            Halo properties.</span>
+<span class="sd">        phi : Array</span>
+<span class="sd">            Potential values.</span>
+<span class="sd">        r_pol : Array</span>
+<span class="sd">            Normalized radii to be used for the polytropic model.</span>
+<span class="sd">        r_fnt : Array</span>
+<span class="sd">            Normalized radii to be used for the non-thermal pressure</span>
+<span class="sd">            fraction model.</span>
+<span class="sd">        net_par: dict</span>
+<span class="sd">            Parameters of the MLP to be used for the prediction.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Sequence[Array]</span>
+<span class="sd">            A sequence of arrays containing the predicted gas model</span>
+<span class="sd">            parameters:</span>
+
+<span class="sd">            - rho_g : Array</span>
+<span class="sd">                The predicted gas density.</span>
+<span class="sd">            - P_tot : Array</span>
+<span class="sd">                The predicted total pressure.</span>
+<span class="sd">            - P_th : Array</span>
+<span class="sd">                The predicted thermal pressure.</span>
+<span class="sd">            - f_nth : Array</span>
+<span class="sd">                The predicted non-thermal pressure fraction.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">gas_par</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict_model_parameters</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">net_par</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">gas_par</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">rho_g</span><span class="p">,</span> <span class="n">P_tot</span><span class="p">,</span> <span class="n">P_th</span><span class="p">,</span> <span class="n">f_nth</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gas_par2gas_props</span><span class="p">(</span>
+                <span class="n">gas_par</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">r_pol</span><span class="p">,</span> <span class="n">r_fnt</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">rho_g</span><span class="p">,</span> <span class="n">P_tot</span><span class="p">,</span> <span class="n">P_th</span><span class="p">,</span> <span class="n">f_nth</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_gas_par2gas_props_v</span><span class="p">(</span>
+                <span class="n">gas_par</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">r_pol</span><span class="p">,</span> <span class="n">r_fnt</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">rho_g</span><span class="p">,</span> <span class="n">P_tot</span><span class="p">,</span> <span class="n">P_th</span><span class="p">,</span> <span class="n">f_nth</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PicassoPredictor.save">
+<a class="viewcode-back" href="../../api/predictors.html#picasso.predictors.PicassoPredictor.save">[docs]</a>
+    <span class="k">def</span> <span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Serializes the object using `dill` and saves it to disk.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        filename : str</span>
+<span class="sd">            File to save the model to.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">dill</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="PicassoPredictor.load">
+<a class="viewcode-back" href="../../api/predictors.html#picasso.predictors.PicassoPredictor.load">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">load</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Reads a model object from disk using `dill`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        filename : str</span>
+<span class="sd">            File to read the saved model from.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        PicassoPredictor</span>
+<span class="sd">            The saved model.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">inst</span> <span class="o">=</span> <span class="n">dill</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">inst</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="PicassoTrainedPredictor">
+<a class="viewcode-back" href="../../api/predictors.html#picasso.predictors.PicassoTrainedPredictor">[docs]</a>
+<span class="k">class</span> <span class="nc">PicassoTrainedPredictor</span><span class="p">(</span><span class="n">PicassoPredictor</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A wrapper class to predict picasso model parameters and gas</span>
+<span class="sd">    properties from an input halo properties vector, with a fixed set</span>
+<span class="sd">    of network parameters.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    net_par: dict</span>
+<span class="sd">        Parameters of the MLP to be used for the predictions.</span>
+<span class="sd">    mlp : FlaxRegMLP</span>
+<span class="sd">        Predictor for model parameters from halo properties.</span>
+<span class="sd">    transform_x : Callable, optional</span>
+<span class="sd">        Transformation to be applied to input vector,</span>
+<span class="sd">        by default lambda x: x</span>
+<span class="sd">    transform_y : Callable, optional</span>
+<span class="sd">        Transformation to be applied to output vector,</span>
+<span class="sd">        by default lambda y: y</span>
+<span class="sd">    fix_params : dict, optional</span>
+<span class="sd">        List and values of parameters to be fixed, formatted as</span>
+<span class="sd">        {parameter name: fixed value}, by default {}</span>
+<span class="sd">    f_nt_model : str, optional</span>
+<span class="sd">        Non-thermal pressure fraction model to be used, one of</span>
+<span class="sd">        [&quot;broken_plaw&quot;, &quot;Nelson14&quot;], by default &quot;broken_plaw&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">net_par</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">net_par</span> <span class="o">=</span> <span class="n">net_par</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_predictor</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">predictor</span><span class="p">:</span> <span class="n">PicassoPredictor</span><span class="p">,</span> <span class="n">net_par</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Instantiate a trained predictor from an untrained predictor and</span>
+<span class="sd">        network parameters.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        predictor : PicassoPredictor</span>
+<span class="sd">            Untrained predictor.</span>
+<span class="sd">        net_par : dict</span>
+<span class="sd">            Trained network parameters.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        PicassoTrainedPredictor</span>
+<span class="sd">            The predictor with pre-trained parameters.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">trained_predictor</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="fm">__new__</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span>
+        <span class="n">trained_predictor</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">predictor</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span>
+        <span class="n">trained_predictor</span><span class="o">.</span><span class="n">net_par</span> <span class="o">=</span> <span class="n">net_par</span>
+        <span class="k">return</span> <span class="n">trained_predictor</span>
+
+<div class="viewcode-block" id="PicassoTrainedPredictor.predict_gas_model">
+<a class="viewcode-back" href="../../api/predictors.html#picasso.predictors.PicassoTrainedPredictor.predict_gas_model">[docs]</a>
+    <span class="k">def</span> <span class="nf">predict_gas_model</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span> <span class="n">phi</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span> <span class="n">r_pol</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span> <span class="n">r_fnt</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Array</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Predicts the gas properties from halo properties ant potential</span>
+<span class="sd">        values.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x : Array</span>
+<span class="sd">            Halo properties.</span>
+<span class="sd">        phi : Array</span>
+<span class="sd">            Potential values.</span>
+<span class="sd">        r_pol : Array</span>
+<span class="sd">            Normalized radii to be used for the polytropic model.</span>
+<span class="sd">        r_fnt : Array</span>
+<span class="sd">            Normalized radii to be used for the non-thermal pressure</span>
+<span class="sd">            fraction model.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Sequence[Array]</span>
+<span class="sd">            A sequence of arrays containing the predicted gas model</span>
+<span class="sd">            parameters:</span>
+
+<span class="sd">            - rho_g : Array</span>
+<span class="sd">                The predicted gas density.</span>
+<span class="sd">            - P_tot : Array</span>
+<span class="sd">                The predicted total pressure.</span>
+<span class="sd">            - P_th : Array</span>
+<span class="sd">                The predicted thermal pressure.</span>
+<span class="sd">            - f_nth : Array</span>
+<span class="sd">                The predicted non-thermal pressure fraction.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">predict_gas_model</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">r_pol</span><span class="p">,</span> <span class="n">r_fnt</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">net_par</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PicassoTrainedPredictor.predict_model_parameters">
+<a class="viewcode-back" href="../../api/predictors.html#picasso.predictors.PicassoTrainedPredictor.predict_model_parameters">[docs]</a>
+    <span class="k">def</span> <span class="nf">predict_model_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Array</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Array</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Predicts the gas model parameters based on halo properties.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        x : Array</span>
+<span class="sd">            Halo properties.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Array</span>
+<span class="sd">            Gas model parameters.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">predict_model_parameters</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">net_par</span><span class="p">)</span></div>
+</div>
+
+
+
+<span class="k">def</span> <span class="nf">draw_mlp</span><span class="p">(</span><span class="n">mlp</span><span class="p">:</span> <span class="n">FlaxRegMLP</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">],</span> <span class="n">alpha_line</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+    <span class="n">key</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">par</span> <span class="o">=</span> <span class="n">mlp</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">jnp</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">mlp</span><span class="o">.</span><span class="n">X_DIM</span><span class="p">)))[</span><span class="s2">&quot;params&quot;</span><span class="p">]</span>
+    <span class="n">layer_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">layer</span><span class="p">[</span><span class="s2">&quot;bias&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">par</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+    <span class="n">top</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.95</span>
+    <span class="n">v_spacing</span> <span class="o">=</span> <span class="p">(</span><span class="n">top</span> <span class="o">-</span> <span class="n">bottom</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">layer_sizes</span><span class="p">))</span>
+    <span class="n">h_spacing</span> <span class="o">=</span> <span class="p">(</span><span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">layer_sizes</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="c1"># Nodes</span>
+    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">layer_size</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">layer_sizes</span><span class="p">):</span>
+        <span class="n">layer_top</span> <span class="o">=</span> <span class="n">v_spacing</span> <span class="o">*</span> <span class="p">(</span><span class="n">layer_size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="o">+</span> <span class="p">(</span><span class="n">top</span> <span class="o">+</span> <span class="n">bottom</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">layer_size</span><span class="p">):</span>
+            <span class="n">circle</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span>
+                <span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">h_spacing</span> <span class="o">+</span> <span class="n">left</span><span class="p">,</span> <span class="n">layer_top</span> <span class="o">-</span> <span class="n">m</span> <span class="o">*</span> <span class="n">v_spacing</span><span class="p">),</span>
+                <span class="n">v_spacing</span> <span class="o">/</span> <span class="mf">4.0</span><span class="p">,</span>
+                <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                <span class="n">ec</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">zorder</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">circle</span><span class="p">)</span>
+    <span class="c1"># Edges</span>
+    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="p">(</span><span class="n">layer_size_a</span><span class="p">,</span> <span class="n">layer_size_b</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span>
+        <span class="nb">zip</span><span class="p">(</span><span class="n">layer_sizes</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">layer_sizes</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="p">):</span>
+        <span class="n">layer_top_a</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">v_spacing</span> <span class="o">*</span> <span class="p">(</span><span class="n">layer_size_a</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="o">+</span> <span class="p">(</span><span class="n">top</span> <span class="o">+</span> <span class="n">bottom</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+        <span class="p">)</span>
+        <span class="n">layer_top_b</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">v_spacing</span> <span class="o">*</span> <span class="p">(</span><span class="n">layer_size_b</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span> <span class="o">+</span> <span class="p">(</span><span class="n">top</span> <span class="o">+</span> <span class="n">bottom</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">layer_size_a</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">layer_size_b</span><span class="p">):</span>
+                <span class="n">line</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Line2D</span><span class="p">(</span>
+                    <span class="p">[</span><span class="n">n</span> <span class="o">*</span> <span class="n">h_spacing</span> <span class="o">+</span> <span class="n">left</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">h_spacing</span> <span class="o">+</span> <span class="n">left</span><span class="p">],</span>
+                    <span class="p">[</span>
+                        <span class="n">layer_top_a</span> <span class="o">-</span> <span class="n">m</span> <span class="o">*</span> <span class="n">v_spacing</span><span class="p">,</span>
+                        <span class="n">layer_top_b</span> <span class="o">-</span> <span class="n">o</span> <span class="o">*</span> <span class="n">v_spacing</span><span class="p">,</span>
+                    <span class="p">],</span>
+                    <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                    <span class="n">alpha</span><span class="o">=</span><span class="n">alpha_line</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span>
+
+
+<span class="n">_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span><span class="si">}</span><span class="s2">/trained_models&quot;</span>
+<span class="n">_load</span> <span class="o">=</span> <span class="n">PicassoTrainedPredictor</span><span class="o">.</span><span class="n">load</span>
+
+<span class="n">available_predictors</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">baseline_576</span> <span class="o">:=</span> <span class="n">_load</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_path</span><span class="si">}</span><span class="s2">/576/baseline.pkl&quot;</span><span class="p">),</span>
+    <span class="n">compact_576</span> <span class="o">:=</span> <span class="n">_load</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_path</span><span class="si">}</span><span class="s2">/576/compact.pkl&quot;</span><span class="p">),</span>
+    <span class="n">minimal_576</span> <span class="o">:=</span> <span class="n">_load</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_path</span><span class="si">}</span><span class="s2">/576/minimal.pkl&quot;</span><span class="p">),</span>
+    <span class="n">subgrid_576</span> <span class="o">:=</span> <span class="n">_load</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_path</span><span class="si">}</span><span class="s2">/576/subgrid.pkl&quot;</span><span class="p">),</span>
+    <span class="n">nonradiative_Gamma_r_576</span> <span class="o">:=</span> <span class="n">_load</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_path</span><span class="si">}</span><span class="s2">/576/nonradiative_Gamma_r.pkl&quot;</span><span class="p">),</span>
+    <span class="n">subgrid_Gamma_r_576</span> <span class="o">:=</span> <span class="n">_load</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">_path</span><span class="si">}</span><span class="s2">/576/subgrid_Gamma_r.pkl&quot;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Florian Kéruzoré et al.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Florian Kéruzoré et al..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

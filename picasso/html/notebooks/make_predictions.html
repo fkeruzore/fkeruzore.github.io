@@ -1,0 +1,823 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Using the picasso trained predictors &#8212; picasso  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/katex-math.css?v=91adb8b6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/katex.min.js?v=be8ff15f"></script>
+    <script src="../_static/auto-render.min.js?v=ad136472"></script>
+    <script src="../_static/katex_autorenderer.js?v=bebc588a"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/make_predictions';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Using the picasso analytical gas model" href="demo_model.html" />
+    <link rel="prev" title="Polytropic gas model and non-thermal pressure fraction with varying parameters" href="plot_model_params.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo_circle.png" class="logo__image only-light" alt="picasso  documentation - Home"/>
+    <script>document.write(`<img src="../_static/logo_circle.png" class="logo__image only-dark" alt="picasso  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The picasso model</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../model/model.html">What is the picasso model?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model/trained_models.html">Available pre-trained predictors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_model_params.html">Polytropic gas model and non-thermal pressure fraction with varying parameters</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Example gallery</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Using the picasso trained predictors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demo_model.html">Using the picasso analytical gas model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../api/predictors.html"><code class="docutils literal notranslate"><span class="pre">picasso.predictors</span></code>: From halo properties to gas properties</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/polytrop.html"><code class="docutils literal notranslate"><span class="pre">picasso.polytrop</span></code>: Polytropic gas model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/nonthermal.html"><code class="docutils literal notranslate"><span class="pre">picasso.nonthermal</span></code>: Non-thermal pressure support</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/fkeruzore/picasso" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/make_predictions.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Using the picasso trained predictors</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-gas-model-parameters">Predicting gas model parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-gas-thermodynamics">Predicting gas thermodynamics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differentiating-predictions">Differentiating predictions</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="using-the-picasso-trained-predictors">
+<h1>Using the picasso trained predictors<a class="headerlink" href="#using-the-picasso-trained-predictors" title="Link to this heading">#</a></h1>
+<p>This notebook shows how one can use the trained models to make predictions of gas thermodynamics from halo properties.
+For a full documentation of the predictor objects and their methods, see <a class="reference internal" href="../api/predictors.html"><span class="doc">picasso.predictors: From halo properties to gas properties</span></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">jax</span>
+<span class="kn">import</span> <span class="nn">jax.numpy</span> <span class="k">as</span> <span class="nn">jnp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">astropy.table</span> <span class="kn">import</span> <span class="n">Table</span>
+<span class="kn">from</span> <span class="nn">astropy.cosmology</span> <span class="kn">import</span> <span class="n">FlatLambdaCDM</span>
+
+<span class="kn">from</span> <span class="nn">picasso</span> <span class="kn">import</span> <span class="n">predictors</span>
+<span class="kn">from</span> <span class="nn">picasso.utils.plots</span> <span class="kn">import</span> <span class="n">NFW</span>
+
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;darkgrid&quot;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="s2">&quot;notebook&quot;</span><span class="p">)</span>
+
+<span class="n">benchmark</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will use the <code class="docutils literal notranslate"><span class="pre">minimal_576</span></code> trained model, which takes as input halo mass and concentration:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictor</span> <span class="o">=</span> <span class="n">predictors</span><span class="o">.</span><span class="n">minimal_576</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">predictor</span><span class="o">.</span><span class="n">input_names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;log M200&#39;, &#39;c200&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="predicting-gas-model-parameters">
+<h2>Predicting gas model parameters<a class="headerlink" href="#predicting-gas-model-parameters" title="Link to this heading">#</a></h2>
+<p>First, we want to compute predictions for the model parameter vector, <span class="math">\(\vartheta_{\rm gas}\)</span>.
+To do so, we simply need the vector of scalar halo properties <span class="math">\(\vartheta_{\rm halo}\)</span>.
+We’ll use some pre-stored data (containing four halos from the simulations presented in Kéruzoré+24) and write the input vector:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">halos</span> <span class="o">=</span> <span class="n">Table</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;../data/halos.hdf5&quot;</span><span class="p">)</span>
+<span class="n">logM200c</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">halos</span><span class="p">[</span><span class="s2">&quot;M200c&quot;</span><span class="p">])</span>
+<span class="n">c200c</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">halos</span><span class="p">[</span><span class="s2">&quot;c200c&quot;</span><span class="p">])</span>
+<span class="n">theta_halo</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">logM200c</span><span class="p">,</span> <span class="n">c200c</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">theta_halo</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can then use the <code class="docutils literal notranslate"><span class="pre">predictor.predict_model_parameters()</span></code> function to predict <span class="math">\(\vartheta_{\rm gas}\)</span>. For a single halo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">theta_gas_0</span> <span class="o">=</span> <span class="n">predictor</span><span class="o">.</span><span class="n">predict_model_parameters</span><span class="p">(</span><span class="n">theta_halo</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">theta_gas_0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3.2217349e+03 1.9191902e+02 1.1346726e+00 0.0000000e+00 3.5946820e-07
+ 1.1811828e-02 2.1121846e-01 1.6479003e+00]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">predictor.predict_model_parameters()</span></code> function can also be used for several halos at a time:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">theta_gas</span> <span class="o">=</span> <span class="n">predictor</span><span class="o">.</span><span class="n">predict_model_parameters</span><span class="p">(</span><span class="n">theta_halo</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">theta_gas</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">theta_gas</span><span class="o">.</span><span class="n">shape</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>theta_gas=Array([[3.2217329e+03, 1.9191902e+02, 1.1346726e+00, 0.0000000e+00,
+        3.5946820e-07, 1.1811828e-02, 2.1121846e-01, 1.6479003e+00],
+       [1.1516166e+03, 6.4102837e+01, 1.1361028e+00, 0.0000000e+00,
+        2.6019134e-07, 4.2736135e-02, 3.2087338e-01, 1.0452865e+00],
+       [1.1092018e+03, 6.1245892e+01, 1.1370699e+00, 0.0000000e+00,
+        1.8584475e-07, 3.9753534e-02, 3.3282000e-01, 1.0353637e+00],
+       [8.4998859e+02, 4.8176445e+01, 1.1426771e+00, 0.0000000e+00,
+        1.3825047e-07, 4.1373007e-02, 3.5185230e-01, 9.5307523e-01]],      dtype=float32)
+theta_gas.shape=(4, 8)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">axs</span> <span class="o">=</span> <span class="n">axs</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="p">,</span> <span class="n">theta_gas</span><span class="o">.</span><span class="n">T</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">q</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$</span><span class="se">\\</span><span class="s2">rho_0$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$P_0$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$</span><span class="se">\\</span><span class="s2">Gamma_0$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$c_</span><span class="se">\\</span><span class="s2">gamma$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$</span><span class="se">\\</span><span class="s2">theta_0$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$A_{</span><span class="se">\\</span><span class="s2">rm nt}$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$B_{</span><span class="se">\\</span><span class="s2">rm nt}$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$C_{</span><span class="se">\\</span><span class="s2">rm nt}$&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5d527b7427814d33fd82f05286759c37ea39488f7a771b6253b8305505665c1c.png" src="../_images/5d527b7427814d33fd82f05286759c37ea39488f7a771b6253b8305505665c1c.png" />
+</div>
+</div>
+<p>It can also be just-in-time compiled:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">benchmark</span><span class="p">:</span>
+    <span class="n">predict_jit</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">predictor</span><span class="o">.</span><span class="n">predict_model_parameters</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Not jitted:&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="o">%</span><span class="k">timeit</span> _ = predictor.predict_model_parameters(theta_halo)
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;jitted:&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">predict_jit</span><span class="p">(</span><span class="n">theta_halo</span><span class="p">)</span>
+    <span class="o">%</span><span class="k">timeit</span> _ = predict_jit(theta_halo)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Not jitted: 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.01 ms ± 391 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+jitted: 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.19 µs ± 40.6 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="predicting-gas-thermodynamics">
+<h2>Predicting gas thermodynamics<a class="headerlink" href="#predicting-gas-thermodynamics" title="Link to this heading">#</a></h2>
+<p>With a prediction for <span class="math">\(\vartheta_{\rm gas}\)</span>, we can use <code class="docutils literal notranslate"><span class="pre">picasso.polytrop</span></code> and <code class="docutils literal notranslate"><span class="pre">picasso.nonthermal</span></code> to predict gas thermodynamics (see <a class="reference internal" href="demo_model.html"><span class="doc">Using the picasso analytical gas model</span></a>).
+<code class="docutils literal notranslate"><span class="pre">PicassoPredictor</span></code> objects also offers a wrapper function that predicts all thermodynamic properties directly from an input vector <span class="math">\(\vartheta_{\rm halo}\)</span> and a potential distribution.
+Assuming the halos above are NFW, we can predict their potential profiles:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_R500c</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">51</span><span class="p">)</span>
+
+<span class="n">phi</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">nfw_i</span> <span class="o">=</span> <span class="n">NFW</span><span class="p">(</span><span class="n">halos</span><span class="p">[</span><span class="s2">&quot;M200c&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="n">halos</span><span class="p">[</span><span class="s2">&quot;c200c&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">],</span> <span class="s2">&quot;200c&quot;</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">cosmo</span><span class="o">=</span><span class="n">FlatLambdaCDM</span><span class="p">(</span><span class="mf">70.0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">))</span>
+    <span class="n">phi_i</span> <span class="o">=</span> <span class="n">nfw_i</span><span class="o">.</span><span class="n">potential</span><span class="p">(</span><span class="n">r_R500c</span> <span class="o">*</span> <span class="n">halos</span><span class="p">[</span><span class="s2">&quot;R500c&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">phi</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">phi_i</span> <span class="o">-</span> <span class="n">nfw_i</span><span class="o">.</span><span class="n">potential</span><span class="p">(</span><span class="mf">1e-6</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then, we can make predictions of gas thermodynamics for one halo:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rho_g</span><span class="p">,</span> <span class="n">P_tot</span><span class="p">,</span> <span class="n">P_th</span><span class="p">,</span> <span class="n">f_nt</span> <span class="o">=</span> <span class="n">predictor</span><span class="o">.</span><span class="n">predict_gas_model</span><span class="p">(</span><span class="n">theta_halo</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">phi</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">r_R500c</span><span class="p">,</span> <span class="n">r_R500c</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or for all halos at the same time (this function uses <code class="docutils literal notranslate"><span class="pre">jax.vmap</span></code> to vectorize the predictions):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r_R500c_v</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">outer</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">r_R500c</span><span class="p">)</span>
+<span class="n">phi_v</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+<span class="n">rho_g</span><span class="p">,</span> <span class="n">P_tot</span><span class="p">,</span> <span class="n">P_th</span><span class="p">,</span> <span class="n">f_nt</span> <span class="o">=</span> <span class="n">predictor</span><span class="o">.</span><span class="n">predict_gas_model</span><span class="p">(</span><span class="n">theta_halo</span><span class="p">,</span> <span class="n">phi_v</span><span class="p">,</span> <span class="n">r_R500c_v</span><span class="p">,</span> <span class="n">r_R500c_v</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="p">,</span> <span class="p">[</span><span class="n">rho_g</span><span class="p">,</span> <span class="n">P_tot</span><span class="p">,</span> <span class="n">P_th</span><span class="p">,</span> <span class="n">f_nt</span><span class="p">]):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">r_R500c_v</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">q</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;$r / R_</span><span class="si">{500c}</span><span class="s2">$&quot;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$</span><span class="se">\\</span><span class="s2">rho_{</span><span class="se">\\</span><span class="s2">rm g} / 500 </span><span class="se">\\</span><span class="s2">rho_{</span><span class="se">\\</span><span class="s2">rm crit.}$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$P_{</span><span class="se">\\</span><span class="s2">rm tot} / P_</span><span class="si">{500c}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$P_{</span><span class="se">\\</span><span class="s2">rm th} / P_</span><span class="si">{500c}</span><span class="s2">$&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$f_{</span><span class="se">\\</span><span class="s2">rm nt}$&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/4163e035d32d427edf8bab47ddafaff779a2835271e9e7a68b5a4f89bdebebee.png" src="../_images/4163e035d32d427edf8bab47ddafaff779a2835271e9e7a68b5a4f89bdebebee.png" />
+</div>
+</div>
+<p>Again, these functions can be just-in-time compiled:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">benchmark</span><span class="p">:</span>
+    <span class="n">predict_jit</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">predictor</span><span class="o">.</span><span class="n">predict_gas_model</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1 halo, not jitted:&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="o">%</span><span class="k">timeit</span> _ = predictor.predict_gas_model(theta_halo[0], phi[0], r_R500c, r_R500c / 2)
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1 halo, jitted:&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">predict_jit</span><span class="p">(</span><span class="n">theta_halo</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">phi</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">r_R500c</span><span class="p">,</span> <span class="n">r_R500c</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="o">%</span><span class="k">timeit</span> _ = predict_jit(theta_halo[0], phi[0], r_R500c, r_R500c / 2)
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4 halo, not jitted:&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="o">%</span><span class="k">timeit</span> _ = predictor.predict_gas_model(theta_halo, phi_v, r_R500c_v, r_R500c_v / 2)
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;4 halo, jitted:&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">predict_jit</span><span class="p">(</span><span class="n">theta_halo</span><span class="p">,</span> <span class="n">phi_v</span><span class="p">,</span> <span class="n">r_R500c_v</span><span class="p">,</span> <span class="n">r_R500c_v</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="o">%</span><span class="k">timeit</span> _ = predict_jit(theta_halo, phi_v, r_R500c_v, r_R500c_v / 2)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 halo, not jitted: 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.02 ms ± 342 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+1 halo, jitted: 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>51 µs ± 1.05 µs per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+4 halo, not jitted: 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14.7 ms ± 526 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+4 halo, jitted: 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>28.6 µs ± 212 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="differentiating-predictions">
+<h2>Differentiating predictions<a class="headerlink" href="#differentiating-predictions" title="Link to this heading">#</a></h2>
+<p>Since the model prediction functions described above are entirely implemented in JAX, they are fully differentiable.
+Let’s start by defining an untrained predictor, such that the prediction functions take as input a dict of neural network parameters <span class="math">\(\vartheta_{\rm net}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">predictors</span><span class="o">.</span><span class="n">PicassoPredictor</span><span class="p">(</span>
+    <span class="n">predictors</span><span class="o">.</span><span class="n">FlaxRegMLP</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="p">[</span><span class="mi">8</span><span class="p">,],</span> <span class="p">[</span><span class="s2">&quot;selu&quot;</span><span class="p">,</span> <span class="s2">&quot;selu&quot;</span><span class="p">,</span> <span class="s2">&quot;sigmoid&quot;</span><span class="p">]),</span>
+    <span class="n">predictor</span><span class="o">.</span><span class="n">_transform_x</span><span class="p">,</span>
+    <span class="n">predictor</span><span class="o">.</span><span class="n">_transform_y</span><span class="p">,</span>
+    <span class="n">input_names</span><span class="o">=</span><span class="n">predictor</span><span class="o">.</span><span class="n">input_names</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For demonstration purposes, we use an MLP with 2 input features, one hidden layer with 8 features, and 8 output features.
+<code class="docutils literal notranslate"><span class="pre">flax</span></code> allows us to initialize <span class="math">\(\vartheta_{\rm net}\)</span> easily:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">theta_nn</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">mlp</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">jax</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">PRNGKey</span><span class="p">(</span><span class="mi">44</span><span class="p">),</span> <span class="n">jnp</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">mlp</span><span class="o">.</span><span class="n">X_DIM</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">theta_nn</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>theta_nn={&#39;params&#39;: {&#39;input&#39;: {&#39;kernel&#39;: Array([[ 0.03842447, -0.06375846],
+       [ 1.4234861 , -0.33939242]], dtype=float32), &#39;bias&#39;: Array([0., 0.], dtype=float32)}, &#39;dense1&#39;: {&#39;kernel&#39;: Array([[-0.042185  , -0.7779425 ,  1.1562326 , -0.2546578 , -0.5690918 ,
+         0.56547344,  0.03781918, -0.47313142],
+       [ 1.0343004 ,  0.09225573,  0.04856016, -0.36422998, -0.2005813 ,
+        -1.1775992 ,  0.5434312 ,  1.2453555 ]], dtype=float32), &#39;bias&#39;: Array([0., 0., 0., 0., 0., 0., 0., 0.], dtype=float32)}, &#39;output&#39;: {&#39;kernel&#39;: Array([[ 7.8989536e-02,  7.0438385e-01,  1.0798373e-01, -3.7004817e-01,
+        -7.8189468e-01,  3.6114028e-01,  7.4631339e-01,  8.4025212e-02],
+       [-2.6573351e-04,  3.7197936e-01, -6.9597310e-01, -1.7070572e-01,
+        -6.5567094e-01,  1.4083256e-01, -6.4938289e-01, -5.2993375e-01],
+       [-6.3911790e-01,  8.5570492e-02, -2.9292062e-01, -7.5498748e-01,
+         8.8445395e-02,  8.0396719e-02,  1.2768888e-01,  2.5018033e-01],
+       [-1.9778068e-01,  5.1007611e-01,  5.9675574e-01, -4.7253093e-01,
+         1.9520928e-01,  5.7592619e-02, -8.0524437e-02, -2.7744612e-01],
+       [-1.5618019e-01,  2.4103884e-01, -5.6260284e-02,  1.4608471e-02,
+         3.0849382e-01, -4.8495537e-01, -7.0060837e-01,  2.7153450e-01],
+       [ 3.9369041e-01,  6.4290190e-01, -1.5023410e-01, -3.0567136e-01,
+         6.6145092e-01, -2.0600930e-01,  1.0309051e-01,  4.7914842e-01],
+       [ 5.4775792e-01, -1.3708287e-01,  2.3802257e-01, -6.9439328e-01,
+        -2.7095252e-01,  4.1744873e-02, -9.0726621e-02,  5.4637486e-01],
+       [-3.5675672e-01, -5.7854915e-01,  3.7428567e-01,  3.4006098e-01,
+         4.1651636e-02, -3.5362524e-01, -1.4708665e-01, -1.8629548e-01]],      dtype=float32), &#39;bias&#39;: Array([0., 0., 0., 0., 0., 0., 0., 0.], dtype=float32)}}}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we can write a loss function.
+For example, let’s write a mean square error function that compares the predictions of model parameters, <span class="math">\(\vartheta_{\rm gas}\)</span>, with the ones obtained above from the trained network:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">loss_fn_predict_parameters</span><span class="p">(</span><span class="n">theta_nn</span><span class="p">):</span>
+    <span class="c1"># ... insert your code here</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_model_parameters</span><span class="p">(</span><span class="n">theta_halo</span><span class="p">,</span> <span class="n">theta_nn</span><span class="p">)</span> <span class="o">-</span> <span class="n">theta_gas</span>
+    <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">diff</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">jax.value_and_grad</span></code> to compute, for an input <span class="math">\(\vartheta_{\rm net}\)</span>, the value of the loss function and its gradients with respect to the components of <span class="math">\(\vartheta_{\rm net}\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loss_fn_and_grads</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">jax</span><span class="o">.</span><span class="n">value_and_grad</span><span class="p">(</span><span class="n">loss_fn_predict_parameters</span><span class="p">))</span>
+<span class="n">loss</span><span class="p">,</span> <span class="n">grads</span> <span class="o">=</span> <span class="n">loss_fn_and_grads</span><span class="p">(</span><span class="n">theta_nn</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">loss</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">grads</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>loss=Array(165127.05, dtype=float32)
+grads={&#39;params&#39;: {&#39;dense1&#39;: {&#39;bias&#39;: Array([ 100206.84 ,   21614.707, -244034.03 ,  -91656.766,  -93063.48 ,
+        189916.38 ,  340279.06 , -251444.38 ], dtype=float32), &#39;kernel&#39;: Array([[ 26503.604 ,  11982.22  ,  73294.48  ,  52443.27  ,  10371.293 ,
+        -19767.486 , -75011.875 , -36658.6   ],
+       [-15600.043 ,  -5187.1123,  -2184.661 ,  -8046.8896,   4345.722 ,
+         -9154.322 ,  -4911.113 ,  30567.984 ]], dtype=float32)}, &#39;input&#39;: {&#39;bias&#39;: Array([  12953.48, -330695.5 ], dtype=float32), &#39;kernel&#39;: Array([[ -21917.758, -193794.06 ],
+       [  41602.273,  -53411.805]], dtype=float32)}, &#39;output&#39;: {&#39;bias&#39;: Array([ 3.7065769e+05,  5.4172406e+04,  9.2098862e-04, -2.6323080e-02,
+        1.1586923e-13, -1.4256586e-04,  9.6003921e-04,  3.2200915e-01],      dtype=float32), &#39;kernel&#39;: Array([[-1.57931260e+04, -2.42841211e+04, -3.35681165e-04,
+         1.20395236e-02, -4.37351469e-14,  4.27405794e-05,
+        -1.55504246e-03, -1.23349264e-01],
+       [ 2.88966172e+04, -3.66464922e+04, -4.81067575e-04,
+         1.83119718e-02, -6.31182389e-14,  5.76461171e-05,
+        -2.74758250e-03, -1.79110184e-01],
+       [-1.26881102e+05,  4.14549062e+04,  4.95018146e-04,
+        -2.08275542e-02,  6.62612800e-14, -5.16625478e-05,
+         3.81032354e-03,  1.89285502e-01],
+       [ 4.18628008e+04, -6.02361523e+03, -6.02374239e-05,
+         3.07562714e-03, -8.34886664e-15,  4.33183868e-06,
+        -7.30396772e-04, -2.43033525e-02],
+       [ 5.35147617e+04, -2.44235117e+04, -3.03071662e-04,
+         1.22588547e-02, -4.01963009e-14,  3.36148078e-05,
+        -2.08784547e-03, -1.14595592e-01],
+       [-6.37317422e+04,  3.84080586e+04,  4.85661119e-04,
+        -1.91901531e-02,  6.43300178e-14, -5.52192469e-05,
+         3.12481867e-03,  1.82762071e-01],
+       [-9.27105957e+03, -1.06851982e+04, -1.48742183e-04,
+         5.28801745e-03, -1.93708625e-14,  1.90776464e-05,
+        -6.66230044e-04, -5.45667335e-02],
+       [-3.21776738e+04, -4.26220898e+04, -5.92439668e-04,
+         2.11625788e-02, -7.70025116e-14,  7.59991526e-05,
+        -2.69982382e-03, -2.17325643e-01]], dtype=float32)}}}
+</pre></div>
+</div>
+</div>
+</div>
+<p>This loss function can then be optimized using, <em>e.g.</em>, <code class="docutils literal notranslate"><span class="pre">optax</span></code> (See the <code class="docutils literal notranslate"><span class="pre">optax</span></code> docs <a class="reference external" href="https://optax.readthedocs.io/en/latest/index.html">here</a>, in particular the tutorial to optimize the parameters of a <code class="docutils literal notranslate"><span class="pre">flax</span></code> model <a class="reference external" href="https://optax.readthedocs.io/en/latest/_collections/examples/flax_example.html">here</a>).</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="plot_model_params.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Polytropic gas model and non-thermal pressure fraction with varying parameters</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="demo_model.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Using the picasso analytical gas model</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-gas-model-parameters">Predicting gas model parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#predicting-gas-thermodynamics">Predicting gas thermodynamics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differentiating-predictions">Differentiating predictions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Florian Kéruzoré et al.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Florian Kéruzoré et al..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

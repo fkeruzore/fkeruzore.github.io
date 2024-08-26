@@ -1,0 +1,695 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>picasso.polytrop: Polytropic gas model &#8212; picasso  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.10/dist/katex.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/katex-math.css?v=91adb8b6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/katex.min.js?v=be8ff15f"></script>
+    <script src="../_static/auto-render.min.js?v=ad136472"></script>
+    <script src="../_static/katex_autorenderer.js?v=bebc588a"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/polytrop';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="picasso.nonthermal: Non-thermal pressure support" href="nonthermal.html" />
+    <link rel="prev" title="picasso.predictors: From halo properties to gas properties" href="predictors.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo_circle.png" class="logo__image only-light" alt="picasso  documentation - Home"/>
+    <script>document.write(`<img src="../_static/logo_circle.png" class="logo__image only-dark" alt="picasso  documentation - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">The picasso model</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../model/model.html">What is the picasso model?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../model/trained_models.html">Available pre-trained predictors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/plot_model_params.html">Polytropic gas model and non-thermal pressure fraction with varying parameters</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Example gallery</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/make_predictions.html">Using the picasso trained predictors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/demo_model.html">Using the picasso analytical gas model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="predictors.html"><code class="docutils literal notranslate"><span class="pre">picasso.predictors</span></code>: From halo properties to gas properties</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">picasso.polytrop</span></code>: Polytropic gas model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nonthermal.html"><code class="docutils literal notranslate"><span class="pre">picasso.nonthermal</span></code>: Non-thermal pressure support</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/fkeruzore/picasso" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/api/polytrop.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>picasso.polytrop: Polytropic gas model</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.polytrop.rho_P_g"><code class="docutils literal notranslate"><span class="pre">rho_P_g()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.polytrop.rho_g"><code class="docutils literal notranslate"><span class="pre">rho_g()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.polytrop.P_g"><code class="docutils literal notranslate"><span class="pre">P_g()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.polytrop.theta"><code class="docutils literal notranslate"><span class="pre">theta()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.polytrop.Gamma_r"><code class="docutils literal notranslate"><span class="pre">Gamma_r()</span></code></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="picasso-polytrop-polytropic-gas-model">
+<h1><code class="docutils literal notranslate"><span class="pre">picasso.polytrop</span></code>: Polytropic gas model<a class="headerlink" href="#picasso-polytrop-polytropic-gas-model" title="Link to this heading">#</a></h1>
+<p>The polytropic gas model is written as:</p>
+<blockquote>
+<div><div class="math">
+\[\rho(\phi) = \rho_0 \theta^{\Gamma(r) / (\Gamma(r) - 1)}(\phi), \\[10pt]
+P(\phi) = P_0 \theta^{1 / (\Gamma(r) - 1)}(\phi),
+
+\]</div>
+</div></blockquote>
+<p>where <span class="math">\(\phi\)</span> is the halo’s gravitational potential, and</p>
+<blockquote>
+<div><div class="math">
+\[\theta(\phi) = 1 - \theta_0 (\phi - \phi_0).
+
+\]</div>
+</div></blockquote>
+<p>The gas polytropic index, <span class="math">\(\Gamma\)</span>, is allowed to vary with radius as:</p>
+<blockquote>
+<div><div class="math">
+\[\Gamma(r) =
+\begin{cases}
+\begin{aligned}
+    & \; 1 + (\Gamma_0 - 1) \frac{1}{1 + e^{-x}} & c_\Gamma \geqslant 0; \\
+    & \; \Gamma_0 + (\Gamma_0 - 1) \left(1 - \frac{1}{1 + e^{x}}\right) & c_\Gamma < 0, \\
+\end{aligned}
+\end{cases}
+
+\]</div>
+</div></blockquote>
+<p>with <span class="math">\(x \equiv r / (c_\gamma R_{500c})\)</span>.
+The model has five parameters: <span class="math">\((\rho_0, P_0)\)</span> are the central value of gas density and pressure, <span class="math">\(\Gamma_0\)</span> is the asymptotic value of the polytropic index as <span class="math">\(r \rightarrow \infty\)</span>, <span class="math">\(c_\gamma\)</span> is the polytropic concentration (<span class="math">\(c_\gamma = 0\)</span> implies <span class="math">\(\Gamma(r) = \Gamma_0\)</span>), and <span class="math">\(\theta_0\)</span> is a shape parameter.
+In the Ostriker model,</p>
+<blockquote>
+<div><div class="math">
+\[\theta_0 = \frac{\Gamma - 1}{\Gamma}
+\times \frac{\rho_0}{P_0}
+
+\]</div>
+</div></blockquote>
+<p>We further write the fraction of non-thermal pressure as a power-law of radius, plus a constant plateau:</p>
+<blockquote>
+<div><div class="math">
+\[f_{\rm nt}(r) = a_{\rm nt} + (b_{\rm nt} - a_{\rm nt}) \left(\frac{r}{2r_{500c}}\right)^{c_{\rm nt}}
+
+\]</div>
+</div></blockquote>
+<p>This adds three parameters to our gas model: <span class="math">\(a_{\rm nt}\)</span> is the central value of non-thermal pressure fraction, <span class="math">\(b_{\rm nt}\)</span> is the non-thermal pressure fraction at <span class="math">\(r=2r_{500c}\)</span>, and <span class="math">\(c_{\rm nt}\)</span> is the power law evolution with radius.</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#picasso.polytrop.rho_P_g" title="picasso.polytrop.rho_P_g"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rho_P_g</span></code></a>(phi, r_norm, rho_0, P_0, Gamma_0, ...)</p></td>
+<td><p>Polytropic gas density and pressure (total pressure, therm.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#picasso.polytrop.rho_g" title="picasso.polytrop.rho_g"><code class="xref py py-obj docutils literal notranslate"><span class="pre">rho_g</span></code></a>(phi, r_norm, rho_0, Gamma_0, c_Gamma, ...)</p></td>
+<td><p>Polytropic gas density.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#picasso.polytrop.P_g" title="picasso.polytrop.P_g"><code class="xref py py-obj docutils literal notranslate"><span class="pre">P_g</span></code></a>(phi, r_norm, P_0, Gamma_0, c_Gamma, theta_0)</p></td>
+<td><p>Polytropic gas pressure (total pressure, therm.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#picasso.polytrop.theta" title="picasso.polytrop.theta"><code class="xref py py-obj docutils literal notranslate"><span class="pre">theta</span></code></a>(phi, theta_0)</p></td>
+<td><p>Re-parametrized polytropic variable.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#picasso.polytrop.Gamma_r" title="picasso.polytrop.Gamma_r"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Gamma_r</span></code></a>(r_norm, Gamma_0, c_Gamma)</p></td>
+<td><p>Compute the radius-dependent polytropic index Gamma(r)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py function">
+<dt class="sig sig-object py" id="picasso.polytrop.rho_P_g">
+<span class="sig-prename descclassname"><span class="pre">picasso.polytrop.</span></span><span class="sig-name descname"><span class="pre">rho_P_g</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_norm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Gamma_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_Gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta_0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picasso/polytrop.html#rho_P_g"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picasso.polytrop.rho_P_g" title="Link to this definition">#</a></dt>
+<dd><p>Polytropic gas density and pressure (total pressure, therm. + kin.).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phi</strong> (<em>Array</em>) – Normalized isolated gravitational potential (see Notes)</p></li>
+<li><p><strong>r_norm</strong> (<em>Array</em>) – Normalized radii to be used for the polytropic model.</p></li>
+<li><p><strong>rho_0</strong> (<em>Array</em>) – Central gas density</p></li>
+<li><p><strong>P_0</strong> (<em>Array</em>) – Central gas pressure (total pressure, therm. + kin.)</p></li>
+<li><p><strong>Gamma_0</strong> (<em>Array</em>) – Central value of the polytropic index</p></li>
+<li><p><strong>c_Gamma</strong> (<em>Array</em>) – Polytropic concentration value</p></li>
+<li><p><strong>theta_0</strong> (<em>Array</em>) – Potential prefactor (see Notes)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><span class="sphinx_autodoc_typehints-type"><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<a class="reference external" href="https://jax.readthedocs.io/en/latest/_autosummary/jax.Array.html#jax.Array" title="(in JAX)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code></a>, <a class="reference external" href="https://jax.readthedocs.io/en/latest/_autosummary/jax.Array.html#jax.Array" title="(in JAX)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code></a>]</span></p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>Array</em> – Gas density for each phi</p></li>
+<li><p><em>Array</em> – Gas pressure (total pressure, therm. + kin.) for each phi</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The potential <span class="math">\(\phi\)</span> is to be normalized to be zero at the
+bottom of the well, and positive everywhere else. This definition
+makes it equivalent to <span class="math">\((\phi - \phi_0)\)</span> in the Ostriker
+model.</p></li>
+<li><p>A fixed value of the polytropic index (e.g. 1.2) can be achieved
+with <cite>Gamma = Gamma_r(r, 1.2, 0)</cite></p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="picasso.polytrop.rho_g">
+<span class="sig-prename descclassname"><span class="pre">picasso.polytrop.</span></span><span class="sig-name descname"><span class="pre">rho_g</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_norm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Gamma_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_Gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta_0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picasso/polytrop.html#rho_g"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picasso.polytrop.rho_g" title="Link to this definition">#</a></dt>
+<dd><p>Polytropic gas density.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phi</strong> (<em>Array</em>) – Normalized isolated gravitational potential (see Notes)</p></li>
+<li><p><strong>r_norm</strong> (<em>Array</em>) – Normalized radii to be used for the polytropic model.</p></li>
+<li><p><strong>rho_0</strong> (<em>Array</em>) – Central gas density</p></li>
+<li><p><strong>Gamma_0</strong> (<em>Array</em>) – Central value of the polytropic index</p></li>
+<li><p><strong>c_Gamma</strong> (<em>Array</em>) – Polytropic concentration value</p></li>
+<li><p><strong>theta_0</strong> (<em>Array</em>) – Potential prefactor (see Notes)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Gas density for each phi</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Array</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The potential <span class="math">\(\phi\)</span> is to be normalized to be zero at the
+bottom of the well, and positive everywhere else. This definition
+makes it equivalent to <span class="math">\((\phi - \phi_0)\)</span> in the Ostriker
+model.</p></li>
+<li><p>A fixed value of the polytropic index (e.g. 1.2) can be achieved
+with <cite>Gamma = Gamma_r(r, 1.2, 0)</cite></p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="picasso.polytrop.P_g">
+<span class="sig-prename descclassname"><span class="pre">picasso.polytrop.</span></span><span class="sig-name descname"><span class="pre">P_g</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_norm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">P_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Gamma_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_Gamma</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta_0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picasso/polytrop.html#P_g"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picasso.polytrop.P_g" title="Link to this definition">#</a></dt>
+<dd><p>Polytropic gas pressure (total pressure, therm. + kin.).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phi</strong> (<em>Array</em>) – Normalized isolated gravitational potential (see Notes)</p></li>
+<li><p><strong>r_norm</strong> (<em>Array</em>) – Normalized radii to be used for the polytropic model.</p></li>
+<li><p><strong>P_0</strong> (<em>Array</em>) – Central gas pressure (total pressure, therm. + kin.)</p></li>
+<li><p><strong>Gamma_0</strong> (<em>Array</em>) – Central value of the polytropic index</p></li>
+<li><p><strong>c_Gamma</strong> (<em>Array</em>) – Polytropic concentration value</p></li>
+<li><p><strong>theta_0</strong> (<em>Array</em>) – Potential prefactor (see Notes)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Gas pressure (total pressure, therm. + kin.) for each phi</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Array</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The potential <span class="math">\(\phi\)</span> is to be normalized to be zero at the
+bottom of the well, and positive everywhere else. This definition
+makes it equivalent to <span class="math">\((\phi - \phi_0)\)</span> in the Ostriker
+model.</p></li>
+<li><p>A fixed value of the polytropic index (e.g. 1.2) can be achieved
+with <cite>Gamma = Gamma_r(r, 1.2, 0)</cite></p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="picasso.polytrop.theta">
+<span class="sig-prename descclassname"><span class="pre">picasso.polytrop.</span></span><span class="sig-name descname"><span class="pre">theta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">theta_0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picasso/polytrop.html#theta"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picasso.polytrop.theta" title="Link to this definition">#</a></dt>
+<dd><p>Re-parametrized polytropic variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phi</strong> (<em>Array</em>) – Normalized isolated gravitational potential (see Notes)</p></li>
+<li><p><strong>theta_0</strong> (<em>Array</em>) – Potential prefactor (see Notes)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Polytropic variable for each phi</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Array</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The potential <span class="math">\(\phi\)</span> is to be normalized to be zero at the
+bottom of the well, and positive everywhere else. This definition
+makes it equivalent to <span class="math">\((\phi - \phi_0)\)</span> in the Ostriker
+model.</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="picasso.polytrop.Gamma_r">
+<span class="sig-prename descclassname"><span class="pre">picasso.polytrop.</span></span><span class="sig-name descname"><span class="pre">Gamma_r</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r_norm</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Gamma_0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c_Gamma</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/picasso/polytrop.html#Gamma_r"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#picasso.polytrop.Gamma_r" title="Link to this definition">#</a></dt>
+<dd><p>Compute the radius-dependent polytropic index Gamma(r)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>r_norm</strong> (<em>Array</em>) – Normalized radii</p></li>
+<li><p><strong>Gamma_0</strong> (<em>Array</em>) – Asymptotic outer value of the polytropic index</p></li>
+<li><p><strong>c_Gamma</strong> (<em>Array</em>) – Polytropic concentration value</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Gamma values at specified radii</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Array</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>A fixed value of the polytropic index (e.g. 1.2) can be achieved
+with <cite>Gamma = Gamma_r(r, 1.2, 0)</cite></p></li>
+</ul>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="predictors.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><code class="docutils literal notranslate"><span class="pre">picasso.predictors</span></code>: From halo properties to gas properties</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="nonthermal.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><code class="docutils literal notranslate"><span class="pre">picasso.nonthermal</span></code>: Non-thermal pressure support</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.polytrop.rho_P_g"><code class="docutils literal notranslate"><span class="pre">rho_P_g()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.polytrop.rho_g"><code class="docutils literal notranslate"><span class="pre">rho_g()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.polytrop.P_g"><code class="docutils literal notranslate"><span class="pre">P_g()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.polytrop.theta"><code class="docutils literal notranslate"><span class="pre">theta()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#picasso.polytrop.Gamma_r"><code class="docutils literal notranslate"><span class="pre">Gamma_r()</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Florian Kéruzoré et al.
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, Florian Kéruzoré et al..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
