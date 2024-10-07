@@ -1,8 +1,9 @@
-<div class="{{ include.type | default: "list" }}__item">
-  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+<div>
+  <article itemscope itemtype="http://schema.org/CreativeWork">
     <li>
-      <h3 class="archive__item-title" itemprop="headline">{{ post.title }}</h3>
-      <p class="archive__item-excerpt" itemprop="description">{{ post.citation }}</p>
+      <h3>{{ post.title }}</h3>
+      <p>{{ post.citation }}</p>
+      <a href="{{ post.link }}">Link</a>
     </li>
   </article>
 </div>
