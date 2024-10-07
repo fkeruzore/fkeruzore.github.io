@@ -8,4 +8,4 @@ date: 2023-07-31
 location: "Laboratoire de Physique Subatomique et Cosmologie, Grenoble, France"
 ---
 
-LPSC Cosmology Webinar. [Slides](https://www.icloud.com/iclouddrive/04d0C8pWip_2iwbTfclKxeePQ#fkeruzore_lpscwebinar_picasso)
+LPSC Cosmology Webinar. [Slides](https://drive.google.com/file/d/1Rfb33BJVfWVi_aj9CUoYol9Yyy0dccFi/view?usp=share_link)
