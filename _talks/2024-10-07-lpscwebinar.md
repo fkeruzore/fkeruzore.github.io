@@ -1,7 +1,6 @@
 ---
 title: "picasso: a machine learning model to paint intracluster gas on gravity-only simulations"
 collection: talks
-type: "Webinar"
 permalink: /talks/2024-10-07-lpscwebinar.md
 venue: "LPSC Webinar"
 date: 2023-07-31
