@@ -1,9 +1,10 @@
 ---
 title: "picasso: a machine learning model to paint intracluster gas on gravity-only simulations"
 collection: talks
+type: "Seminar"
 permalink: /talks/2024-11-21-kicpseminar.md
 venue: "KICP Seminar"
-date: 2023-07-31
+date: 2024-11-21
 location: "Kavli Institute for Cosmological Physics/University of Chicago, Chicago, IL"
 ---
 
