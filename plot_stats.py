@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from datetime import datetime
 
+plt.style.use("petroff10")
+
 # ┌─────────────────────────────────────────────────────────────────────────────┐
 # │  USER-CONFIGURATION SECTION                                                 │
 # └─────────────────────────────────────────────────────────────────────────────┘
@@ -64,6 +66,54 @@ def collect_history(repo_path, commit_msg, data_relpath="_data/pub_stats.yml"):
     return history
 
 
+def remove_glitches(history):
+    """
+    Remove glitches where a metric increases on one day and decreases the next.
+    This happens when a publication is counted twice on release day, then corrected.
+
+    Returns a cleaned history list with glitch entries removed.
+    """
+    if len(history) < 3:
+        return history
+
+    # Get all stat keys from first entry
+    stat_keys = list(history[0]["stats"].keys())
+
+    # Track indices to remove
+    indices_to_remove = set()
+
+    for i in range(1, len(history) - 1):
+        prev_stats = history[i - 1]["stats"]
+        curr_stats = history[i]["stats"]
+        next_stats = history[i + 1]["stats"]
+
+        # Check if this looks like a glitch for any metric
+        is_glitch = False
+        for key in stat_keys:
+            try:
+                prev_val = int(prev_stats.get(key, 0))
+                curr_val = int(curr_stats.get(key, 0))
+                next_val = int(next_stats.get(key, 0))
+
+                # Glitch pattern: increase followed by decrease back to or below previous level
+                if curr_val > prev_val and next_val <= prev_val:
+                    is_glitch = True
+                    print(f"Detected glitch at {history[i]['date'].strftime('%Y-%m-%d')}: "
+                          f"{key} jumped from {prev_val} to {curr_val}, then dropped to {next_val}")
+                    break
+            except (ValueError, TypeError):
+                continue
+
+        if is_glitch:
+            indices_to_remove.add(i)
+
+    # Return filtered history
+    cleaned = [entry for i, entry in enumerate(history) if i not in indices_to_remove]
+    if indices_to_remove:
+        print(f"Removed {len(indices_to_remove)} glitch entries")
+    return cleaned
+
+
 def plot_time_series(history):
     """
     Given a list of { 'date': datetime, 'stats': { ... } }, plot each key in stats over time.
@@ -71,6 +121,9 @@ def plot_time_series(history):
     if not history:
         print("No matching commits found. Exiting.")
         return
+
+    # Remove glitches before plotting
+    history = remove_glitches(history)
 
     # Extract all unique stat-keys (assuming all commits have the same keys)
     sample_stats = history[0]["stats"].keys()
@@ -95,17 +148,37 @@ def plot_time_series(history):
                     y.append(float(v))
                 except:
                     y.append(None)
-        plt.plot(dates, y, marker="o", label=key)
+        if key in ["publications", "citecount", "hindex", "fa_papers"]:
+            kw = dict(alpha=1, marker="o")
+        else:
+            kw = dict(alpha=0.5)
+
+        label = {
+            "publications": "Total publications",
+            "citecount": "Total citations",
+            "hindex": "h-index",
+            "fa_papers": "First author articles",
+            "co_papers": "Co-author articles",
+            "fa_procs": "First author proceedings",
+            "co_procs": "Co-author proceedings",
+        }[key]
+        line = plt.plot(dates, y, label=label, **kw)[0]
+
+        # Add final value at the end of the line
+        if y and y[-1] is not None:
+            plt.text(dates[-1], y[-1], f'  {y[-1]:.0f}',
+                    va='center', ha='left', color=line.get_color())
 
     # Format the x-axis for dates
     plt.gca().xaxis.set_major_locator(mdates.AutoDateLocator())
     plt.gca().xaxis.set_major_formatter(
         mdates.ConciseDateFormatter(mdates.AutoDateLocator())
     )
+    plt.yscale("log")
     plt.xlabel("Commit Date")
     plt.ylabel("Value")
     plt.title("Time Evolution of Publication Statistics")
-    plt.legend()
+    plt.legend(ncol=2)
     plt.grid(alpha=0.3)
     plt.tight_layout()
     plt.show()
