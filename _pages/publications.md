@@ -13,7 +13,7 @@ author_profile: true
 
 # Journal Articles
 
-## As first author
+## ✍️ As first author
 
 {% for post in site.publications reversed %}
   {% if post.category == "fa_papers" %}
@@ -21,7 +21,7 @@ author_profile: true
   {% endif %}
 {% endfor %}
 
-## As co-author
+## 👥 As co-author
 
 {% for post in site.publications reversed %}
   {% if post.category == "co_papers" %}
@@ -31,7 +31,7 @@ author_profile: true
 
 # Conference Proceedings
 
-## As first author
+## ✍️ As first author
 
 {% for post in site.publications reversed %}
   {% if post.category == "fa_procs" %}
@@ -39,7 +39,7 @@ author_profile: true
   {% endif %}
 {% endfor %}
 
-## As co-author
+## 👥 As co-author
 
 {% for post in site.publications reversed %}
   {% if post.category == "co_procs" %}
@@ -47,7 +47,7 @@ author_profile: true
   {% endif %}
 {% endfor %}
 
-# PhD Thesis
+# 🎓 PhD Thesis
 
 {% for post in site.publications reversed %}
   {% if post.category == "thesis" %}
