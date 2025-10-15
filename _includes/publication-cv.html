@@ -1,8 +1,19 @@
-<div>
-  <article itemscope itemtype="http://schema.org/CreativeWork">
+{% if post.id %}
+  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+{% else %}
+  {% assign title = post.title %}
+{% endif %}
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
     <li>
-      <h3>{{ post.title }}</h3>
-      <p style="font-size: smaller;">{{ post.citation }} <a href="{{ post.link }}">Link</a></p>
+    <h3 class="archive__item-title" itemprop="headline">
+      {{ title }}
+    </h3>
+    <p class="archive__item-excerpt" itemprop="description">{{ post.citation }}</p>
+    {% if post.link %}
+      <p class="archive__item-link"><a href="{{ post.link }}">NASA ADS</a></p>
+    {% endif %}
     </li>
-  </article>
+ </article>
 </div>
