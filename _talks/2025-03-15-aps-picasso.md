@@ -6,6 +6,7 @@ permalink: /talks/2024-03-15-aps-picasso.md
 venue: "APS Global Summit 2025"
 date: 2025-03-15
 location: "Anaheim, CA"
+slides: "https://drive.google.com/file/d/1jHuLIA6nNHxqJhdV0veMykYvQ49RGwUg/view?usp=sharing"
 ---
 
-Talk at the 2025 Global Summit of the American Physical Society. [Slides](https://drive.google.com/file/d/1jHuLIA6nNHxqJhdV0veMykYvQ49RGwUg/view?usp=sharing)
+Talk at the 2025 Global Summit of the American Physical Society.
