@@ -136,7 +136,7 @@ def plot_time_series(history):
     }
 
     # Start plotting
-    plt.figure(figsize=(10, 6))
+    fig, ax = plt.subplots(figsize=(10, 6))
     for key in stat_keys:
         # Convert values to integers (or floats) if needed
         y = []
@@ -162,25 +162,25 @@ def plot_time_series(history):
             "fa_procs": "First author proceedings",
             "co_procs": "Co-author proceedings",
         }[key]
-        line = plt.plot(dates, y, label=label, **kw)[0]
+        line = ax.plot(dates, y, label=label, **kw)[0]
 
         # Add final value at the end of the line
         if y and y[-1] is not None:
-            plt.text(dates[-1], y[-1], f'  {y[-1]:.0f}',
+            ax.text(dates[-1], y[-1], f'  {y[-1]:.0f}',
                     va='center', ha='left', color=line.get_color())
 
     # Format the x-axis for dates
-    plt.gca().xaxis.set_major_locator(mdates.AutoDateLocator())
-    plt.gca().xaxis.set_major_formatter(
-        mdates.ConciseDateFormatter(mdates.AutoDateLocator())
-    )
-    plt.yscale("log")
-    plt.xlabel("Commit Date")
-    plt.ylabel("Value")
-    plt.title("Time Evolution of Publication Statistics")
-    plt.legend(ncol=2)
-    plt.grid(alpha=0.3)
-    plt.tight_layout()
+    ax.xaxis.set_major_locator(mdates.AutoDateLocator())
+    ax.xaxis.set_major_formatter(mdates.ConciseDateFormatter(mdates.AutoDateLocator()))
+    ax.set_yscale("log")
+    ax.set_xlabel("Commit Date")
+    ax.set_ylabel("Value")
+    ax.set_title("Time Evolution of Publication Statistics")
+    ax.legend(ncol=2)
+    ax.grid(alpha=0.5)
+    ax.xaxis.set_ticks_position("both")
+    ax.yaxis.set_ticks_position("both")
+    fig.tight_layout()
     plt.show()
 
 

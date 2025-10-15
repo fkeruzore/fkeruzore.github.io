@@ -1,0 +1,62 @@
+/* ==========================================================================
+   PUBLICATIONS - COMPACT STYLE
+   ========================================================================== */
+
+// Compact styling specifically for publications page
+.publications-compact {
+
+  .archive__item {
+    margin-bottom: 0.75em; // Reduced from default 2em
+  }
+
+  .archive__item-title {
+    margin-top: 0.5em;    // Reduced from 1em
+    margin-bottom: 0.15em; // Reduced from 0.25em
+    font-size: $type-size-6; // Smaller title (12px instead of 16px)
+    font-weight: 600;      // Make it slightly bolder to compensate
+    line-height: 1.3;
+
+    a {
+      color: $text-color;  // Use regular text color instead of link color
+
+      &:hover {
+        color: $link-color;
+      }
+    }
+
+    // Permalink icon
+    a + a {
+      font-size: 0.85em;
+      opacity: 0.4;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  .archive__item-excerpt {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-size: $type-size-7; // Even smaller citation (11px)
+    line-height: 1.4;
+    color: $dark-gray;
+  }
+
+  // Tighten up list items
+  li {
+    list-style: none;
+    margin-bottom: 0;
+  }
+
+  // Category headings styling
+  h1, h2 {
+    margin-top: 1.5em;
+    margin-bottom: 0.75em;
+  }
+
+  h2 {
+    font-size: $type-size-5; // Make section headers smaller
+    margin-top: 1em;
+  }
+}
