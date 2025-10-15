@@ -36,10 +36,17 @@
     <p class="archive__item-excerpt" itemprop="description">{{ citation_bold }}</p>
     {% if post.link %}
       {% assign bibcode = post.link | split: "/abs/" | last | split: "/abstract" | first %}
+      {% assign abstract_id = bibcode | replace: ".", "" | replace: "&", "" %}
       <p class="archive__item-link">
         <a href="{{ post.link }}">NASA ADS</a>
         | <a href="https://ui.adsabs.harvard.edu/link_gateway/{{ bibcode }}/EPRINT_HTML">arXiv</a>
+        | <a href="#" class="abstract-toggle" data-target="abstract-{{ abstract_id }}">Abstract</a>
       </p>
+      {% if post.abstract %}
+      <div id="abstract-{{ abstract_id }}" class="abstract-content" style="display: none;">
+        <p>{{ post.abstract }}</p>
+      </div>
+      {% endif %}
     {% endif %}
     </li>
  </article>

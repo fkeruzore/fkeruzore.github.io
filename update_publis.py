@@ -36,7 +36,7 @@ def get_bibcodes(rows=1000):
     # Get list of ADS entries I am an author of
     query = {
         "q": "author:keruzore, f",
-        "fl": "bibcode, first_author, doctype, title, date, pub",
+        "fl": "bibcode, first_author, doctype, title, date, pub, abstract",
         "rows": rows,
         "sort": "date desc",
     }
@@ -61,6 +61,7 @@ def get_bibcodes(rows=1000):
     titles = {k: [] for k in bibcodes.keys()}
     dates = {k: [] for k in bibcodes.keys()}
     journals = {k: [] for k in bibcodes.keys()}
+    abstracts = {k: [] for k in bibcodes.keys()}
 
     # Some entries are going to be misclassified, I'll deal with them manually
     with open("./_publications/specials.json", "r") as f:
@@ -71,12 +72,14 @@ def get_bibcodes(rows=1000):
         title = pub["title"][0]
         date = pub["date"][:10]  # YYYY-MM-DD, the day might be wrong
         journal = pub["pub"]
+        abstract = pub.get("abstract", "No abstract available.")
 
         if pub["bibcode"] in specials.keys():
             bibcodes[specials[bibcode]].append(bibcode)
             titles[specials[bibcode]].append(title)
             dates[specials[bibcode]].append(date)
             journals[specials[bibcode]].append(journal)
+            abstracts[specials[bibcode]].append(abstract)
             continue
 
         fa = pub["first_author"].lower()
@@ -88,16 +91,19 @@ def get_bibcodes(rows=1000):
             titles[f"{k_aut}_papers"].append(title)
             dates[f"{k_aut}_papers"].append(date)
             journals[f"{k_aut}_papers"].append(journal)
+            abstracts[f"{k_aut}_papers"].append(abstract)
         elif pub["doctype"] == "inproceedings":
             bibcodes[f"{k_aut}_procs"].append(bibcode)
             titles[f"{k_aut}_procs"].append(title)
             dates[f"{k_aut}_procs"].append(date)
             journals[f"{k_aut}_procs"].append(journal)
+            abstracts[f"{k_aut}_procs"].append(abstract)
         else:
             bibcodes["others"].append(bibcode)
             titles["others"].append(title)
+            abstracts["others"].append(abstract)
 
-    return bibcodes, titles, dates, journals
+    return bibcodes, titles, dates, journals, abstracts
 
 
 def get_bibtex_entries(bibcodes):
@@ -199,7 +205,7 @@ if __name__ == "__main__":
     file_pub_stats = open("./_data/pub_stats.yml", "w")
 
     # Get bibcodes neatly organized
-    all_bibcodes, all_titles, all_dates, all_journals = get_bibcodes(rows=999)
+    all_bibcodes, all_titles, all_dates, all_journals, all_abstracts = get_bibcodes(rows=999)
 
     # Total publications
     all_bibcodes["all_pubs"] = (
@@ -220,13 +226,15 @@ if __name__ == "__main__":
         titles = all_titles[pub_type]
         dates = all_dates[pub_type]
         journals = all_journals[pub_type]
+        abstracts = all_abstracts[pub_type]
         cites = get_citation(bibcodes)
 
-        for bibcode, title, date, journal, cite in zip(
-            bibcodes, titles, dates, journals, cites
+        for bibcode, title, date, journal, abstract, cite in zip(
+            bibcodes, titles, dates, journals, abstracts, cites
         ):
             bibcode_nodot = bibcode.replace(".", "")
             title_formatted = title.replace("\\", "\\\\")
+            abstract_formatted = abstract.replace('"', '\\"').replace("\\", "\\\\")
 
             # Write .md file for each publication
             with open(f"./_publications/{bibcode_nodot}.md", "w") as file_pub:
@@ -242,6 +250,7 @@ if __name__ == "__main__":
                 file_pub.write(f"date: {date}\n")
                 file_pub.write(f'venue: "{journal}"\n')
                 file_pub.write(f'citation: "{cite}"\n')
+                file_pub.write(f'abstract: "{abstract_formatted}"\n')
                 file_pub.write("---")
 
         # Append stats of publication type to stats file
