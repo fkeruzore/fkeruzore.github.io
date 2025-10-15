@@ -13,7 +13,11 @@
     {% assign citation_bold = post.citation | replace: "Kéruzoré, F.", "<strong>Kéruzoré, F.</strong>" %}
     <p class="archive__item-excerpt" itemprop="description">{{ citation_bold }}</p>
     {% if post.link %}
-      <p class="archive__item-link"><a href="{{ post.link }}">NASA ADS</a></p>
+      {% assign bibcode = post.link | split: "/abs/" | last | split: "/abstract" | first %}
+      <p class="archive__item-link">
+        <a href="{{ post.link }}">NASA ADS</a>
+        | <a href="https://ui.adsabs.harvard.edu/link_gateway/{{ bibcode }}/EPRINT_HTML">arXiv</a>
+      </p>
     {% endif %}
     </li>
  </article>
