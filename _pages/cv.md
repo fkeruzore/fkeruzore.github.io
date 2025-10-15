@@ -100,9 +100,13 @@ redirect_from:
 
 # Talks
 
+<div class="publications-compact" markdown="1">
+
   <ul>{% for post in site.talks reversed %}
     {% include archive-single-talk-cv.html %}
   {% endfor %}</ul>
+
+</div>
 
 # Publications
 
