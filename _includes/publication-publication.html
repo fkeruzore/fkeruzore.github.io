@@ -32,7 +32,8 @@
     {% if post.read_time %}
       <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</p>
     {% endif %}
-    <p class="archive__item-excerpt" itemprop="description">{{ post.citation }}</p>
+    {% assign citation_bold = post.citation | replace: "Kéruzoré, F.", "<strong>Kéruzoré, F.</strong>" %}
+    <p class="archive__item-excerpt" itemprop="description">{{ citation_bold }}</p>
     {% if post.link %}
       <p class="archive__item-link"><a href="{{ post.link }}">NASA ADS</a></p>
     {% endif %}
