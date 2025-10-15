@@ -234,7 +234,8 @@ if __name__ == "__main__":
         ):
             bibcode_nodot = bibcode.replace(".", "")
             title_formatted = title.replace("\\", "\\\\")
-            abstract_formatted = abstract.replace('"', '\\"').replace("\\", "\\\\")
+            # Escape abstract: first backslashes, then quotes
+            abstract_formatted = abstract.replace("\\", "\\\\").replace('"', '\\"')
 
             # Write .md file for each publication
             with open(f"./_publications/{bibcode_nodot}.md", "w") as file_pub:
