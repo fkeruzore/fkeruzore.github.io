@@ -18,6 +18,13 @@
     color: $text-color;    // Regular text color (not a link)
   }
 
+  // Override default archive item hover behavior for titles
+  .archive__item:hover {
+    .archive__item-title {
+      text-decoration: none; // Don't underline title on hover
+    }
+  }
+
   .archive__item-excerpt {
     margin-top: 0;
     margin-bottom: 0.25em;
