@@ -54,17 +54,23 @@ redirect_from:
 
 # Public scientific software
 
+* [fkeruzore/halox](https://github.com/fkeruzore/halox): Dark matter halo properties and halo mass functions using JAX
+  * Dark matter halo properties and large-scale structure theoretical predictions
+  * Implemented in JAX, with fully GPU-friendly and differentiable predictions
+  * Documentation: [halox.readthedocs.io](https://halox.readthedocs.io)
+  * Publication: [Kéruzoré, Submitted to JOSS](https://ui.adsabs.harvard.edu/abs/2025arXiv250922478K/abstract)
+
 * [fkeruzore/picasso](https://github.com/fkeruzore/picasso): Painting intracluster gas on gravity-only simulations
   * Gas model combining a parameterized physical model and neural network predictions
   * Implemented using JAX and flax, with fully GPU-friendly and differentiable predictions
   * Documentation: [picasso-cosmo.readthedocs.io](https://picasso-cosmo.readthedocs.io)
-  * Publication: [Kéruzoré et al., The Open Journal of Astrophysics 7, 116 (2024)](https://ui.adsabs.harvard.edu/link_gateway/2024OJAp....7E.116K/doi:10.33232/001c.127486)
+  * Publication: [Kéruzoré et al., The Open Journal of Astrophysics 7, 116 (2024)](https://ui.adsabs.harvard.edu/abs/2024OJAp....7E.116K/abstract)
 
 * [fkeruzore/panco2](https://github.com/fkeruzore/panco2): Pressure profile measurements from SZ galaxy cluster maps
   * Forward modeling MCMC analysis, enabling taking into account mm-wave systematics
   * Tested on simulated Planck, SPT, NIKA2 maps; can be used with any mm-wave data
   * Documentation: [panco2.readthedocs.io](https://panco2.readthedocs.io)
-  * Publication: [Kéruzoré et al., The Open Journal of Astrophysics 6, 9 (2023)](https://ui.adsabs.harvard.edu/link_gateway/2023OJAp....6E...9K/doi:10.21105/astro.2212.01439)
+  * Publication: [Kéruzoré et al., The Open Journal of Astrophysics 6, 9 (2023)](https://ui.adsabs.harvard.edu/abs/2023OJAp....6E...9K/abstract)
 
 # Collaborations
 
@@ -74,22 +80,6 @@ redirect_from:
 * Member of the Galaxy Clusters working group of the SPT collaboration since 2021
 * Member of the CHEX-MATE collaboration since 2019
 * Member of the NIKA2 collaboration since 2018 (Core team member since 2019)
-
-# Teaching
-
-2018-2021: 98 hours of teaching at Université Grenoble Alpes
-* Electromagnetism
-  * 1st year biology & chemistry students
-  * Tutorials (online & in-person), labs (in-person)
-  * 56 hours
-* Applied thermodynamics
-  * 3rd year physics students
-  * Tutorials (online & in-person)
-  * 30 hours
-* Nuclear physics
-  * 5th year radioprotection students
-  * Labs (in-person)
-  * 12 hours
 
 # Service and responsibilities
 
@@ -151,3 +141,19 @@ For more information, see the [Publications](https://fkeruzore.github.io/publica
   {% endfor %}</ul>
 
 </div>
+
+# Teaching
+
+2018-2021: 98 hours of teaching at Université Grenoble Alpes
+* Electromagnetism
+  * 1st year biology & chemistry students
+  * Tutorials (online & in-person), labs (in-person)
+  * 56 hours
+* Applied thermodynamics
+  * 3rd year physics students
+  * Tutorials (online & in-person)
+  * 30 hours
+* Nuclear physics
+  * 5th year radioprotection students
+  * Labs (in-person)
+  * 12 hours
