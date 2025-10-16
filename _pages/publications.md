@@ -15,44 +15,54 @@ author_profile: true
 
 ## ✍️ As first author
 
+<ul>
 {% for post in site.publications reversed %}
   {% if post.category == "fa_papers" %}
     {% include publication-publication.html %}
   {% endif %}
 {% endfor %}
+</ul>
 
 ## 👥 As co-author
 
+<ul>
 {% for post in site.publications reversed %}
   {% if post.category == "co_papers" %}
     {% include publication-publication.html %}
   {% endif %}
 {% endfor %}
+</ul>
 
 # Conference Proceedings
 
 ## ✍️ As first author
 
+<ul>
 {% for post in site.publications reversed %}
   {% if post.category == "fa_procs" %}
     {% include publication-publication.html %}
   {% endif %}
 {% endfor %}
+</ul>
 
 ## 👥 As co-author
 
+<ul>
 {% for post in site.publications reversed %}
   {% if post.category == "co_procs" %}
     {% include publication-publication.html %}
   {% endif %}
 {% endfor %}
+</ul>
 
 # 🎓 PhD Thesis
 
+<ul>
 {% for post in site.publications reversed %}
   {% if post.category == "thesis" %}
     {% include publication-publication.html %}
   {% endif %}
 {% endfor %}
+</ul>
 
 </div>
