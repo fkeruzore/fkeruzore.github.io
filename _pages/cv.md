@@ -100,6 +100,8 @@ redirect_from:
 
 # Talks
 
+For more information, see the [Talks](https://fkeruzore.github.io/talks/) section.
+
 <div class="publications-compact" markdown="1">
 
   <ul>{% for post in site.talks reversed %}
@@ -111,6 +113,8 @@ redirect_from:
 # Publications
 
 <strong>{{ site.data.pub_stats.publications }}</strong> publications; <strong>{{ site.data.pub_stats.citecount }}</strong> citations; h-index: <strong>{{ site.data.pub_stats.hindex }}</strong> (*Source*: [NASA ADS](https://ui.adsabs.harvard.edu/search/filter_doctype_facet_hier_fq_doctype=AND&filter_doctype_facet_hier_fq_doctype=doctype_facet_hier%3A%220%2FArticle%22&fq=%7B!type%3Daqp%20v%3D%24fq_doctype%7D&fq_doctype=(doctype_facet_hier%3A%220%2FArticle%22)&q=%20author%3A%22keruzore%2C%20florian%22&sort=date%20desc%2C%20bibcode%20desc&p_=0))
+
+For more information, see the [Publications](https://fkeruzore.github.io/publications/) section.
 
 <div class="publications-compact" markdown="1">
 

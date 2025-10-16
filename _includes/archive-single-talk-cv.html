@@ -27,9 +27,9 @@
       </div>
     {% endif %}
     {% if post.type or post.venue %}
-    <p class="archive__item-excerpt" itemprop="description">
+    <h3 class="archive__item-title" itemprop="headline">
       {% if post.type %}{{post.type}}{% endif %}{% if post.venue %}, {{ post.venue }}{% endif %}
-    </p>
+    </h3>
     {% endif %}
     {% if post.location or post.date %}
     <p class="archive__item-excerpt" itemprop="description">
