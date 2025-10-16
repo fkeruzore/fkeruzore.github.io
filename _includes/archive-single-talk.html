@@ -29,12 +29,17 @@
     {% if post.read_time %}
       <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</p>
     {% endif %}
-    <h3 class="archive__item-title" itemprop="headline">
-      {% if post.type %}{{post.type}}{% endif %}{% if post.venue %}, {{ post.venue }}{% endif %}{% if post.location or post.date %} — {% endif %}{% if post.location %}{{post.location}}{% if post.date %}, {% endif %}{% endif %}{% if post.date %}{{ post.date | date: '%B %d, %Y' }}{% endif %}
-    </h3>
-    {% if title %}
+    {% if post.type or post.venue %}
     <p class="archive__item-excerpt" itemprop="description">
-      {{ title }}{% if post.slides %} | <a href="{{ post.slides }}">Slides</a>{% endif %}
+      {% if post.type %}{{post.type}}{% endif %}{% if post.venue %}, {{ post.venue }}{% endif %}
+    </p>
+    {% endif %}
+    <h3 class="archive__item-title" itemprop="headline">
+      {{ title }}
+    </h3>
+    {% if post.location or post.date or post.slides %}
+    <p class="archive__item-excerpt" itemprop="description">
+      {% if post.location %}{{post.location}}{% if post.date %}, {% endif %}{% endif %}{% if post.date %}{{ post.date | date: '%B %d, %Y' }}{% endif %}{% if post.slides %} | <a href="{{ post.slides }}">Slides</a>{% endif %}
     </p>
     {% endif %}
     </li>

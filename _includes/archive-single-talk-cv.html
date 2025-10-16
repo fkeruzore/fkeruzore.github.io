@@ -26,12 +26,14 @@
           alt="">
       </div>
     {% endif %}
-    <h3 class="archive__item-title" itemprop="headline">
-      {% if post.type %}{{post.type}}{% endif %}{% if post.venue %}, {{ post.venue }}{% endif %}{% if post.location or post.date %} — {% endif %}{% if post.location %}{{post.location}}{% if post.date %}, {% endif %}{% endif %}{% if post.date %}{{ post.date | date: '%B %d, %Y' }}{% endif %}
-    </h3>
-    {% if title %}
+    {% if post.type or post.venue %}
     <p class="archive__item-excerpt" itemprop="description">
-      {{ title }}{% if post.slides %} | <a href="{{ post.slides }}">Slides</a>{% endif %}
+      {% if post.type %}{{post.type}}{% endif %}{% if post.venue %}, {{ post.venue }}{% endif %}
+    </p>
+    {% endif %}
+    {% if post.location or post.date %}
+    <p class="archive__item-excerpt" itemprop="description">
+      {% if post.location %}{{post.location}}{% if post.date %}, {% endif %}{% endif %}{% if post.date %}{{ post.date | date: '%B %d, %Y' }}{% endif %}
     </p>
     {% endif %}
     </li>
