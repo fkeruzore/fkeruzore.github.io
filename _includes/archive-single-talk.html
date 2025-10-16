@@ -29,12 +29,13 @@
     {% if post.read_time %}
       <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> {% include read-time.html %}</p>
     {% endif %}
-    {% if post.date or post.venue %}
+    {% if post.date or post.venue or post.type %}
     <p class="archive__item-excerpt" itemprop="description">
-      {% if post.type %}{{post.type}}{% if post.venue or post.date or post.location %}, {% endif %}{% endif %}
-      {% if post.venue %}{{ post.venue }}{% if post.date or post.location %}, {% endif %}{% endif %}
-      {% if post.date %}{{ post.date | date: '%B %d, %Y' }}{% if post.location %}, {% endif %}{% endif %}
-      {% if post.location %}{{post.location}}{% endif %}
+      {% if post.type %}{{post.type}}{% endif %}
+      {% if post.venue %}, {{ post.venue }}{% endif %}
+      {% if post.location or post.date %} — {% endif %}
+      {% if post.location %}{{post.location}}{% if post.date %}, {% endif %}{% endif %}
+      {% if post.date %}{{ post.date | date: '%B %d, %Y' }}{% endif %}
     </p>
     {% endif %}
     <h3 class="archive__item-title" itemprop="headline">
