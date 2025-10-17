@@ -81,35 +81,3 @@
     margin-top: 1em;
   }
 }
-
-/* ==========================================================================
-   CV PAGE - NESTED LIST STYLING
-   ========================================================================== */
-
-// Styling for nested lists on CV page (outside publications-compact)
-.page__content {
-
-  // Level 2 bullets (nested under main bullets)
-  ul ul, ol ul {
-    margin-top: 0.25em;
-    margin-bottom: 0.25em;
-
-    li {
-      font-size: $type-size-6; // Smaller text (14px instead of 16px)
-      margin-bottom: 0.15em;
-      line-height: 1.4;
-    }
-  }
-
-  // Level 3 bullets (nested under level 2)
-  ul ul ul, ol ul ul {
-    margin-top: 0.15em;
-    margin-bottom: 0.15em;
-
-    li {
-      font-size: $type-size-7; // Even smaller text (12px)
-      margin-bottom: 0.1em;
-      line-height: 1.3;
-    }
-  }
-}
