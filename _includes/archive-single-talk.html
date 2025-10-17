@@ -36,12 +36,12 @@
     {% endif %}
     {% if title %}
     <p class="archive__item-excerpt" itemprop="description">
-      {{ title }}
+      {{ 🎤 title }}
     </p>
     {% endif %}
     {% if post.location or post.date or post.slides %}
     <p class="archive__item-excerpt" itemprop="description">
-      {% if post.location %}{{post.location}}{% if post.date %}, {% endif %}{% endif %}{% if post.date %}{{ post.date | date: '%B %d, %Y' }}{% endif %}{% if post.slides %} | <a href="{{ post.slides }}">Slides</a>{% endif %}
+      {% if post.location %}{{📍 post.location}}{% if post.date %}, {% endif %}{% endif %}{% if post.date %}{{ post.date | date: '%B %d, %Y' }}{% endif %}{% if post.slides %} | <a href="{{ post.slides }}">Slides</a>{% endif %}
     </p>
     {% endif %}
     </li>
