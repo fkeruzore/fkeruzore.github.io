@@ -11,25 +11,27 @@ redirect_from:
 
 # Research positions
 
-* 2021 - present: Postdoctoral Scholar
-  * Argonne National Laboratory, High Energy Physics division
-  * Supervisor: Dr. Lindsey Bleem
-  * Research activities:
-    * Physics-informed AI/ML emulation of thermodynamic properties of simulated galaxy clusters
-    * Millimeter-wave sky maps from cosmological simulations
-    * Multi-wavelength studies of galaxy cluster samples
-    * Supervision of two post-bachelor internships (6 months to 1 year)
-    * Junior coordinator of galaxy cluster-related analyses in the SPT-3G collaboration
+## 2021 - present: Postdoctoral Scholar
 
-* 2018 - 2021: Ph.D Student
-  * Université Grenoble Alpes, Laboratoire de Physique Subatomique et Cosmologie
-  * Supervisor: Pr. Frédéric Mayet
-  * Research activities:
-    * Observations at the IRAM 30-m telescope
-    * Analysis of NIKA2 raw data
-    * Analysis of the thermodynamic properties of the intracluster medium
-    * Mass-observable scaling relations
-    * Responsible of the NIKA2 collaboration SZ pipeline and SZ database
+* Argonne National Laboratory, High Energy Physics division
+* Supervisor: Dr. Lindsey Bleem
+* Research activities:
+  * Physics-informed AI/ML emulation of thermodynamic properties of simulated galaxy clusters
+  * Millimeter-wave sky maps from cosmological simulations
+  * Multi-wavelength studies of galaxy cluster samples
+  * Supervision of two post-bachelor internships (6 months to 1 year)
+  * Junior coordinator of galaxy cluster-related analyses in the SPT-3G collaboration
+
+## 2018 - 2021: Ph.D Student
+
+* Université Grenoble Alpes, Laboratoire de Physique Subatomique et Cosmologie
+* Supervisor: Pr. Frédéric Mayet
+* Research activities:
+  * Observations at the IRAM 30-m telescope
+  * Analysis of NIKA2 raw data
+  * Analysis of the thermodynamic properties of the intracluster medium
+  * Mass-observable scaling relations
+  * Responsible of the NIKA2 collaboration SZ pipeline and SZ database
 
 # Education
 
@@ -39,18 +41,20 @@ redirect_from:
 
 # Skills
 
-* Programming
-  * Python (scipy, astropy, emcee, pymc3)
-  * JAX ecosystem (Differentiable and GPU-enabled Python)
-  * IDL, R, Shell scripting, LaTeX
-  * Parallel computing (multithreading, MPI)
-  * Version control (git, svn), Documentation (Sphinx),
+## Programming
 
-* Data analysis
-  * AI/ML: Artificial neural networks (design, training, and application)
-  * Statistical modelling: Hierarchical models, Forward modelling
-  * Inference: Bayesian analysis, Monte Carlo Markov chains, Gradient descent regression
-  * Pipeline design and use of supercomputers to handle large datasets
+* Python (scipy, astropy, emcee, pymc3)
+* JAX ecosystem (Differentiable and GPU-enabled Python)
+* IDL, R, Shell scripting, LaTeX
+* Parallel computing (multithreading, MPI)
+* Version control (git, svn), Documentation (Sphinx),
+
+## Data analysis
+
+* AI/ML: Artificial neural networks (design, training, and application)
+* Statistical modelling: Hierarchical models, Forward modelling
+* Inference: Bayesian analysis, Monte Carlo Markov chains, Gradient descent regression
+* Pipeline design and use of supercomputers to handle large datasets
 
 # Public scientific software
 
