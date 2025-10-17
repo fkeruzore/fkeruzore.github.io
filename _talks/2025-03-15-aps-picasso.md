@@ -3,7 +3,7 @@ title: "picasso: a machine learning model to paint intracluster gas on gravity-o
 collection: talks
 type: "Conference talk"
 permalink: /talks/2024-03-15-aps-picasso.md
-venue: "APS Global Summit 2025"
+venue: "American Physics Society Global Summit 2025"
 date: 2025-03-15
 location: "Anaheim, CA"
 slides: "https://drive.google.com/file/d/1jHuLIA6nNHxqJhdV0veMykYvQ49RGwUg/view?usp=sharing"
