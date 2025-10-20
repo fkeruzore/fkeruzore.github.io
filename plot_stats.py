@@ -4,34 +4,35 @@ import git
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from datetime import datetime
+import argparse
 
 plt.style.use("petroff10")
 
-# ┌─────────────────────────────────────────────────────────────────────────────┐
-# │  USER-CONFIGURATION SECTION                                                 │
-# └─────────────────────────────────────────────────────────────────────────────┘
+# ┌───────────────────────────────────────────────────────────────────────────┐
+# │  USER-CONFIGURATION SECTION                                               │
+# └───────────────────────────────────────────────────────────────────────────┘
 
-# Path to your Git repository; if you run this script from the repo root,
-# you can leave this as ".". Otherwise, point it to the folder containing .git/.
+# Path to your Git repository; if you run this script from the repo root, you
+# can leave this as ".". Otherwise, point it to the folder containing .git/.
 REPO_PATH = "."
 
-# The exact commit message your pipeline always uses when updating _data/pub_stats.yml.
-# Example: if your GH Action always does: `git commit -m "Update pub stats"`, then set:
-#    COMMIT_MSG = "Update pub stats"
-#
+# The exact commit message your pipeline always uses when updating
+# _data/pub_stats.yml. Example: if your GH Action always does:
+# `git commit -m "Update pub stats"`, then set: COMMIT_MSG = "Update pub stats"
 # Make sure this matches exactly (including capitalization and spacing).
 COMMIT_MSG = "Auto-update publication page"
 
 
-# ┌─────────────────────────────────────────────────────────────────────────────┐
-# │  END OF USER-CONFIGURATION SECTION                                          │
-# └─────────────────────────────────────────────────────────────────────────────┘
+# ┌───────────────────────────────────────────────────────────────────────────┐
+# │  END OF USER-CONFIGURATION SECTION                                        │
+# └───────────────────────────────────────────────────────────────────────────┘
 
 
 def collect_history(repo_path, commit_msg, data_relpath="_data/pub_stats.yml"):
     """
-    Walks through all commits on 'master', finds those with message == commit_msg,
-    and returns a list of dicts: { 'date': datetime, 'stats': { ... } }.
+    Walks through all commits on 'master', finds those with
+    message == commit_msg, and returns a list of dicts:
+    { 'date': datetime, 'stats': { ... } }.
     """
     repo = git.Repo(repo_path)
 
@@ -57,7 +58,7 @@ def collect_history(repo_path, commit_msg, data_relpath="_data/pub_stats.yml"):
                 print(f"Warning: failed to parse YAML at {commit.hexsha}: {e}")
                 continue
 
-            # Record the timestamp (use committed_datetime, which is a datetime object)
+            # Record the timestamp (use committed_datetime, a datetime object)
             dt = commit.committed_datetime
             history.append({"date": dt, "stats": stats_dict})
 
@@ -68,8 +69,9 @@ def collect_history(repo_path, commit_msg, data_relpath="_data/pub_stats.yml"):
 
 def remove_glitches(history):
     """
-    Remove glitches where a metric increases on one day and decreases the next.
-    This happens when a publication is counted twice on release day, then corrected.
+    Remove glitches where a metric increases on one day and decreases
+    the next. This happens when a publication is counted twice on
+    release day, then corrected.
 
     Returns a cleaned history list with glitch entries removed.
     """
@@ -95,11 +97,16 @@ def remove_glitches(history):
                 curr_val = int(curr_stats.get(key, 0))
                 next_val = int(next_stats.get(key, 0))
 
-                # Glitch pattern: increase followed by decrease back to or below previous level
-                if curr_val > prev_val and next_val <= prev_val:
+                # Glitch pattern: increase followed by decrease back to
+                # or below previous level
+                if curr_val > prev_val and next_val < curr_val:
                     is_glitch = True
-                    print(f"Detected glitch at {history[i]['date'].strftime('%Y-%m-%d')}: "
-                          f"{key} jumped from {prev_val} to {curr_val}, then dropped to {next_val}")
+                    print(
+                        "Detected glitch at"
+                        f"{history[i]['date'].strftime('%Y-%m-%d')}: "
+                        f"{key} jumped from {prev_val} to {curr_val},"
+                        f"then dropped to {next_val}"
+                    )
                     break
             except (ValueError, TypeError):
                 continue
@@ -108,22 +115,26 @@ def remove_glitches(history):
             indices_to_remove.add(i)
 
     # Return filtered history
-    cleaned = [entry for i, entry in enumerate(history) if i not in indices_to_remove]
+    cleaned = [
+        entry for i, entry in enumerate(history) if i not in indices_to_remove
+    ]
     if indices_to_remove:
         print(f"Removed {len(indices_to_remove)} glitch entries")
     return cleaned
 
 
-def plot_time_series(history):
+def plot_time_series(history, deglitch=False):
     """
-    Given a list of { 'date': datetime, 'stats': { ... } }, plot each key in stats over time.
+    Given a list of { 'date': datetime, 'stats': { ... } }, plot each key
+    in stats over time.
     """
     if not history:
         print("No matching commits found. Exiting.")
         return
 
-    # Remove glitches before plotting
-    history = remove_glitches(history)
+    # Remove glitches before plotting if requested
+    if deglitch:
+        history = remove_glitches(history)
 
     # Extract all unique stat-keys (assuming all commits have the same keys)
     sample_stats = history[0]["stats"].keys()
@@ -132,7 +143,8 @@ def plot_time_series(history):
     # Prepare data: for each stat, make a list of (date, value)
     dates = [entry["date"] for entry in history]
     values = {
-        key: [entry["stats"].get(key, None) for entry in history] for key in stat_keys
+        key: [entry["stats"].get(key, None) for entry in history]
+        for key in stat_keys
     }
 
     # Start plotting
@@ -166,12 +178,20 @@ def plot_time_series(history):
 
         # Add final value at the end of the line
         if y and y[-1] is not None:
-            ax.text(dates[-1], y[-1], f'  {y[-1]:.0f}',
-                    va='center', ha='left', color=line.get_color())
+            ax.text(
+                dates[-1],
+                y[-1],
+                f"  {y[-1]:.0f}",
+                va="center",
+                ha="left",
+                color=line.get_color(),
+            )
 
     # Format the x-axis for dates
     ax.xaxis.set_major_locator(mdates.AutoDateLocator())
-    ax.xaxis.set_major_formatter(mdates.ConciseDateFormatter(mdates.AutoDateLocator()))
+    ax.xaxis.set_major_formatter(
+        mdates.ConciseDateFormatter(mdates.AutoDateLocator())
+    )
     ax.set_yscale("log")
     ax.set_xlabel("Commit Date")
     ax.set_ylabel("Value")
@@ -185,5 +205,15 @@ def plot_time_series(history):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Plot publication statistics over time from git history"
+    )
+    parser.add_argument(
+        "--deglitch",
+        action="store_true",
+        help="Remove glitches where metrics temporarily spike then drop back",
+    )
+    args = parser.parse_args()
+
     history = collect_history(REPO_PATH, COMMIT_MSG)
-    plot_time_series(history)
+    plot_time_series(history, deglitch=args.deglitch)
