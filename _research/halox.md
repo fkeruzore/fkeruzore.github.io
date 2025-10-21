@@ -20,3 +20,6 @@ I developped the halox library, which offers a JAX implementation of some widely
 The use of JAX as a backend allows these functions to be compiled and GPU-accelerated, enabling high-performance computations; and automatically differentiable, enabling their efficient use in gradient-based workflows, such as sensitivity analyses, Hamiltonian Monte-Carlo sampling for Bayesian inference, or machine learning-based methods.
 
 All functions available in halox are validated against existing, non-JAX-based software. Cosmology calculations are validated against [Astropy](https://github.com/astropy/astropy) for varying cosmological parameters and redshifts. Other quantities are validated against [colossus](https://bdiemer.bitbucket.io/colossus/) for varying halo masses, redshifts, critical overdensities, and cosmological parameters. These tests are included in an automatic CI/CD pipeline on the GitHub repository, and presented graphically in the online documentation.
+
+**Github:** [fkeruzore/halox](https://github.com/fkeruzore/halox)
+**Documentation:** [halox.readthedocs.io](https://halox.readthedocs.io)

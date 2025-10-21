@@ -28,3 +28,6 @@ To assess the code's accuracy, I implemented a validation procedure based on the
 This involved synthetic cluster maps mimicking observations from instruments like *Planck*, SPT, and NIKA2.
 The pressure profiles reconstructed with `panco2` consistently showed excellent agreement with the real profiles, validating the accuracy of the adjustments made.
 This updated version of `panco2` is now a Python library, publicly available at [fkeruzore/panco2](https://github.com/fkeruzore/panco2), accompanied by a comprehensive [documentation](https://panco2.readthedocs.io/en/latest/).
+
+**Github:** [fkeruzore/panco2](https://github.com/fkeruzore/panco2)
+**Documentation:** [panco2.readthedocs.io](https://panco2.readthedocs.io)
