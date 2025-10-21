@@ -15,3 +15,9 @@ software:
   description: "Building open-source tools for cluster science, from pressure profile fitting to statistical analysis pipelines."
   icon: "fa-code"
   color: "#2ecc71"
+
+aiml:
+  title: "AI/ML"
+  description: "Applying machine learning and artificial intelligence techniques to astrophysical data analysis and simulation."
+  icon: "fa-brain"
+  color: "#9b59b6"

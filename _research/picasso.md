@@ -4,7 +4,7 @@ excerpt: "Next-generation baryon painting model for creating tSZ sky maps from c
 collection: research
 permalink: /research/picasso/
 date: 2024-01-01
-themes: [simulations, software]
+themes: [simulations, software, aiml]
 tags: [simulations, baryon painting, HACC, tSZ, software]
 header:
   teaser: picasso_header.png

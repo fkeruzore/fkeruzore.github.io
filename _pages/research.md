@@ -3,7 +3,7 @@ layout: research-home
 title: "Research"
 permalink: /research/
 author_profile: true
-themes: [gastrophysics, simulations, software]
+themes: [gastrophysics, simulations, software, aiml]
 ---
 
 I am mainly interested in galaxy clusters and their use in cosmology.
