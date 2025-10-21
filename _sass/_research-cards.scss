@@ -40,6 +40,10 @@
   &:hover {
     color: inherit;
   }
+
+  * {
+    text-decoration: none !important;
+  }
 }
 
 .theme-card__icon {
@@ -129,6 +133,10 @@
 
   &:hover {
     color: inherit;
+  }
+
+  * {
+    text-decoration: none !important;
   }
 }
 

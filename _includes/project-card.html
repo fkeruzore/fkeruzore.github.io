@@ -24,13 +24,6 @@
       {% if include.project.excerpt %}
       <p class="project-card__excerpt">{{ include.project.excerpt | markdownify | strip_html | truncate: 120 }}</p>
       {% endif %}
-      {% if include.project.tags %}
-      <div class="project-card__tags">
-        {% for tag in include.project.tags %}
-        <span class="project-card__tag">{{ tag }}</span>
-        {% endfor %}
-      </div>
-      {% endif %}
     </div>
   </a>
 </div>
