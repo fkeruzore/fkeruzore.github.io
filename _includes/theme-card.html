@@ -1,0 +1,18 @@
+{% include base_path %}
+
+{% assign theme_data = site.data.research_themes[include.theme] %}
+
+<div class="theme-card">
+  <a href="{{ base_path }}/research/{{ include.theme }}/" class="theme-card__link">
+    <div class="theme-card__icon" style="background-color: {{ theme_data.color }};">
+      <i class="fa {{ theme_data.icon }} fa-3x" aria-hidden="true"></i>
+    </div>
+    <div class="theme-card__content">
+      <h3 class="theme-card__title">{{ theme_data.title }}</h3>
+      <p class="theme-card__description">{{ theme_data.description }}</p>
+    </div>
+    <div class="theme-card__arrow">
+      <i class="fa fa-arrow-right" aria-hidden="true"></i>
+    </div>
+  </a>
+</div>

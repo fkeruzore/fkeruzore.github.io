@@ -1,0 +1,36 @@
+{% include base_path %}
+
+{% if include.project.header.teaser %}
+  {% capture teaser %}{{ include.project.header.teaser }}{% endcapture %}
+{% else %}
+  {% assign teaser = site.teaser %}
+{% endif %}
+
+<div class="project-card">
+  <a href="{{ base_path }}{{ include.project.url }}" class="project-card__link">
+    {% if teaser %}
+    <div class="project-card__image">
+      <img src=
+        {% if teaser contains "://" %}
+          "{{ teaser }}"
+        {% else %}
+          "{{ teaser | prepend: "/images/" | prepend: base_path }}"
+        {% endif %}
+        alt="{{ include.project.title }}">
+    </div>
+    {% endif %}
+    <div class="project-card__content">
+      <h4 class="project-card__title">{{ include.project.title }}</h4>
+      {% if include.project.excerpt %}
+      <p class="project-card__excerpt">{{ include.project.excerpt | markdownify | strip_html | truncate: 120 }}</p>
+      {% endif %}
+      {% if include.project.tags %}
+      <div class="project-card__tags">
+        {% for tag in include.project.tags %}
+        <span class="project-card__tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </a>
+</div>

@@ -1,0 +1,17 @@
+gastrophysics:
+  title: "Intracluster Gas Physics"
+  description: "Measuring intracluster medium thermodynamics from tSZ and X-ray observations to understand cluster physics and enable cosmological constraints."
+  icon: "fa-fire"
+  color: "#e74c3c"
+
+simulations:
+  title: "Simulations"
+  description: "Developing baryon painting methods to emulate intracluster gas in gravity-only simulations, enabling efficient tSZ sky map generation."
+  icon: "fa-cube"
+  color: "#3498db"
+
+software:
+  title: "Software"
+  description: "Building open-source tools for cluster science, from pressure profile fitting to statistical analysis pipelines."
+  icon: "fa-code"
+  color: "#2ecc71"

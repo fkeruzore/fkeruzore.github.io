@@ -1,13 +1,14 @@
 ---
-layout: archive
+layout: research-home
 title: "Research"
 permalink: /research/
 author_profile: true
+themes: [gastrophysics, simulations, software]
 ---
 
 I am mainly interested in galaxy clusters and their use in cosmology.
 
-# Background: Cosmology with galaxy clusters
+## Background: Cosmology with galaxy clusters
 
 My research activity lies in the field of observational cosmology, in particular using galaxy clusters as a cosmological probe.
 Hosted by the most massive dark matter halos in the Universe, galaxy clusters represent a formidable tracer of the cosmic matter distribution, and of its evolution with time.
@@ -23,11 +24,7 @@ Mass calibration is one of the main bottlenecks of cluster cosmology, since it i
 To tackle this issue, tSZ-selected samples are particularly useful, as the amplitude of the tSZ effect tightly correlates with cluster mass.
 Hence, by determining the masses of only a subset of clusters, one can calibrate a statistical relationship between mass and tSZ signal, and use it to derive precise constraints on cluster masses from their tSZ signal.
 
+## Research Themes
 
-{% include base_path %}
-
-
-{% for post in site.research %}
-  {% include archive-single.html %}
-{% endfor %}
+Explore my research organized by theme:
 
