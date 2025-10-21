@@ -5,7 +5,6 @@ collection: research
 permalink: /research/lpsz-scaling/
 date: 2022-06-01
 themes: [gastrophysics]
-tags: [tSZ, scaling relations, Bayesian statistics, NIKA2]
 header:
   teaser: picasso_header.png
 ---

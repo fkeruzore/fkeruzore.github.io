@@ -5,7 +5,6 @@ collection: research
 permalink: /research/picasso/
 date: 2024-01-01
 themes: [simulations, software, aiml]
-tags: [simulations, baryon painting, HACC, tSZ, software]
 header:
   teaser: picasso_header.png
 ---

@@ -5,7 +5,6 @@ collection: research
 permalink: /research/panco2/
 date: 2023-01-01
 themes: [gastrophysics, software]
-tags: [tSZ, software, ICM, open-source]
 header:
   teaser: picasso_header.png
 ---

@@ -5,7 +5,6 @@ collection: research
 permalink: /research/baryon-painting/
 date: 2022-01-01
 themes: [simulations]
-tags: [simulations, baryon painting, HACC, tSZ]
 header:
   teaser: picasso_header.png
 ---
