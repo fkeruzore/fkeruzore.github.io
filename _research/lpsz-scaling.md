@@ -6,7 +6,7 @@ permalink: /research/lpsz-scaling/
 date: 2022-06-01
 themes: [gastrophysics]
 header:
-  teaser: picasso_header.png
+  teaser: banner_scaling.png
 ---
 
 **Associated publication:** [Kéruzoré, F. et al. (2022), mm Universe @ NIKA2](https://ui.adsabs.harvard.edu/abs/2022EPJWC.25700025K/abstract)

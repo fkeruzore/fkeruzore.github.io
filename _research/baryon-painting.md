@@ -6,7 +6,7 @@ permalink: /research/baryon-painting/
 date: 2022-01-01
 themes: [simulations]
 header:
-  teaser: picasso_header.png
+  teaser: banner_bpbc.png
 ---
 
 **Associated publication:** [Kéruzoré, F. et al. (2022), OJAp 6, 43.](https://ui.adsabs.harvard.edu/abs/2023OJAp....6E..43K/abstract)

@@ -6,7 +6,7 @@ permalink: /research/panco2/
 date: 2023-01-01
 themes: [gastrophysics, software]
 header:
-  teaser: picasso_header.png
+  teaser: banner_panco2.png
 ---
 
 **Associated publications:** [Kéruzoré, F. et al. (2023), OJAp, 6, 9.](https://ui.adsabs.harvard.edu/abs/2023OJAp....6E...9K/abstract), [Kéruzoré, F. et al. (2020), mm Universe @ NIKA2](https://ui.adsabs.harvard.edu/abs/2022EPJWC.25700024K/abstract)

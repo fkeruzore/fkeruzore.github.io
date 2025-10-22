@@ -7,7 +7,7 @@ theme_id: simulations
 ---
 
 Cosmological simulations are powerful tools for understanding cluster formation and evolution, and for generating synthetic datasets to validate observational analyses.
-I am working on baryon painting methods to efficiently emulate intracluster gas properties in gravity-only simulations.
+I am working on baryon painting methods to efficiently emulate intracluster gas properties in gravity-only simulations, as well as on using simulations to model cosmological observables.
 
 Cosmological simulations can be broadly separated into two categories.
 On one hand, hydrodynamic simulations jointly model many different components of the Universe, including stellar matter, gas, and dark matter.
