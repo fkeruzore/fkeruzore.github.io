@@ -155,7 +155,6 @@ def get_citation(bibcodes):
     payload = {
         "bibcode": bibcodes,
         "format": "%5.3l (%Y), %J, %V, %p.\n",
-        "sort": "date desc",
     }
     results = requests.post(
         "https://api.adsabs.harvard.edu/v1/export/custom",
