@@ -13,10 +13,16 @@ author_profile: true
 
 <div class="publications-compact" markdown="1">
 
-<ul>
-{% for post in site.talks reversed %}
-  {% include archive-single-talk.html %}
+{% assign talks_by_year = site.talks | group_by_exp: "post", "post.date | date: '%Y'" | sort: "name" | reverse %}
+
+{% for year_group in talks_by_year %}
+  <h2>{{ year_group.name }}</h2>
+  <ul>
+  {% assign year_talks = year_group.items | sort: "date" | reverse %}
+  {% for post in year_talks %}
+    {% include archive-single-talk.html %}
+  {% endfor %}
+  </ul>
 {% endfor %}
-</ul>
 
 </div>
