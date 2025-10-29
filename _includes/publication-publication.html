@@ -38,8 +38,14 @@
       {% assign bibcode = post.link | split: "/abs/" | last | split: "/abstract" | first %}
       {% assign abstract_id = bibcode | replace: ".", "" | replace: "&", "" %}
       <p class="archive__item-link">
-        <a href="{{ post.link }}">NASA ADS</a>
-        | <a href="https://ui.adsabs.harvard.edu/link_gateway/{{ bibcode }}/EPRINT_HTML">arXiv</a>
+        {% if post.link_text %}
+          <a href="{{ post.link }}">{{ post.link_text }}</a>
+        {% else %}
+          <a href="{{ post.link }}">NASA ADS</a>
+        {% endif %}
+        {% unless post.hide_arxiv %}
+          | <a href="https://ui.adsabs.harvard.edu/link_gateway/{{ bibcode }}/EPRINT_HTML">arXiv</a>
+        {% endunless %}
         | <a href="#" class="abstract-toggle" data-target="abstract-{{ abstract_id }}">Abstract</a>
       </p>
       {% if post.abstract %}
