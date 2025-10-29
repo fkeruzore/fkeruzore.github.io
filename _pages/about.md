@@ -13,4 +13,4 @@ My work focuses on the physical properties of galaxy clusters across the Univers
 
 I am currently working as a postdoc in the Cosmological Physics and Advanced Computing team at the Argonne National Laboratory, where I mainly study galaxy clusters in cosmological simulations, as well as in data from the South Pole Telescope.
 
-Prior to that, I was working as a PhD student at the Laboratoire de Physique Subatomique et Cosmologie (Universite Grenoble Alpes, France), whew my work focused on high-resolution observations of galaxy clusters with the NIKA2 camera.
+Prior to that, I was working as a PhD student at the Laboratoire de Physique Subatomique et Cosmologie (Universite Grenoble Alpes, France), where my work focused on high-resolution observations of galaxy clusters with the NIKA2 camera.

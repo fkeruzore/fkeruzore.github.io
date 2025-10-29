@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Florian Kéruzoré"
 title_separator          : "-"
 name                     : &name "Florian Kéruzoré"
-description              : &description "personal description"
+description              : &description "Cosmologist studying galaxy clusters as cosmological probes through observations and simulations"
 url                      : https://fkeruzore.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "fkeruzore/fkeruzore.github.io"
@@ -86,7 +86,7 @@ author:
   location         : "Chicago, IL"
   employer         : "Argonne National Laboratory"
   pubmed           :
-  googlescholar    :
+  googlescholar    : "https://scholar.google.com/citations?user=OU6G528AAAAJ&hl"
   email            : "florian.keruzore@gmail.com"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
