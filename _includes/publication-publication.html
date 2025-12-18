@@ -57,10 +57,12 @@
         {%- assign links = links | push: arxiv_link -%}
       {%- endunless -%}
 
-      {%- if post.hide_arxiv and post.pdf_url -%}
-        {%- capture pdf_link -%}<a href="{{ post.pdf_url }}">PDF</a>{%- endcapture -%}
-        {%- assign links = links | push: pdf_link -%}
-      {%- elsif post.hide_arxiv == false -%}
+      {%- if post.hide_arxiv -%}
+        {%- if post.pdf_url -%}
+          {%- capture pdf_link -%}<a href="{{ post.pdf_url }}">PDF</a>{%- endcapture -%}
+          {%- assign links = links | push: pdf_link -%}
+        {%- endif -%}
+      {%- else -%}
         {%- capture pdf_link -%}<a href="https://ui.adsabs.harvard.edu/link_gateway/{{ bibcode }}/EPRINT_PDF">PDF</a>{%- endcapture -%}
         {%- assign links = links | push: pdf_link -%}
       {%- endif -%}
