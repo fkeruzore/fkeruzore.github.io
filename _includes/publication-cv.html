@@ -12,25 +12,46 @@
     </h3>
     {% assign citation_bold = post.citation | replace: "Kéruzoré, F.", "<strong>Kéruzoré, F.</strong>" %}
     <p class="archive__item-excerpt" itemprop="description">{{ citation_bold }}</p>
+
     {% if post.link %}
-      {% assign bibcode = post.link | split: "/abs/" | last | split: "/abstract" | first %}
-      {% assign abstract_id = bibcode | replace: ".", "" | replace: "&", "" %}
+      {%- assign bibcode = post.link | split: "/abs/" | last | split: "/abstract" | first -%}
+      {%- assign abstract_id = bibcode | replace: ".", "" | replace: "&", "" -%}
+      {%- assign links = "" | split: "" -%}
+
+      {%- if post.abstract -%}
+        {%- capture abstract_link -%}<a href="#" class="abstract-toggle" data-target="abstract-{{ abstract_id }}">Abstract</a>{%- endcapture -%}
+        {%- assign links = links | push: abstract_link -%}
+      {%- endif -%}
+
+      {%- if post.link_text -%}
+        {%- capture ads_link -%}<a href="{{ post.link }}">{{ post.link_text }}</a>{%- endcapture -%}
+      {%- else -%}
+        {%- capture ads_link -%}<a href="{{ post.link }}">NASA ADS</a>{%- endcapture -%}
+      {%- endif -%}
+      {%- assign links = links | push: ads_link -%}
+
+      {%- unless post.hide_arxiv -%}
+        {%- capture arxiv_link -%}<a href="https://ui.adsabs.harvard.edu/link_gateway/{{ bibcode }}/EPRINT_HTML">arXiv</a>{%- endcapture -%}
+        {%- assign links = links | push: arxiv_link -%}
+      {%- endunless -%}
+
+      {%- if post.hide_arxiv and post.pdf_url -%}
+        {%- capture pdf_link -%}<a href="{{ post.pdf_url }}">PDF</a>{%- endcapture -%}
+        {%- assign links = links | push: pdf_link -%}
+      {%- elsif post.hide_arxiv == false -%}
+        {%- capture pdf_link -%}<a href="https://ui.adsabs.harvard.edu/link_gateway/{{ bibcode }}/EPRINT_PDF">PDF</a>{%- endcapture -%}
+        {%- assign links = links | push: pdf_link -%}
+      {%- endif -%}
+
       <p class="archive__item-link">
-        {% if post.link_text %}
-          <a href="{{ post.link }}">{{ post.link_text }}</a>
-        {% else %}
-          <a href="{{ post.link }}">NASA ADS</a>
-        {% endif %}
-        {% unless post.hide_arxiv %}
-          | <a href="https://ui.adsabs.harvard.edu/link_gateway/{{ bibcode }}/EPRINT_HTML">arXiv</a>
-        {% endunless %}
-        | <a href="#" class="abstract-toggle" data-target="abstract-{{ abstract_id }}">Abstract</a>
+        {{ links | join: " | " }}
       </p>
-      {% if post.abstract %}
+    {% endif %}
+
+    {% if post.abstract %}
       <div id="abstract-{{ abstract_id }}" class="abstract-content" style="display: none;">
         <p>{{ post.abstract }}</p>
       </div>
-      {% endif %}
     {% endif %}
     </li>
  </article>
