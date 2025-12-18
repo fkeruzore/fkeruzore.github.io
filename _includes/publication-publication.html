@@ -36,8 +36,15 @@
     <p class="archive__item-excerpt" itemprop="description">{{ citation_bold }}</p>
 
     {% if post.link %}
-      {%- assign bibcode = post.link | split: "/abs/" | last | split: "/abstract" | first -%}
-      {%- assign abstract_id = bibcode | replace: ".", "" | replace: "&", "" -%}
+      {%- assign is_ads = false -%}
+      {%- if post.link contains "adsabs.harvard.edu" -%}
+        {%- assign is_ads = true -%}
+        {%- assign bibcode = post.link | split: "/abs/" | last | split: "/abstract" | first -%}
+        {%- assign abstract_id = bibcode | replace: ".", "" | replace: "&", "" -%}
+      {%- else -%}
+        {%- assign abstract_id = post.slug | slugify -%}
+      {%- endif -%}
+
       {%- assign links = "" | split: "" -%}
 
       {%- if post.abstract -%}
@@ -53,8 +60,10 @@
       {%- assign links = links | push: ads_link -%}
 
       {%- unless post.hide_arxiv -%}
-        {%- capture arxiv_link -%}<a href="https://ui.adsabs.harvard.edu/link_gateway/{{ bibcode }}/EPRINT_HTML">arXiv</a>{%- endcapture -%}
-        {%- assign links = links | push: arxiv_link -%}
+        {% if is_ads %}
+          {%- capture arxiv_link -%}<a href="https://ui.adsabs.harvard.edu/link_gateway/{{ bibcode }}/EPRINT_HTML">arXiv</a>{%- endcapture -%}
+          {%- assign links = links | push: arxiv_link -%}
+        {% endif %}
       {%- endunless -%}
 
       {%- if post.hide_arxiv -%}
@@ -63,8 +72,10 @@
           {%- assign links = links | push: pdf_link -%}
         {%- endif -%}
       {%- else -%}
-        {%- capture pdf_link -%}<a href="https://ui.adsabs.harvard.edu/link_gateway/{{ bibcode }}/EPRINT_PDF">PDF</a>{%- endcapture -%}
-        {%- assign links = links | push: pdf_link -%}
+        {% if is_ads %}
+          {%- capture pdf_link -%}<a href="https://ui.adsabs.harvard.edu/link_gateway/{{ bibcode }}/EPRINT_PDF">PDF</a>{%- endcapture -%}
+          {%- assign links = links | push: pdf_link -%}
+        {% endif %}
       {%- endif -%}
 
       <p class="archive__item-link">
