@@ -1,0 +1,11 @@
+---
+title: "Resolved ISM properties and scaling relations in the barred galaxy NGC 3627: constraints from NIKA2 observations"
+collection: "publications"
+category: "co_papers"
+permalink: /publications/2026MNRAStmp78K
+link: https://ui.adsabs.harvard.edu/abs/2026MNRAS.tmp...78K/abstract
+date: 2026-01-01
+venue: "Monthly Notices of the Royal Astronomical Society"
+citation: "Katsioli, S., Xilouris, E. M., Galliano, F., et al. (2026), Monthly Notices of the Royal Astronomical Society,."
+abstract: "We investigate the interplay between star formation, interstellar medium (ISM) components, and dust properties in NGC 3627 using new NIKA2 1.15 and 2 mm observations from the IMEGIN Large Program. Our goal is to analyze dust and radio emission, decompose contributions in the millimeter-centimeter regime, and explore ISM properties within the galaxy. We perform spectral energy distribution fitting, at both global and spatial scales, using the THEMIS dust model within the HerBIE code, applied to data from 3.4 μm to 6 cm. We decompose emission into dust, free-free, and synchrotron components, and examine correlations with gas surface density and star formation activity. Additionally, we analyze the small dust grain fraction and its variation across the galaxy. We find ~10% radio emission at 2 mm, peaking at 18 % in the southern bar-end, which hosts the highest star formation activity. However, an isolated star-forming region beyond this bar-end is the most efficient, as indicated by its elevated dust production efficiency and effective yield, predicted by our simplistic dust evolution model. The 160 μm emission shows the strongest correlation with molecular gas, while 1.15 mm better traces the dust mass surface density. Small grains, which make up ~13% of dust mass (2 × 10<SUP>7</SUP> M<SUB>⊙</SUB>), are depleted in intense radiation fields, with a notable deficit in the southern tidal tail. ISM properties and chemical evolution indicate that dynamical processes, such as bar-driven gas flows and tidal interactions, are crucial in shaping the galactic structure, influencing star formation efficiency, and dust distribution."
+---
