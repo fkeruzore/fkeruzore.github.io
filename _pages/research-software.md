@@ -6,10 +6,10 @@ author_profile: true
 theme_id: software
 ---
 
-Open-source software development is a crucial part of modern astronomy, enabling reproducible research and collaborative science.
-I develop and maintain several software tools for cosmology, focusing on performance and ease of use.
+Doing research at scale requires software that is fast, correct, and maintainable - and building that software is something I deeply care about.
+Across my projects, I have written production-quality scientific libraries adopted by collaborations well beyond my own group.
 
-My software projects aim to bridge the gap between theoretical predictions and observational data, providing the community with tools for analyzing tSZ observations, fitting pressure profiles, performing statistical analyses, and generating synthetic datasets.
-These tools are designed to be flexible and general-purpose, working with data from various instruments and surveys.
+My software work spans the full stack: from low-level numerical kernels (GPU-accelerated JAX operations) to high-level analysis pipelines with clean APIs, comprehensive documentation, and automated CI/CD.
+A recurring theme is **performance engineering**: identifying computational bottlenecks and redesigning algorithms to achieve order-of-magnitude speedups or better, without sacrificing correctness or generality.
 
-All software projects are publicly available on GitHub with comprehensive documentation and example notebooks.
+All software is open-source, hosted on GitHub, and accompanied by documentation, example notebooks, and automated test suites - not as an afterthought, but as a core part of the development process.

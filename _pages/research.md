@@ -6,16 +6,16 @@ author_profile: true
 themes: [gastrophysics, simulations, software, aiml]
 ---
 
-I am mainly interested in cosmology using advanced computing methods, and my research has primarily been focused on galaxy clusters and their use in cosmology.
+My research combines **machine learning**, **Bayesian statistical inference**, and **high-performance computing** to solve hard data problems in cosmology.
+The unifying thread across all my projects is the challenge of extracting precise measurements from complex, noisy, high-dimensional data - often in settings where the forward model (i.e., going from theory to prediction) is expensive, approximate, or both.
 
-Hosted by the most massive dark matter halos in the Universe, galaxy clusters represent a formidable tracer of the cosmic matter distribution, and of its evolution with time.
-Their distribution in mass and redshift is therefore tightly linked to the evolution of the Universe, allowing large cluster surveys to be used to set constraints on cosmological parameters.
+The scientific context is galaxy cluster cosmology.
+Galaxy clusters are the largest gravitationally bound structures in the Universe, and their abundance as a function of mass and cosmic time is extremely sensitive to the fundamental parameters governing the evolution of the Universe.
+Building a cosmological experiment around clusters therefore requires solving several intertwined inference problems: detecting clusters in noisy telescope data, estimating their masses from indirect proxies, characterizing measurement systematics, and combining all of this within a statistically principled framework.
 
-I am particularly interested in cluster surveys built from millimeter-wave datasets.
-At these wavelengths, galaxy clusters can be detected via their imprint on the cosmic microwave background (CMB) through the thermal Sunyaev-Zeldovich (tSZ) effect, which is the spectral distortion of the CMB due to the Compton scattering of its photons on the free electrons of the hot intracluster medium (ICM) plasma.
-As a spectral distortion of the CMB, the tSZ signal is redshift-independent, enabling the detection of distant clusters, and thus the construction of catalogs spanning large redshift ranges.
-The tSZ effect has been successfully used to build large catalogs of thousands of galaxy clusters up to high redshifts, using surveys such as *Planck*, the Atacama Cosmology Telescope (ACT), and the South Pole Telescope (SPT).
-An additional advantage of the tSZ effect for cluster cosmology is its ability to provide precise relative mass calibration of cluster samples.
+I am particularly interested in clusters detected via the **thermal Sunyaev-Zeldovich (tSZ) effect** - a spectral distortion of the cosmic microwave background (CMB) caused by hot gas in and around clusters.
+The tSZ signal is unique in that it does not fade with distance, making it a powerful probe for building large cluster catalogs spanning wide ranges of redshift.
+Exploiting these catalogs for cosmology requires careful modeling of cluster gas physics and tight control of observational biases - problems I address through the methods below.
 
 ## Research Themes
 

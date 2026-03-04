@@ -9,92 +9,94 @@ redirect_from:
 
 {% include base_path %}
 
-# Research positions
+*Machine learning engineer with a PhD in physics, specializing in GPU-accelerated scientific ML, HPC, and distributed training. Experienced in profiling and optimizing multi-GPU and multi-node ML workloads, developing physics-informed surrogates for large-scale simulations, and validating performance on modern NVIDIA architectures using JAX and PyTorch.*
 
-## 2021 - present: Postdoctoral Scholar
+# Technical Skills
 
-* Argonne National Laboratory, High Energy Physics division
+**Machine Learning:** Deep learning (JAX/Flax, PyTorch); CNNs, VAEs, fully-connected networks; Physics-informed neural networks; Differentiable programming; Generative models; Bayesian inference, MCMC, gradient-based optimization
+
+**Programming:** Python (expert): NumPy, SciPy, Pandas, JAX ecosystem; Shell scripting; R; IDL
+
+**Infrastructure:** GPU/HPC: MPI, OpenMP, SLURM, PBS; CI/CD (GitHub Actions); Testing (pytest); Documentation (Sphinx, ReadTheDocs); PyPI packaging (uv, Poetry)
+
+# Open-Source Software
+
+**[picasso](https://github.com/fkeruzore/picasso)** - Neural network for 3D field generation (JAX, Flax) - 2024
+
+* Designed conditional neural network predicting gas pressure fields from dark matter halo properties
+* Achieves **10,000× speedup** over traditional simulation methods while preserving physical accuracy
+* GPU-accelerated and fully differentiable for integration into gradient-based inference pipelines
+* Peer-reviewed publication; adopted by South Pole Telescope collaboration
+* Documentation: [picasso-cosmo.readthedocs.io](https://picasso-cosmo.readthedocs.io)
+
+**[halox](https://github.com/fkeruzore/halox)** - Differentiable scientific computing library (JAX) - 2025
+
+* GPU-accelerated, auto-differentiable physics calculations for gradient-based workflows
+* Validated against standard benchmarks; 100% test coverage; automated CI/CD; distributed via PyPI
+* Publication: [Kéruzoré, Submitted to JOSS](https://ui.adsabs.harvard.edu/abs/2025arXiv250922478K/abstract)
+* Documentation: [halox.readthedocs.io](https://halox.readthedocs.io)
+
+**[panco2](https://github.com/fkeruzore/panco2)** - Bayesian inference pipeline (Python) - 2022
+
+* Forward-modeling MCMC pipeline for signal extraction from noisy and filtered image data; **~1000× speedup** over prior tool
+* Adopted as the official pipeline of the NIKA2 collaboration; peer-reviewed publication
+* Documentation: [panco2.readthedocs.io](https://panco2.readthedocs.io)
+
+**[GalGenAI](https://github.com/fkeruzore/GalGenAI)** - Experimental generative models for image synthesis (PyTorch) - In development
+
+* Deep generative models (VAE + flow-matching) for conditional astronomical image generation
+
+# Experience
+
+## 2021 – Present: Post-doctoral Research Associate
+
+* Argonne National Laboratory, Cosmological Physics and Advanced Computing group
 * Supervisor: Dr. Lindsey Bleem
-* Research activities:
-  * Physics-informed AI/ML emulation of thermodynamic properties of simulated galaxy clusters
-  * Millimeter-wave sky maps from cosmological simulations
-  * Multi-wavelength studies of galaxy cluster samples
-  * Supervision of two post-bachelor internships (6 months to 1 year)
-  * Junior coordinator of galaxy cluster-related analyses in the SPT-3G collaboration
+* Developed neural networks generating synthetic 3D datasets from TB-scale simulations, enabling physics-informed predictions **four orders of magnitude faster** than traditional methods
+* Built and shipped 3 open-source ML libraries with documentation, CI/CD, and PyPI distribution
+* Leveraged DOE leadership-class supercomputers (ALCF) for large-scale, multi-node, multi-GPU inference
+* Led analysis coordination for multi-institution collaboration (100+ researchers)
+* Designed validation benchmarks and stress tests to evaluate generative model fidelity
+* Mentored 3 junior researchers on ML projects (3–6 month appointments)
+* Communicated complex ML architectures and results to diverse technical audiences at international conferences and research institutes
 
-## 2018 - 2021: Ph.D Student
+## 2018 – 2021: Graduate Research Associate
 
 * Université Grenoble Alpes, Laboratoire de Physique Subatomique et Cosmologie
 * Supervisor: Pr. Frédéric Mayet
-* Research activities:
-  * Observations at the IRAM 30-m telescope
-  * Analysis of NIKA2 raw data
-  * Analysis of the thermodynamic properties of the intracluster medium
-  * Mass-observable scaling relations
-  * Responsible of the NIKA2 collaboration SZ pipeline and SZ database
+* Developed end-to-end data pipelines extracting weak signals from noisy observational data
+* Built Monte Carlo simulation frameworks for statistical uncertainty quantification & sensitivity analysis
+* Designed and deployed collaboration-wide database serving 50+ researchers
+* Teaching assistant: 96 hours of instruction in physics courses
 
 # Education
 
-* Ph.D in Cosmology, Université Grenoble Alpes, 2021
-* Master's degree in Cosmology and Particle Physics, Université de Montpellier, 2018
-* Bachelor's degree in Physics and Chemistry, Université de Bordeaux, 2016
+* **Ph.D. in Astrophysics**, Université Grenoble Alpes, 2021
+* **M.S. in Physics**, Université de Montpellier, 2018 · *First in class*
+  * Research project: Deep learning for cosmological parameter estimation from supernova data
+* **B.S. in Physics & Chemistry**, Université de Bordeaux, 2016
 
-# Skills
+# Professional Development
 
-## Programming
+* *Intro to AI-driven Science on Supercomputers* - Argonne Leadership Computing Facility (2024)
+* *Statistical Challenges in Modern Astronomy* - Penn State University (2021)
 
-* Python (scipy, astropy, emcee, pymc3)
-* JAX ecosystem (Differentiable and GPU-enabled Python)
-* IDL, R, Shell scripting, LaTeX
-* Parallel computing (multithreading, MPI)
-* Version control (git, svn), Documentation (Sphinx),
+# Selected Research Output
 
-## Data analysis
+<strong>{{ site.data.pub_stats.publications }}</strong> publications (8 as first-author) · <strong>{{ site.data.pub_stats.citecount }}</strong> citations · h-index: <strong>{{ site.data.pub_stats.hindex }}</strong> (*Source*: [NASA ADS](https://ui.adsabs.harvard.edu/search/filter_doctype_facet_hier_fq_doctype=AND&filter_doctype_facet_hier_fq_doctype=doctype_facet_hier%3A%220%2FArticle%22&fq=%7B!type%3Daqp%20v%3D%24fq_doctype%7D&fq_doctype=(doctype_facet_hier%3A%220%2FArticle%22)&q=%20author%3A%22keruzore%2C%20florian%22&sort=date%20desc%2C%20bibcode%20desc&p_=0))
 
-* AI/ML: Artificial neural networks (design, training, and application)
-* Statistical modelling: Hierarchical models, Forward modelling
-* Inference: Bayesian analysis, Monte Carlo Markov chains, Gradient descent regression
-* Pipeline design and use of supercomputers to handle large datasets
+* Kéruzoré F. (2025). "halox: Dark matter halo properties using JAX." *Submitted to JOSS.* [ADS](https://ui.adsabs.harvard.edu/abs/2025arXiv250922478K/abstract)
+* Kéruzoré F. et al. (2024). "The picasso gas model: Painting intracluster gas on gravity-only simulations." *Open Journal of Astrophysics.* [ADS](https://ui.adsabs.harvard.edu/abs/2024OJAp....7E.116K/abstract)
+* Rau M., Kéruzoré F. et al. (2025). "Reducing Model Error Using Optimised Galaxy Selection." *MNRAS.*
 
-# Public scientific software
+For the complete list, see the [Publications](https://fkeruzore.github.io/publications/) page.
 
-* [fkeruzore/halox](https://github.com/fkeruzore/halox): Dark matter halo properties and halo mass functions using JAX
-  * Dark matter halo properties and large-scale structure theoretical predictions
-  * Implemented in JAX, with fully GPU-friendly and differentiable predictions
-  * Documentation: [halox.readthedocs.io](https://halox.readthedocs.io)
-  * Publication: [Kéruzoré, Submitted to JOSS](https://ui.adsabs.harvard.edu/abs/2025arXiv250922478K/abstract)
+# Leadership & Communication
 
-* [fkeruzore/picasso](https://github.com/fkeruzore/picasso): Painting intracluster gas on gravity-only simulations
-  * Gas model combining a parameterized physical model and neural network predictions
-  * Implemented using JAX and flax, with fully GPU-friendly and differentiable predictions
-  * Documentation: [picasso-cosmo.readthedocs.io](https://picasso-cosmo.readthedocs.io)
-  * Publication: [Kéruzoré et al., The Open Journal of Astrophysics 7, 116 (2024)](https://ui.adsabs.harvard.edu/abs/2024OJAp....7E.116K/abstract)
-
-* [fkeruzore/panco2](https://github.com/fkeruzore/panco2): Pressure profile measurements from SZ galaxy cluster maps
-  * Forward modeling MCMC analysis, enabling taking into account mm-wave systematics
-  * Tested on simulated Planck, SPT, NIKA2 maps; can be used with any mm-wave data
-  * Documentation: [panco2.readthedocs.io](https://panco2.readthedocs.io)
-  * Publication: [Kéruzoré et al., The Open Journal of Astrophysics 6, 9 (2023)](https://ui.adsabs.harvard.edu/abs/2023OJAp....6E...9K/abstract)
-
-# Collaborations
-
-* Member of the Dark Energy Science Collaboration (DESC) since 2022
-* Member of the CMB-S4 collaboration since 2022
-* Member of the South Pole Telescope (SPT) collaboration since 2022
-* Member of the Galaxy Clusters working group of the SPT collaboration since 2021
-* Member of the CHEX-MATE collaboration since 2019
-* Member of the NIKA2 collaboration since 2018 (Core team member since 2019)
-
-# Service and responsibilities
-
-* Junior coordinator of galaxy cluster-related analyses in the SPT-3G collaboration since 2024
-* PI of a joint SPT-eROSITA project studying the statistical relations between multi-wavelength galaxy cluster observables since 2022
-* Responsible of the NIKA2 collaboration SZ pipeline from 2019 to 2021
-* Responsible of the NIKA2 collaboration SZ database from 2019 to 2021
-
-# Talks
-
-For more information, see the [Talks](https://fkeruzore.github.io/talks/) section.
+* **Junior Coordinator**, Galaxy Cluster Analysis - South Pole Telescope Collaboration (2024–present)
+* **Pipeline & Database Lead** - NIKA2 Collaboration (2019–2021)
+* Science outreach: Argonne "Science 101" public lecture series participant
+* 20+ public talks:
 
 <div class="publications-compact" markdown="1">
 
@@ -103,61 +105,3 @@ For more information, see the [Talks](https://fkeruzore.github.io/talks/) sectio
   {% endfor %}</ul>
 
 </div>
-
-# Publications
-
-<strong>{{ site.data.pub_stats.publications }}</strong> publications; <strong>{{ site.data.pub_stats.citecount }}</strong> citations; h-index: <strong>{{ site.data.pub_stats.hindex }}</strong> (*Source*: [NASA ADS](https://ui.adsabs.harvard.edu/search/filter_doctype_facet_hier_fq_doctype=AND&filter_doctype_facet_hier_fq_doctype=doctype_facet_hier%3A%220%2FArticle%22&fq=%7B!type%3Daqp%20v%3D%24fq_doctype%7D&fq_doctype=(doctype_facet_hier%3A%220%2FArticle%22)&q=%20author%3A%22keruzore%2C%20florian%22&sort=date%20desc%2C%20bibcode%20desc&p_=0))
-
-For more information, see the [Publications](https://fkeruzore.github.io/publications/) section.
-
-<div class="publications-compact" markdown="1">
-
-## Journal Articles
-
-  <ul>{% for post in site.publications reversed %}
-    {% if post.category == "fa_papers" %}
-      {% include publication-cv.html %}
-    {% endif %}
-  {% endfor %}</ul>
-
-  <ul>{% for post in site.publications reversed %}
-    {% if post.category == "co_papers" %}
-      {% include publication-cv.html %}
-    {% endif %}
-  {% endfor %}</ul>
-
-## Conference Proceedings
-
-  <ul>{% for post in site.publications reversed %}
-    {% if post.category == "fa_procs" %}
-      {% include publication-cv.html %}
-    {% endif %}
-  {% endfor %}</ul>
-
-  Plus <strong>{{ site.data.pub_stats.co_procs }}</strong> conference proceedings as a co-author -- see the dedicated [Publications page](https://fkeruzore.github.io/publications/) for the complete list.
-
-## PhD Thesis
-
-  <ul>{% for post in site.publications reversed %}
-    {% if post.category == "thesis" %}
-      {% include publication-cv.html %}
-    {% endif %}
-  {% endfor %}</ul>
-
-</div>
-
-# Teaching
-
-2018-2021: 98 hours of teaching at Université Grenoble Alpes
-* Electromagnetism
-  * 1st year biology & chemistry students
-  * Tutorials (online & in-person), labs (in-person)
-  * 56 hours
-* Applied thermodynamics
-  * 3rd year physics students
-  * Tutorials (online & in-person)
-  * 30 hours
-* Nuclear physics
-  * 5th year radioprotection students
-  * Labs (in-person)
-  * 12 hours

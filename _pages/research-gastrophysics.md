@@ -6,12 +6,12 @@ author_profile: true
 theme_id: gastrophysics
 ---
 
-The cosmological exploitation of tSZ surveys relies on the knowledge of several properties of galaxy clusters.
-On one hand, the knowledge of the mean pressure profile of the intracluster medium is necessary to build cluster catalogs from millimeter observations.
-Indeed, the amplitude of the tSZ effect is directly proportional to the pressure of the intracluster medium integrated along the line of sight.
-Thus, prior knowledge of this distribution may help maximize the purity and completeness of the tSZ surveys, thus improving the statistical properties of the catalogs, and thus the precision and accuracy of the cosmological parameter estimates.
-On the other hand, millimeter surveys alone cannot provide individual cluster mass estimates, and rely on mass-observable scaling relations that require calibration.
+Translating telescope observations into cosmological constraints requires solving a chain of non-trivial inference problems.
+Each galaxy cluster is an extended source with a complex 3D gas distribution; we observe it projected on the sky, mixed with noise, filtered by the instrument response, and potentially contaminated by other astrophysical signals.
+Extracting reliable measurements from this data - and propagating all sources of uncertainty through to final constraints - demands careful **forward modeling**, **Bayesian parameter estimation**, and a thorough understanding of systematic effects.
 
-My thesis work was part of the large NIKA2 SZ program (LPSZ), a follow-up of about 40 intermediate- to high-redshift galaxy clusters covering a wide mass range.
-The goal of this program is to map the tSZ effect in these galaxy clusters with high angular resolution using the NIKA2 camera and to combine these observations with similar measurements in the X-ray domain to study the mean pressure profile of galaxy clusters and the mass-tSZ observable scaling relation.
-I have been involved in several activities within this program, from exploiting the raw data to construct maps of the SZ effect and extracting thermodynamic properties of the clusters from these observations to studying the mass-observable scaling relation.
+My PhD work was part of the [NIKA2 SZ Large Program (LPSZ)](http://lpsc.in2p3.fr/nika2lpsz/), a survey of ~40 galaxy clusters with the NIKA2 camera, a state-of-the-art millimeter-wave instrument at the IRAM 30m telescope.
+I led the end-to-end analysis of individual clusters: from raw time-ordered detector data to calibrated sky maps, and from maps to inferred thermodynamic profiles using MCMC.
+I also developed a **hierarchical Bayesian framework** used to combine individual cluster measurements into population-level scaling relations, with full propagation of measurement uncertainties, selection effects, and mass estimation biases.
+
+*Technical methods: MCMC (Metropolis-Hastings and gradient-free samplers), forward modeling with instrument transfer functions, joint multi-wavelength modeling (millimeter + X-ray), hierarchical Bayesian regression, Monte Carlo forecasting.*

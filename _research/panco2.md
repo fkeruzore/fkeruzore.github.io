@@ -1,6 +1,6 @@
 ---
 title: "panco2: Pressure Profile Fitting"
-excerpt: "Fast, open-source Python library for measuring ICM pressure profiles from tSZ maps"
+excerpt: "~1000× speedup of a Bayesian inference pipeline through algorithm redesign; adopted as the NIKA2 collaboration's standard analysis tool"
 collection: research
 permalink: /research/panco2/
 date: 2023-01-01
@@ -11,23 +11,13 @@ header:
 
 **Associated publications:** [Kéruzoré, F. et al. (2023), OJAp, 6, 9.](https://ui.adsabs.harvard.edu/abs/2023OJAp....6E...9K/abstract), [Kéruzoré, F. et al. (2020), mm Universe @ NIKA2](https://ui.adsabs.harvard.edu/abs/2022EPJWC.25700024K/abstract)
 
-The progression of NIKA2 observations on clusters within the LPSZ sample highlighted the necessity for standardized cluster sample analyses.
-These analyses serve several purposes.
-First, they enable initial estimates for the main LPSZ scientific products from a subset of clusters.
-They are also needed to evaluate data quality and conduct systematic studies, examining the impact of analysis choices on final results.
-However, the time constraints imposed by the NIKA2 SZ pipeline for analyzing individual cluster thermodynamic properties limited the possibility of running these analyses.
-In response, I undertook a complete rewrite of the pipeline, accelerating it using optimized Python code and efficient numerical libraries.
-This development significantly reduced computation time, from several days down to a few minutes, enabling both standardized analyses on cluster samples and systematic studies on the impact of tSZ signal modeling choices.
-The new software, named `panco2`, underwent extensive validation tests using various numerical simulations.
-These tests, based on idealized spherical clusters to realistic hydrodynamic simulations, ensured the software's reliability.
-The results were published and detailed in an internal note to the NIKA2 collaboration, leading to `panco2` becoming the new SZ analysis pipeline of the NIKA2 collaboration.
+The NIKA2 collaboration's original pipeline for measuring gas pressure profiles from telescope maps took **several days of compute time per cluster** - fine for a handful of targets, but completely impractical for systematic studies or large samples.
+I identified the bottlenecks, redesigned the core algorithms, and rewrote the pipeline from scratch in optimized Python, reducing runtime to **a few minutes** - a speedup of roughly **three orders of magnitude**.
 
-`panco2` has been in use since 2021, contributing to several published works.
-Recognizing its potential interest for the wider scientific community, I adapted the code to be easily usable on any millimeter-wave dataset, offering flexibility and compatibility with various studies.
-To assess the code's accuracy, I implemented a validation procedure based on the analysis of simulated maps.
-This involved synthetic cluster maps mimicking observations from instruments like *Planck*, SPT, and NIKA2.
-The pressure profiles reconstructed with `panco2` consistently showed excellent agreement with the real profiles, validating the accuracy of the adjustments made.
-This updated version of `panco2` is now a Python library, publicly available at [fkeruzore/panco2](https://github.com/fkeruzore/panco2), accompanied by a comprehensive [documentation](https://panco2.readthedocs.io/en/latest/).
+The new tool, `panco2`, uses a forward-modeling approach: it generates a synthetic observation by convolving a parametric pressure profile model with the instrument's beam and noise properties, then compares this to the real data via MCMC.
+This design makes it straightforward to handle instrumental artifacts, account for filtering effects, and propagate all uncertainties correctly through to the final profile estimate.
+
+Beyond raw speed, I invested heavily in software quality: `panco2` was validated against a hierarchy of increasingly realistic simulations (idealized spherical clusters → realistic hydrodynamic simulations), adopted as the official SZ analysis pipeline of the NIKA2 collaboration, and generalized to work with data from any millimeter-wave instrument (*Planck*, SPT, NIKA2, and others).
 
 **Github:** [fkeruzore/panco2](https://github.com/fkeruzore/panco2)
 **Documentation:** [panco2.readthedocs.io](https://panco2.readthedocs.io)

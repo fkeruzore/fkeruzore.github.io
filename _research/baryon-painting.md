@@ -1,6 +1,6 @@
 ---
 title: "Baryon Painting Optimization"
-excerpt: "Optimizing and validating baryon models to paint ICM properties on gravity-only simulations"
+excerpt: "Benchmarking a physics-based simulation surrogate at scale on HPC systems, achieving few-percent accuracy as a replacement for expensive hydrodynamic runs"
 collection: research
 permalink: /research/baryon-painting/
 date: 2022-01-01
@@ -11,13 +11,14 @@ header:
 
 **Associated publication:** [Kéruzoré, F. et al. (2022), OJAp 6, 43.](https://ui.adsabs.harvard.edu/abs/2023OJAp....6E..43K/abstract)
 
-As the first part of this work, I implemented a widely adopted baryon model to paint baryon properties on HACC gravity-only simulations.
-I used the Borg Cube, a pair of two cosmological simulations evolved from the same initial conditions; one as a gravity-only simulation, and one including hydrodynamics[^1].
-This combination allowed me not only to implement the baryon model, but also to assess its ability to make accurate and precise predictions of ICM thermodynamics, by comparing these predictions to the actual gas properties for the same halos in the hydrodynamic simulation.
-As a result, I was able to optimize the model by finding the parameters providing the best agreement between gas properties as predicted from the gravity-only simulation and as observed in the hydrodynamic version.
-The procedure required reading large volumes of data and was run using supercomputers at the Argonne Leadership Computing Facility (ALCF).
-The resulting predictions of gas density and pressure are accurate to the few-percent level for a redshift range $$z \in [0, 2]$$.
-In addition, I also compared the mass-tSZ observable scaling relation reconstructed from the two simulations and showed that the relation reconstructed for the gravity-only simulation was compatible with that observed in the hydrodynamic simulation, with only a few percent additional scatter.
-This highlights the power of baryon painting methods as a viable, cheaper surrogate to hydrodynamic simulations to create synthetic datasets to calibrate cluster cosmology using the tSZ effect.
+This project established the foundation for the ML-based surrogate approach later extended in [picasso](/research/picasso/), starting from a classical, parametric baryon model and rigorously benchmarking it as a surrogate for expensive hydrodynamic simulations.
+
+The key experimental setup was the **Borg Cube**: a matched pair of cosmological simulations run from identical initial conditions - one gravity-only (fast, cheap), one full hydrodynamics (slow, expensive, physically complete).
+This paired dataset provides a ground-truth benchmark for evaluating any surrogate model: by applying the model to the gravity-only run and comparing its predictions to the hydrodynamic run *for the same halos*, we can measure the surrogate's accuracy without any confounding factors.
+
+I implemented the baryon model on HACC gravity-only outputs and optimized its parameters against the hydrodynamic ground truth using large-scale data processed on HPC systems at the [Argonne Leadership Computing Facility (ALCF)](https://www.alcf.anl.gov/).
+The resulting surrogate achieves **few-percent accuracy** on gas density and pressure predictions across a redshift range $$z \in [0, 2]$$, and reproduces the mass-tSZ scaling relation with only a small additional scatter relative to the full hydrodynamic simulation.
+
+This validates the surrogate paradigm: gravity-only simulations, augmented with a learned or calibrated baryon model, can substitute for far more expensive hydrodynamic runs in contexts where large simulation volumes and high throughput matter more than per-object precision.
 
 [^1]: Emberson, J. D. et al. (2019), ApJ, 877, 85

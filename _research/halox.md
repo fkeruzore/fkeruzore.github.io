@@ -9,17 +9,18 @@ header:
   teaser: halox_logo.png
 ---
 
-In cosmology and astrophysics, modeling dark matter halos is central to understanding the large-scale structure of the Universe and its formation. This has motivated the development of many toolkits focused on halo modeling, such as, e.g., [halofit](https://github.com/robsmith155/halofit), [halotools](https://github.com/astropy/halotools), [colossus](https://bdiemer.bitbucket.io/colossus/), or [pyCCL](https://github.com/LSSTDESC/CCL). Recently, the AI-driven advent of novel computational frameworks such as [JAX](https://github.com/google/jax), have led to the development of differentiable and hardware-accelerated software to simulate and model physical processes. The increasing complexity of cosmological data and astrophysical models has motivated the wide adoption of this framework in cosmology, where JAX-powered software has been published to address a wide variety of scientific goals, including modeling fundamental cosmological quantities, with, e.g., [JAX-cosmo](https://github.com/DifferentiableUniverseInitiative/jax_cosmo);  or modeling various physical properties of dark matter halos, such as mass acretion history [Diffmah](https://github.com/ArgonneCPAC/diffmah), galaxy star formation history [Diffstar](https://github.com/ArgonneCPAC/diffstar), gas-halo connection [picasso](https://github.com/fkeruzore/picasso).
+The cosmology ecosystem has excellent tools for halo modeling ([colossus](https://bdiemer.bitbucket.io/colossus/), [pyCCL](https://github.com/LSSTDESC/CCL), [halotools](https://github.com/astropy/halotools)), but almost none of them are **differentiable** or **GPU-accelerated**.
+This matters increasingly as the field moves toward gradient-based inference methods (Hamiltonian Monte Carlo, variational inference) and ML-integrated pipelines - workflows where you need to compute gradients through your physical model, and where GPU throughput is the main bottleneck.
 
-I developped the halox library, which offers a JAX implementation of some widely used properties that, while existing in other libraries focused on halo modeling, do not currently have a publicly available, differentiable and GPU-accelerated implementation, namely:
+`halox` fills this gap: it is a [JAX](https://github.com/google/jax)-native library implementing the core quantities needed for halo-based cosmology, making them JIT-compilable, GPU-accelerated, and fully differentiable out of the box:
 
-* Radial profiles of dark matter halos following a Navarro-Frenk-White (NFW) distribution;
-* The halo mass function, quantifying the abundance of dark matter halos in mass and redshift, including its dependence on cosmological parameters;
-* The halo bias.
+- **NFW radial profiles** - density and enclosed mass for Navarro-Frenk-White dark matter halos
+- **Halo mass function** - the abundance of halos as a function of mass, redshift, and cosmological parameters
+- **Halo bias** - the clustering bias between halos and the underlying dark matter field
 
-The use of JAX as a backend allows these functions to be compiled and GPU-accelerated, enabling high-performance computations; and automatically differentiable, enabling their efficient use in gradient-based workflows, such as sensitivity analyses, Hamiltonian Monte-Carlo sampling for Bayesian inference, or machine learning-based methods.
+Because `halox` functions are written in JAX, they compose naturally with the rest of the JAX ecosystem: they can be vmapped over batches of halos or cosmologies, JIT-compiled for GPU, and differentiated with `jax.grad` - making them drop-in components for HMC samplers, ML training loops, or sensitivity analyses.
 
-All functions available in halox are validated against existing, non-JAX-based software. Cosmology calculations are validated against [Astropy](https://github.com/astropy/astropy) for varying cosmological parameters and redshifts. Other quantities are validated against [colossus](https://bdiemer.bitbucket.io/colossus/) for varying halo masses, redshifts, critical overdensities, and cosmological parameters. These tests are included in an automatic CI/CD pipeline on the GitHub repository, and presented graphically in the online documentation.
+All implementations are validated against established reference libraries ([Astropy](https://github.com/astropy/astropy), [colossus](https://bdiemer.bitbucket.io/colossus/)) across wide ranges of halo masses, redshifts, and cosmological parameters. These tests run automatically on every commit via a CI/CD pipeline, with results visualized in the online documentation.
 
 **Github:** [fkeruzore/halox](https://github.com/fkeruzore/halox)
 **Documentation:** [halox.readthedocs.io](https://halox.readthedocs.io)

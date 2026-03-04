@@ -6,14 +6,11 @@ author_profile: true
 theme_id: simulations
 ---
 
-Cosmological simulations are powerful tools for understanding cluster formation and evolution, and for generating synthetic datasets to validate observational analyses.
-I am working on baryon painting methods to efficiently emulate intracluster gas properties in gravity-only simulations, as well as on using simulations to model cosmological observables.
+A central challenge in data-driven science is that the most accurate forward models are often too expensive to run at the scale required for statistical inference.
+In cosmology, this tension is acute: the most realistic simulations of the Universe (full hydrodynamic runs modeling dark matter, gas, stars, and feedback) cost millions of CPU-hours each, yet constraining cosmological parameters requires exploring a large model space.
 
-Cosmological simulations can be broadly separated into two categories.
-On one hand, hydrodynamic simulations jointly model many different components of the Universe, including stellar matter, gas, and dark matter.
-On the other hand, gravity-only simulations only consider the gravitational interaction between particles, effectively simulating dark matter-only universes.
-The obvious advantage of hydrodynamic simulations is that they can make predictions for observables tied to baryonic physics (such as the tSZ effect).
-Their main downside is that they represent tremendous computational challenges: they are vastly more expensive to run than gravity-only simulations and require extremely accurate empirical models to include sub-resolution physical processes.
+My work on simulations addresses this through **surrogate modeling** - training fast, data-driven models on expensive simulations and using them in place of the full simulator downstream.
+I work on *baryon painting*: methods that take cheap "dark matter-only" simulations as input and predict the gas properties that a full hydrodynamic run would have produced, at a tiny fraction of the cost.
+These surrogate outputs can then be used to generate realistic synthetic observations, enabling large-scale validation studies and systematic analyses that would be impossible with the original simulations.
 
-As a result, gravity-only simulations are useful datasets that can be post-processed to include baryonic observables at a fraction of the cost of hydrodynamic simulations.
-This enables the generation of tSZ effect sky maps mimicking current (SPT, ACT, or *Planck*) and future (Simons Observatory, CMB-S4) millimeter surveys, in order to validate cosmological analyses and to study the different systematics that can affect them.
+The observables I target are the thermal Sunyaev-Zeldovich (tSZ) effect and X-ray emission of galaxy clusters, which I use to produce synthetic sky maps for current surveys (SPT, ACT, *Planck*) and next-generation experiments (Simons Observatory, CMB-S4).
