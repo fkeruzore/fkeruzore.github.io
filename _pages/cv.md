@@ -51,7 +51,6 @@ redirect_from:
 ## 2021 – Present: Post-doctoral Research Associate
 
 * Argonne National Laboratory, Cosmological Physics and Advanced Computing group
-* Supervisor: Dr. Lindsey Bleem
 * Developed neural networks generating synthetic 3D datasets from TB-scale simulations, enabling physics-informed predictions **four orders of magnitude faster** than traditional methods
 * Built and shipped 3 open-source ML libraries with documentation, CI/CD, and PyPI distribution
 * Leveraged DOE leadership-class supercomputers (ALCF) for large-scale, multi-node, multi-GPU inference
@@ -63,7 +62,6 @@ redirect_from:
 ## 2018 – 2021: Graduate Research Associate
 
 * Université Grenoble Alpes, Laboratoire de Physique Subatomique et Cosmologie
-* Supervisor: Pr. Frédéric Mayet
 * Developed end-to-end data pipelines extracting weak signals from noisy observational data
 * Built Monte Carlo simulation frameworks for statistical uncertainty quantification & sensitivity analysis
 * Designed and deployed collaboration-wide database serving 50+ researchers
@@ -81,27 +79,15 @@ redirect_from:
 * *Intro to AI-driven Science on Supercomputers* - Argonne Leadership Computing Facility (2024)
 * *Statistical Challenges in Modern Astronomy* - Penn State University (2021)
 
-# Selected Research Output
+# Research Output
 
-<strong>{{ site.data.pub_stats.publications }}</strong> publications (8 as first-author) · <strong>{{ site.data.pub_stats.citecount }}</strong> citations · h-index: <strong>{{ site.data.pub_stats.hindex }}</strong> (*Source*: [NASA ADS](https://ui.adsabs.harvard.edu/search/filter_doctype_facet_hier_fq_doctype=AND&filter_doctype_facet_hier_fq_doctype=doctype_facet_hier%3A%220%2FArticle%22&fq=%7B!type%3Daqp%20v%3D%24fq_doctype%7D&fq_doctype=(doctype_facet_hier%3A%220%2FArticle%22)&q=%20author%3A%22keruzore%2C%20florian%22&sort=date%20desc%2C%20bibcode%20desc&p_=0))
+* <strong>{{ site.data.pub_stats.publications }}</strong> publications (8 as first-author) · <strong>{{ site.data.pub_stats.citecount }}</strong> citations · h-index: <strong>{{ site.data.pub_stats.hindex }}</strong> (*Source*: [NASA ADS](https://ui.adsabs.harvard.edu/search/filter_doctype_facet_hier_fq_doctype=AND&filter_doctype_facet_hier_fq_doctype=doctype_facet_hier%3A%220%2FArticle%22&fq=%7B!type%3Daqp%20v%3D%24fq_doctype%7D&fq_doctype=(doctype_facet_hier%3A%220%2FArticle%22)&q=%20author%3A%22keruzore%2C%20florian%22&sort=date%20desc%2C%20bibcode%20desc&p_=0)) - For the complete list, see the [Publications](https://fkeruzore.github.io/publications/) page.
+* 20+ public talks - For the complete list, see the [Talks](https://fkeruzore.github.io/talks/) page.
 
-* Kéruzoré F. (2025). "halox: Dark matter halo properties using JAX." *Submitted to JOSS.* [ADS](https://ui.adsabs.harvard.edu/abs/2025arXiv250922478K/abstract)
-* Kéruzoré F. et al. (2024). "The picasso gas model: Painting intracluster gas on gravity-only simulations." *Open Journal of Astrophysics.* [ADS](https://ui.adsabs.harvard.edu/abs/2024OJAp....7E.116K/abstract)
-* Rau M., Kéruzoré F. et al. (2025). "Reducing Model Error Using Optimised Galaxy Selection." *MNRAS.*
-
-For the complete list, see the [Publications](https://fkeruzore.github.io/publications/) page.
 
 # Leadership & Communication
 
 * **Junior Coordinator**, Galaxy Cluster Analysis - South Pole Telescope Collaboration (2024–present)
 * **Pipeline & Database Lead** - NIKA2 Collaboration (2019–2021)
 * Science outreach: Argonne "Science 101" public lecture series participant
-* 20+ public talks:
-
-<div class="publications-compact" markdown="1">
-
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html %}
-  {% endfor %}</ul>
-
-</div>
+* 20+ public talks - For the complete list, see the [Talks](https://fkeruzore.github.io/talks/) page.
