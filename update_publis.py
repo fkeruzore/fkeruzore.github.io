@@ -42,12 +42,17 @@ def get_bibcodes(rows=1000):
     }
 
     encoded_query = urlencode(query)
-    results = requests.get(
+    response = requests.get(
         "https://api.adsabs.harvard.edu/v1/search/query?{}".format(
             encoded_query
         ),
         headers=secu_header,
-    ).json()
+    )
+    if not response.ok:
+        raise RuntimeError(
+            f"ADS API request failed with status {response.status_code}: {response.text!r}"
+        )
+    results = response.json()
     pubs = results["response"]["docs"]
 
     # Get their bibcodes sorted by pub type and first authorship
@@ -132,6 +137,10 @@ def get_bibtex_entries(bibcodes):
         headers=secu_header,
         data=json.dumps(payload),
     )
+    if not results.ok:
+        raise RuntimeError(
+            f"ADS bibtex request failed with status {results.status_code}: {results.text!r}"
+        )
     full_bibtex = results.json()["export"]  # That's the full .bib file
     bibtexs = [
         f"@{b}" for b in full_bibtex.split("@")[1:]
@@ -162,6 +171,10 @@ def get_citation(bibcodes):
         headers=secu_header,
         data=json.dumps(payload),
     )
+    if not results.ok:
+        raise RuntimeError(
+            f"ADS citation request failed with status {results.status_code}: {results.text!r}"
+        )
     cites = results.json()["export"].split("\n\n")[:-1]
     return cites
 
@@ -187,6 +200,10 @@ def get_citecount_hindex(bibcodes):
         headers={**secu_header, "Content-type": "application/json"},
         data=json.dumps(payload),
     )
+    if not results.ok:
+        raise RuntimeError(
+            f"ADS metrics request failed with status {results.status_code}: {results.text!r}"
+        )
     stats = results.json()
     citecount = stats["citation stats"]["total number of citations"]
     h = stats["indicators"]["h"]
