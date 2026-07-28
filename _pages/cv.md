@@ -9,11 +9,9 @@ redirect_from:
 
 {% include base_path %}
 
-*Machine learning engineer with a PhD in physics, specializing in GPU-accelerated scientific ML, HPC, and distributed training. Experienced in profiling and optimizing multi-GPU and multi-node ML workloads, developing physics-informed surrogates for large-scale simulations, and validating performance on modern NVIDIA architectures using JAX and PyTorch.*
-
 # Technical Skills
 
-**Machine Learning:** Deep learning (JAX/Flax, PyTorch); CNNs, VAEs, fully-connected networks; Physics-informed neural networks; Differentiable programming; Generative models; Bayesian inference, MCMC, gradient-based optimization
+**Machine Learning:** Deep learning (JAX/Flax, PyTorch); CNNs, VAEs, fully-connected networks; Neural surrogates for simulation acceleration; Differentiable programming; Generative models; Bayesian inference, MCMC, gradient-based optimization
 
 **Programming:** Python (expert): NumPy, SciPy, Pandas, JAX ecosystem; Shell scripting; R; IDL
 
@@ -51,8 +49,8 @@ redirect_from:
 ## 2021 – Present: Post-doctoral Research Associate
 
 * Argonne National Laboratory, Cosmological Physics and Advanced Computing group
-* Developed neural networks generating synthetic 3D datasets from TB-scale simulations, enabling physics-informed predictions **four orders of magnitude faster** than traditional methods
-* Built and shipped 3 open-source ML libraries with documentation, CI/CD, and PyPI distribution
+* Developed neural networks generating synthetic 3D datasets from TB-scale simulations, enabling physically consistent predictions **four orders of magnitude faster** than traditional methods
+* Built and shipped 3 open-source ML libraries with documentation and CI/CD (halox and picasso distributed via PyPI)
 * Leveraged DOE leadership-class supercomputers (ALCF) for large-scale, multi-node, multi-GPU inference
 * Led analysis coordination for multi-institution collaboration (100+ researchers)
 * Designed validation benchmarks and stress tests to evaluate generative model fidelity
