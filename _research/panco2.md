@@ -1,6 +1,6 @@
 ---
 title: "panco2: Pressure Profile Fitting"
-excerpt: "~1000× speedup of a Bayesian inference pipeline through algorithm redesign; adopted as the NIKA2 collaboration's standard analysis tool"
+excerpt: "Bayesian inference pipeline cutting run time from two weeks to ten minutes; NIKA2's standard analysis tool"
 collection: research
 permalink: /research/panco2/
 date: 2023-01-01

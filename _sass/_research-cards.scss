@@ -84,7 +84,7 @@
 .theme-card__arrow {
   text-align: center;
   color: $primary-color;
-  opacity: 0;
+  opacity: 0.45;
   transition: opacity 0.3s ease;
 
   .theme-card:hover & {

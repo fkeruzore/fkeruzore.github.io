@@ -36,7 +36,7 @@ redirect_from:
 
 **[panco2](https://github.com/fkeruzore/panco2)** - Bayesian inference pipeline (Python) - 2022
 
-* Forward-modeling MCMC pipeline for signal extraction from noisy and filtered image data; **~1000× speedup** over prior tool
+* Forward-modeling MCMC pipeline for signal extraction from noisy and filtered image data; cut single-run time from **two weeks to ten minutes** versus prior tool
 * Adopted as the official pipeline of the NIKA2 collaboration; peer-reviewed publication
 * Documentation: [panco2.readthedocs.io](https://panco2.readthedocs.io)
 
@@ -88,4 +88,3 @@ redirect_from:
 * **Junior Coordinator**, Galaxy Cluster Analysis - South Pole Telescope Collaboration (2024–present)
 * **Pipeline & Database Lead** - NIKA2 Collaboration (2019–2021)
 * Science outreach: Argonne "Science 101" public lecture series participant
-* 20+ public talks - For the complete list, see the [Talks](https://fkeruzore.github.io/talks/) page.
